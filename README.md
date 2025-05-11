@@ -1,0 +1,1 @@
+# pacific-waves-hostel
