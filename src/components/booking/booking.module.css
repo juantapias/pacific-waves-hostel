@@ -1,0 +1,46 @@
+.booking {
+  padding: 6.25rem 0;
+  position: relative;
+}
+
+.booking::after {
+  background-attachment: fixed;
+  background-image: url('../../assets/images/pacific-waves-hostel-parallax.webp');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: "";
+  filter: brightness(.5);
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.bookingContent {
+  background-color: #F1FAFF;
+  border-radius: 2rem;
+  padding: 2rem;
+  z-index: 10;
+
+}
+
+.heading {
+  margin-bottom: 5rem;
+}
+
+.title {
+  color: #0077B6;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.subtitle {
+  color: #00B4D8;
+  font-size: 1.25rem;
+  font-weight: 100;
+  text-align: center;
+}
