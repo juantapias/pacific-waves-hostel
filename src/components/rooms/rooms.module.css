@@ -1,0 +1,38 @@
+.rooms {
+  margin: 5rem 0;
+}
+
+.roomWrap {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.roomGallery {
+  width: 100%;
+}
+
+.styleCarousel {
+  height: 80vh;
+}
+
+.roomGalleryItem {
+  object-fit: cover;
+  height: 100%;
+}
+
+.heading {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  color: #0077b6;
+  font-size: 2rem;
+}
+
+.subtitle {
+  color: #00B4D8;
+  font-size: 1rem;
+}

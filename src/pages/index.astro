@@ -1,16 +1,21 @@
 ---
+import Layout from '../layouts/Layout.astro'
 
+import MainBanner from '../components/banner/main-banner/MainBanner'
+import ContentBlock from '../components/content-block/ContentBlock'
+import Rooms from '../components/Rooms/Rooms'
+import Booking from '../components/booking/Booking'
+import Testimonials from '../components/testimonials/Testimonials'
+import Gallery from '../components/gallery/Gallery'
+import Newsletter from '../components/newsletter/Newsletter'
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout>
+  <MainBanner client:load />
+  <ContentBlock client:load />
+  <Rooms client:load />
+  <!-- <Booking client:load />
+  <Testimonials client:load />
+  <Gallery client:load />
+  <Newsletter client:load /> -->
+</Layout>

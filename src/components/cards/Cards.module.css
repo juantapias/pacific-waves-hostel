@@ -1,0 +1,35 @@
+.card {
+  background-color: #fff;
+  border: .0625rem solid #eeeeee;
+  border-radius: 2rem;
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.title {
+  color: #0077B6;
+  font-size: 1.25rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.rating {
+  display: flex;
+  justify-content: center;
+  color: #FFD250;
+}
+
+.description {
+  color: #0077B6;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.details {
+  align-items: center;
+  color: #00B4D8;
+  display: flex;
+  font-size: .75rem;
+  justify-content: space-between;
+}

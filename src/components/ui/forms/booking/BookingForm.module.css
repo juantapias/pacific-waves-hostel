@@ -1,0 +1,24 @@
+.bookingForm {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  padding-left: 1rem;
+}
+
+.inputCalendar {
+  border: 1px solid transparent;
+  border-radius: 2rem;
+  height: 50px;
+  width: 320px;
+  outline: none;
+  text-indent: 1rem;
+  transition: border .3s ease-in-out;
+}

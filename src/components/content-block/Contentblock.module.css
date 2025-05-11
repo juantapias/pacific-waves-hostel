@@ -1,0 +1,37 @@
+.contentBlock {
+  background-color: #0077b6;
+  display: grid;
+  gap: 2rem;
+  height: 100vh;
+  padding: 6.25rem 0;
+  align-content: center;
+}
+
+.contentTitle {
+  color: #f1faff;
+  font-size: 4rem;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.coverPage {
+  align-items: flex-start;
+  display: flex;
+  gap: 2rem;
+}
+
+.contentParagraph {
+  display: grid;
+  font-size: 1.25rem;
+  gap: 1rem;
+  text-align: left;
+}
+
+.content {
+  display: grid;
+  gap: 2rem;
+}
+
+p {
+  color: #f1faff;
+}
