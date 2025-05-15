@@ -1,0 +1,53 @@
+  header {
+    transition: background 0.3s ease-in-out;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .scrolled {
+    background: #F1FAFF;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .scrolled .navigation {
+    background-color: transparent;
+  }
+
+  .scrolled .navigation a {
+    color: #0077B6;
+    transition: color .3s ease-in-out;
+  }
+
+  .scrolled .navigation a:hover {
+    color: #00b4d8;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 2rem;
+  }
+
+  .navigation {
+    align-items: center;
+    background-color: rgba(217, 217, 217, 0.25);
+    border-radius: 1rem;
+    display: flex;
+    gap: 2rem;
+    font-family: 'raleway';
+    font-size: 1.25rem;
+    list-style: none;
+    padding: .5rem 2rem;
+  }
+
+  .navigation a {
+    text-decoration: none;
+    color: #F1FAFF;
+    text-transform: uppercase;
+  }
+
+  .navigation a:hover {
+    color: #00b4d8;
+  }

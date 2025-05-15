@@ -1,4 +1,5 @@
 .bookingForm {
+  align-items: flex-end;
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -14,11 +15,15 @@
 }
 
 .inputCalendar {
-  border: 1px solid transparent;
+  border: 1px solid #0077B6;
   border-radius: 2rem;
   height: 50px;
   width: 320px;
   outline: none;
-  text-indent: 1rem;
+  padding: 0 1rem;
   transition: border .3s ease-in-out;
+}
+
+.submitButton button {
+  padding: 1rem;
 }

@@ -1,4 +1,4 @@
-import styles from './Cards.module.css';
+import styles from "./cards.module.css";
 
 type ITestimonialCard = {
   name: string;
@@ -15,13 +15,12 @@ type TestimonialCardProps = {
 export default function TestimonialCard({ testimonial }: TestimonialCardProps) {
   return (
     <div className={styles.card}>
-      <h2 className={styles.title}>{testimonial.name.toLowerCase()}</h2>
-      <div className={styles.rating}>
-        {Array.from({ length: testimonial.rate }, (_, index) => (
-          <span key={index} className={styles.star}>
-            ★
-          </span>
-        ))}
+      <div className={styles.header}>
+        <h2 className={styles.title}>{testimonial.name.toLowerCase()}</h2>
+        <div className={styles.rating}>
+          <span className={styles.rate}>{testimonial.rate}</span>
+          <i className={`${styles.star} icon icon-star`} />
+        </div>
       </div>
       <p className={styles.description}>{testimonial.comment}</p>
       <div className={styles.details}>
