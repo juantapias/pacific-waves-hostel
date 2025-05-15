@@ -12,7 +12,6 @@ export default function ContentBlock() {
   const contentBlockRef = useRef<HTMLDivElement>(null);
   const contentBlockTitleRef = useRef<HTMLHeadingElement>(null);
   const contentBlockContentRef = useRef<HTMLDivElement>(null);
-  const contentBlockParagraphRef = useRef<HTMLDivElement>(null);
   const contentBlockImageRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
