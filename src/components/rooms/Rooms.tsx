@@ -6,6 +6,7 @@ import { Navigation } from "swiper/modules";
 import SwiperCore from "swiper";
 
 import { privateRoom } from "../../utils/data/RoomsData";
+console.log("🚀 ~ privateRoom:", privateRoom);
 
 import style from "./rooms.module.css";
 
