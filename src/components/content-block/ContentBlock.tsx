@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import CoverPage from "../../assets/images/pacific-waves.jpg";
 
-import style from "./contentblock.module.css";
+import style from "./ContentBlock.module.css";
 
 export default function ContentBlock() {
   gsap.registerPlugin(ScrollTrigger);
