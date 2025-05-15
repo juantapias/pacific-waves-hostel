@@ -71,6 +71,7 @@ export default function ContentBlock() {
                   );
                 })}
               </h2>
+
               <div ref={contentBlockContentRef} className={style.content}>
                 <p>
                   Descubre Pacific Waves Hostel & Surf, un rincón acogedor a
