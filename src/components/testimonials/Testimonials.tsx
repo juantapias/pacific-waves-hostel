@@ -8,7 +8,7 @@ import TestimonialCard from "../cards/TestimonialCard";
 
 import Whale from "../../assets/images/whale.webp";
 
-import styles from "./testimonials.module.css";
+import styles from "./Testimonials.module.css";
 
 const testimonials = [
   {
