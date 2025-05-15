@@ -1,21 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro'
 
-import MainBanner from '../components/banner/main-banner/MainBanner'
-import ContentBlock from '../components/content-block/ContentBlock'
-import Rooms from '../components/Rooms/Rooms'
-import Booking from '../components/booking/Booking'
-import Testimonials from '../components/testimonials/Testimonials'
-import Gallery from '../components/gallery/Gallery'
-import Newsletter from '../components/newsletter/Newsletter'
+import PageContent from '../container/Home'
 ---
 
 <Layout>
-  <MainBanner client:load />
-  <ContentBlock client:load />
-  <Rooms client:load />
-  <!-- <Booking client:load />
-  <Testimonials client:load />
-  <Gallery client:load />
-  <Newsletter client:load /> -->
+   <PageContent client:load />
 </Layout>

@@ -1,9 +1,11 @@
 ---
-import Header from '../components/layouts/Header.astro'
+import Header from '../components/layouts/Header'
 import Footer from '../components/layouts/Footer.astro'
 
+import '../assets/styles/style.css'
+
 import 'swiper/css';
-import 'swiper/css/scrollbar';
+import 'swiper/css/navigation';
 
 const primary = '#0077B6'
 const secondary = '#00B4D8'
@@ -18,10 +20,10 @@ const black = '#2E2E2E'
     <meta name='viewport' content='width=device-width' />
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>Pacific Waves Hostel & Surf</title>
   </head>
   <body>
-    <Header />
+    <Header client:load />
     <slot />
     <Footer />
   </body>
@@ -39,6 +41,80 @@ const black = '#2E2E2E'
     background-color: var(--white);
   }
 
+  body::-webkit-scrollbar {
+    display: none;
+  }
+/* typography */
+
+/* HEAD */
+@font-face {
+  font-family: 'dm-serif';
+  src: url('../assets/fonts/dm-serif/DMSerifDisplay-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* SUBTITLES */
+@font-face {
+  font-family: 'raleway';
+  src: url('../assets/fonts/raleway/Raleway-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'raleway';
+  src: url('../assets/fonts/raleway/Raleway-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'raleway';
+  src: url('../assets/fonts/raleway/Raleway-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* BODY */
+
+@font-face {
+  font-family: 'roboto';
+  src: url('../assets/fonts/roboto/Roboto-Light.ttf') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'roboto';
+  src: url('../assets/fonts/roboto/Roboto-Light.ttf') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'roboto';
+  src: url('../assets/fonts/roboto/Roboto-Medium.ttf') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'roboto';
+  src: url('../assets/fonts/roboto/Roboto-Bold.ttf') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+h1,h2 {
+  font-family: 'dm-serif';
+}
+
+h3,h4,h5,h6 {
+  font-family: 'raleway';
+}
+
+p {
+  font-family: 'roboto';
+}
   /* container */
   .container {
     width: 100%;
@@ -89,7 +165,9 @@ const black = '#2E2E2E'
     border-radius: 2rem;
     color: var(--white);
     cursor: pointer;
+    font-family: 'roboto';
     font-size: 1rem;
+    font-weight: 300;
     padding: 0.5rem 1rem;
     transition: background-color 0.3s ease-in-out;
   }

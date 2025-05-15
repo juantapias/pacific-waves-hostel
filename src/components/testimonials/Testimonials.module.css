@@ -1,11 +1,26 @@
 .testimonials {
-  background-color: #E5E5E5;
+  background-color: #0077B6;
   padding: 6.25rem 0;
+  position: relative;
+  overflow: hidden;
 }
 
 .title {
-  color: #0077B6;
+  color: #F1FAFF;
   font-size: 2.5rem;
   margin-bottom: 2rem;
   text-align: center;
+}
+
+.whale {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.whale img {
+  width: 300px;
+  height: 150px;
+  max-width: 100%;
+  object-fit: contain;
 }

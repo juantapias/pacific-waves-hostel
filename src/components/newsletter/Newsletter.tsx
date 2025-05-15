@@ -1,10 +1,12 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import NewsletterForm from '../ui/forms/newsletter/NewsletterForm';
+import NewsletterForm from "../ui/forms/newsletter/NewsletterForm";
 
-import styles from './Newsletter.module.css';
+import WhaleTale from "../../assets/images/whale-tail.webp";
+
+import styles from "./Newsletter.module.css";
 
 export default function Newsletter() {
   gsap.registerPlugin(ScrollTrigger);
@@ -12,13 +14,14 @@ export default function Newsletter() {
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
+  const assetRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: '-150% center',
-        end: '-75% center',
+        start: "-100% center",
+        end: "-5% center",
         scrub: 1,
         markers: false,
       },
@@ -29,19 +32,25 @@ export default function Newsletter() {
       y: 100,
       stagger: 0.5,
     });
+
+    tl.from(assetRef.current, { opacity: 0 });
   }, []);
 
   return (
     <div ref={containerRef} className={styles.newsletter}>
-      <div className='container'>
+      <div className="container">
         <h2 ref={titleRef} className={styles.title}>
           Únete a nuestro boletín para recibir novedades y ofertas exclusivas.
         </h2>
 
         <div ref={formRef} className={styles.form}>
-          <NewsletterForm placeholder='Ingresa tu correo...' />
+          <NewsletterForm placeholder="Ingresa tu correo..." />
         </div>
       </div>
+
+      <figure ref={assetRef} className={styles.whaletale}>
+        <img src={WhaleTale.src} alt="Cola de ballena" />
+      </figure>
     </div>
   );
 }

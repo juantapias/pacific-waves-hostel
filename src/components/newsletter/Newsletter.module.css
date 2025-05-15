@@ -1,6 +1,7 @@
 .newsletter {
   background-color: #0077B6;
-  padding: 6.25rem 0
+  padding: 6.25rem 0 12.5rem;
+  position: relative;
 }
 
 .title {
@@ -14,4 +15,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.whaletale {
+  align-items: center;
+  bottom: -42px;
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+  left: 0;
+  position: absolute;
+  right: 0;
+
+}
+
+.whaletale img {
+  width: 25rem;
+  max-width: 100%;
 }

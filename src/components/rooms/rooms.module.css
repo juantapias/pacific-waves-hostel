@@ -6,14 +6,49 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
+  align-items: flex-start;
 }
 
 .roomGallery {
   width: 100%;
+  position: relative;
 }
 
 .styleCarousel {
   height: 80vh;
+}
+
+.customNav {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-top: 1rem;
+  left: 2.5%;
+  position: absolute;
+  right: 2.5%;
+  top: 0;
+  z-index: 1;
+}
+
+.navButton {
+  align-items: center;
+  background-color: #0077B6;
+  border: none;
+  border-radius: 100%;
+  display: flex;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  height: 40px;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  width: 40px;
+}
+
+.navButton:hover {
+  background-color: #00B4D8;
 }
 
 .roomGalleryItem {
@@ -35,4 +70,24 @@
 .subtitle {
   color: #00B4D8;
   font-size: 1rem;
+}
+
+.roomTypes {
+  display: flex;
+  flex-direction: column;
+}
+
+.room {
+  align-items: center;
+  background-color: #F1FAFF;
+  border: 0;
+  border-bottom: .0625rem solid #0077B6;
+  color: #0077B6;
+  display: flex;
+  font-size: 2rem;
+  height: 4.5rem;
+  justify-content: space-between;
+  padding: 0 1rem;
+  width: 100%;
+
 }

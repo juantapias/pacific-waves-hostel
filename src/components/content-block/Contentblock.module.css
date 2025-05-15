@@ -5,6 +5,21 @@
   height: 100vh;
   padding: 6.25rem 0;
   align-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contentBlock::after {
+  background: linear-gradient(90deg, rgba(0, 119, 182, .25) 0%, rgba(241, 250, 255, .25) 100%);
+  border-radius: 100%;
+  content: "";
+  height: 80%;
+  position: absolute;
+  right: -25%;
+  top: 0;
+  transform: rotate(45deg);
+  width: 65%;
+  z-index: 0;
 }
 
 .contentTitle {
@@ -15,9 +30,11 @@
 }
 
 .coverPage {
-  align-items: flex-start;
+  align-items: flex-end;
   display: flex;
   gap: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .contentParagraph {
@@ -33,5 +50,7 @@
 }
 
 p {
+  font-family: 'roboto';
+  font-weight: 300;
   color: #f1faff;
 }
