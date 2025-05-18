@@ -8,6 +8,7 @@ import Loading from "../../ui/loading";
 export default function MainBanner() {
   const containerBanner = useRef<HTMLDivElement>(null);
   const contentBanner = useRef<HTMLDivElement>(null);
+  const socialItemsRef = useRef<HTMLUListElement>(null);
 
   const scrollDownRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef<HTMLSpanElement>(null);
@@ -24,6 +25,10 @@ export default function MainBanner() {
   useEffect(() => {
     const elements = gsap.utils.toArray(contentBanner.current?.children ?? []);
 
+    const socialElements = gsap.utils.toArray(
+      socialItemsRef.current?.children ?? [],
+    );
+
     gsap.from(elements, {
       delay: 5,
       opacity: 0,
@@ -33,7 +38,21 @@ export default function MainBanner() {
       ease: "power2.out",
     });
 
-    gsap.to(arrowRef.current, { y: 20, repeat: -1, yoyo: true, duration: 1 });
+    gsap.from(socialElements, {
+      delay: 5.5,
+      opacity: 0,
+      stagger: 0.15,
+      x: 100,
+    });
+
+    gsap.from(scrollDownRef.current, { delay: 6, opacity: 0 });
+
+    gsap.to(arrowRef.current, {
+      y: 20,
+      repeat: -1,
+      yoyo: true,
+      duration: 1,
+    });
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -54,6 +73,12 @@ export default function MainBanner() {
     });
 
     tl.to(scrollDownRef.current, { opacity: 0 });
+    tl.to(socialItemsRef.current, {
+      opacity: 0,
+      y: -20,
+      stagger: 0.5,
+      duration: 0.3,
+    });
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -83,6 +108,26 @@ export default function MainBanner() {
           </p>
           <button className="btn-primary">Reserva</button>
         </div>
+      </div>
+
+      <div className={styles.social}>
+        <ul ref={socialItemsRef}>
+          <li>
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+              <i className="icon icon-instagram" />
+            </a>
+          </li>
+          <li>
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+              <i className="icon icon-facebook" />
+            </a>
+          </li>
+          <li>
+            <a href="http://" target="_blank" rel="noopener noreferrer">
+              <i className="icon icon-youtube" />
+            </a>
+          </li>
+        </ul>
       </div>
 
       <div ref={scrollDownRef} className={styles.scrollDown}>

@@ -43,11 +43,26 @@
   font-size: 1.25rem;
   gap: 1rem;
   text-align: left;
+  width: 50%;
 }
 
 .content {
   display: grid;
   gap: 2rem;
+}
+
+.surfer {
+  position: absolute;
+  right: -30%;
+  bottom: -13%;
+
+}
+
+.surfer img {
+  width: 250px;
+  max-width: 100%;
+  object-fit: contain;
+  transform: rotate(15deg);
 }
 
 p {

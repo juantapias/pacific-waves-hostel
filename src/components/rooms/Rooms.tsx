@@ -1,15 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, type SwiperRef } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import SwiperCore from "swiper";
 
-import { privateRoom } from "../../utils/data/RoomsData";
+import { RoomData } from "../../utils/data/RoomsData";
 
 import style from "./rooms.module.css";
 
 export default function Rooms() {
+  const [roomActive, setRoomActive] = useState<number | null>(null);
+
   const roomRef = useRef<HTMLDivElement>(null);
   const swipperRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
@@ -18,6 +20,10 @@ export default function Rooms() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const swiperRef = useRef<SwiperCore | null>(null);
+  const swiperRoomRef = useRef<SwiperRef>(null);
+
+  // refs para cada contenido
+  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -32,6 +38,8 @@ export default function Rooms() {
         markers: false,
       },
     });
+
+    tl.from(swiperRoomRef.current, { opacity: 0 });
 
     if (headingRef.current) {
       tl.from(headingRef.current.children, {
@@ -72,6 +80,47 @@ export default function Rooms() {
     }
   }, []);
 
+  const handleSelectedRoom = (index: number) => {
+    if (roomActive === index) {
+      const content = contentRefs.current[index];
+      if (content) {
+        gsap.to(content, {
+          height: 0,
+          duration: 0.4,
+          ease: "power2.inOut",
+          onComplete: () => setRoomActive(null),
+        });
+      } else {
+        setRoomActive(null);
+      }
+    } else {
+      if (roomActive !== null && contentRefs.current[roomActive]) {
+        gsap.to(contentRefs.current[roomActive], {
+          height: 0,
+          duration: 0.3,
+          ease: "power2.inOut",
+        });
+      }
+
+      const content = contentRefs.current[index];
+      if (content) {
+        gsap.set(content, { height: "auto" });
+        const height = content.offsetHeight;
+        gsap.fromTo(
+          content,
+          { height: 0 },
+          {
+            height,
+            duration: 0.4,
+            ease: "power2.inOut",
+          },
+        );
+      }
+
+      setRoomActive(index);
+    }
+  };
+
   return (
     <div ref={roomRef} className={style.rooms}>
       <div className="container">
@@ -82,8 +131,9 @@ export default function Rooms() {
             navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
             scrollbar={{ hide: true }}
             className={style.roomGallery}
+            ref={swiperRoomRef}
           >
-            {privateRoom.map((item, index) => (
+            {RoomData[roomActive ?? 0].gallery.map((item, index) => (
               <SwiperSlide key={index} className={style.styleCarousel}>
                 <img
                   src={item.src}
@@ -92,7 +142,6 @@ export default function Rooms() {
                 />
               </SwiperSlide>
             ))}
-            {/* Botones de navegación personalizados */}
             <div className={style.customNav}>
               <button ref={prevRef} className={style.navButton}>
                 &#x2039;
@@ -110,18 +159,25 @@ export default function Rooms() {
             </div>
 
             <div ref={buttonsRoomsRef} className={style.roomTypes}>
-              <button className={style.room}>
-                <span>Habitaciones privadas</span>
-                <i>+</i>
-              </button>
-              <button className={style.room}>
-                <span>Habitaciones compartidas de 4</span>
-                <i>+</i>
-              </button>
-              <button className={style.room}>
-                <span>Habitaciones compartidas de 8</span>
-                <i>+</i>
-              </button>
+              {RoomData.map((item, index) => (
+                <div className={style.room} key={index}>
+                  <button
+                    className={style.roomName}
+                    onClick={() => handleSelectedRoom(index)}
+                  >
+                    <span>{item.name}</span>
+                    <i>{roomActive === index ? "−" : "+"}</i>
+                  </button>
+                  <div
+                    ref={(el) => {
+                      contentRefs.current[index] = el;
+                    }}
+                    className={style.roomContent}
+                    style={{ height: 0, overflow: "hidden" }}
+                    dangerouslySetInnerHTML={{ __html: item.content }}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -3,10 +3,11 @@
 }
 
 .roomWrap {
+  align-items: flex-start;
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
-  align-items: flex-start;
+  padding: 2rem 0;
 }
 
 .roomGallery {
@@ -16,6 +17,7 @@
 
 .styleCarousel {
   height: 80vh;
+  text-align: center;
 }
 
 .customNav {
@@ -52,8 +54,9 @@
 }
 
 .roomGalleryItem {
-  object-fit: cover;
+  object-fit: contain;
   height: 100%;
+  max-width: 100%;
 }
 
 .heading {
@@ -78,16 +81,31 @@
 }
 
 .room {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.roomName {
   align-items: center;
   background-color: #F1FAFF;
   border: 0;
   border-bottom: .0625rem solid #0077B6;
   color: #0077B6;
+  cursor: pointer;
   display: flex;
   font-size: 2rem;
   height: 4.5rem;
   justify-content: space-between;
   padding: 0 1rem;
   width: 100%;
+}
 
+.roomContent {
+  overflow: hidden;
+}
+
+.roomContent p {
+  color: #0077B6;
+  margin-bottom: 1rem;
 }

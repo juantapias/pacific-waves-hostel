@@ -46,6 +46,72 @@ export default function Newsletter() {
         <div ref={formRef} className={styles.form}>
           <NewsletterForm placeholder="Ingresa tu correo..." />
         </div>
+
+        <div className={styles.socials}>
+          <ul>
+            <li>
+              <a
+                href="http://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLinks}
+              >
+                <i className="icon icon-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                href="http://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLinks}
+              >
+                <i className="icon icon-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                href="http://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLinks}
+              >
+                <i className="icon icon-youtube"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                href="http://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLinks}
+              >
+                <i className="icon icon-tripadvisor"></i>
+              </a>
+            </li>
+            <li>
+              <a
+                href="http://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.socialLinks}
+              >
+                <i className="icon icon-mail"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <nav>
+          <ul className={styles.navigation}>
+            <li>
+              <a href="#">Política de privacidad</a>
+            </li>
+            <li>
+              <a href="#">Términos y condiciones</a>
+            </li>
+          </ul>
+        </nav>
       </div>
 
       <figure ref={assetRef} className={styles.whaletale}>

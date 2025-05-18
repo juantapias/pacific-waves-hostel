@@ -60,7 +60,7 @@ export default function Gallery() {
             <div
               key={groupIndex}
               className={`${style.galleryRow} ${
-                group.length === 1 ? "single" : "double"
+                group.length === 1 ? style.single : style.double
               }`}
             >
               {group.map((src, imgIndex) => (
