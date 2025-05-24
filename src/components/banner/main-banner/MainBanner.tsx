@@ -93,7 +93,7 @@ export default function MainBanner() {
       <Loading isLoading={isLoading} />
 
       <video
-        src="https://res.cloudinary.com/dcuocptj7/video/upload/v1746987622/11.5mb_nasibe.mp4"
+        src="/assets/images/videos/11.5mb_nasibe.mp4"
         autoPlay
         loop
         muted

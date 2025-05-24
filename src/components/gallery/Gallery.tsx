@@ -10,14 +10,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 const getGroupedGallery = () => {
   const pattern = [2, 1, 2, 1, 2];
-  const groups: string[][] = [];
+  const groups: { url: string; alt: string }[][] = [];
   let index = 0;
 
   for (let i = 0; i < pattern.length; i++) {
     const groupSize = pattern[i];
-    const group = GalleryData.slice(index, index + groupSize).map(
-      (item) => item.url,
-    );
+    const group = GalleryData.slice(index, index + groupSize).map((item) => ({
+      url: item.url,
+      alt: item.alt,
+    }));
     groups.push(group);
     index += groupSize;
   }
@@ -66,11 +67,11 @@ export default function Gallery() {
                 group.length === 1 ? style.single : style.double
               }`}
             >
-              {group.map((src, imgIndex) => (
+              {group.map(({ url, alt }, imgIndex) => (
                 <figure key={imgIndex} className={style.galleryItem}>
                   <img
-                    src={src}
-                    alt={`Vista paradisíaca número ${groupIndex * 10 + imgIndex + 1}`}
+                    src={url}
+                    alt={alt}
                     loading="lazy"
                     height={400}
                     className="max-w-full object-cover aspect-ratio-16/9"

@@ -138,7 +138,7 @@ export default function Rooms() {
                 <SwiperSlide key={index} className={style.styleCarousel}>
                   <img
                     src={item.src}
-                    alt={`Imagen de habitación ${index + 1}`}
+                    alt={item.alt}
                     className={style.roomGalleryItem}
                   />
                 </SwiperSlide>
