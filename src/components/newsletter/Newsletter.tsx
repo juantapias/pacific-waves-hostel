@@ -3,15 +3,14 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import NewsletterForm from "../ui/forms/newsletter/NewsletterForm";
-
 import WhaleTale from "../../assets/images/whale-tail.webp";
 
 import styles from "./Newsletter.module.css";
 
-export default function Newsletter() {
-  gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-  const containerRef = useRef<HTMLDivElement>(null);
+export default function Newsletter() {
+  const containerRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
   const assetRef = useRef<HTMLElement>(null);
@@ -37,9 +36,13 @@ export default function Newsletter() {
   }, []);
 
   return (
-    <div ref={containerRef} className={styles.newsletter}>
+    <section
+      ref={containerRef}
+      className={styles.newsletter}
+      aria-labelledby="newsletter-heading"
+    >
       <div className="container">
-        <h2 ref={titleRef} className={styles.title}>
+        <h2 id="newsletter-heading" ref={titleRef} className={styles.title}>
           Únete a nuestro boletín para recibir novedades y ofertas exclusivas.
         </h2>
 
@@ -48,75 +51,82 @@ export default function Newsletter() {
         </div>
 
         <div className={styles.socials}>
-          <ul>
+          <ul aria-label="Redes sociales">
             <li>
               <a
-                href="http://instagram.com"
+                href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLinks}
+                aria-label="Instagram"
               >
-                <i className="icon icon-instagram"></i>
+                <i className="icon icon-instagram" aria-hidden="true"></i>
               </a>
             </li>
             <li>
               <a
-                href="http://instagram.com"
+                href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLinks}
+                aria-label="Facebook"
               >
-                <i className="icon icon-facebook"></i>
+                <i className="icon icon-facebook" aria-hidden="true"></i>
               </a>
             </li>
             <li>
               <a
-                href="http://instagram.com"
+                href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLinks}
+                aria-label="YouTube"
               >
-                <i className="icon icon-youtube"></i>
+                <i className="icon icon-youtube" aria-hidden="true"></i>
               </a>
             </li>
             <li>
               <a
-                href="http://instagram.com"
+                href="https://tripadvisor.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLinks}
+                aria-label="TripAdvisor"
               >
-                <i className="icon icon-tripadvisor"></i>
+                <i className="icon icon-tripadvisor" aria-hidden="true"></i>
               </a>
             </li>
             <li>
               <a
-                href="http://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="mailto:info@tusitio.com"
                 className={styles.socialLinks}
+                aria-label="Correo electrónico"
               >
-                <i className="icon icon-mail"></i>
+                <i className="icon icon-mail" aria-hidden="true"></i>
               </a>
             </li>
           </ul>
         </div>
 
-        <nav>
+        <nav aria-label="Enlaces legales">
           <ul className={styles.navigation}>
             <li>
-              <a href="#">Política de privacidad</a>
+              <a href="/politica-de-privacidad">Política de privacidad</a>
             </li>
             <li>
-              <a href="#">Términos y condiciones</a>
+              <a href="/terminos-y-condiciones">Términos y condiciones</a>
             </li>
           </ul>
         </nav>
       </div>
 
       <figure ref={assetRef} className={styles.whaletale}>
-        <img src={WhaleTale.src} alt="Cola de ballena" />
+        <img
+          src={WhaleTale.src}
+          alt="Ilustración de una cola de ballena emergiendo del mar"
+          loading="lazy"
+        />
       </figure>
-    </div>
+    </section>
   );
 }

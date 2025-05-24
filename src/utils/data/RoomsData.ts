@@ -1,6 +1,6 @@
 export const RoomData = [
   {
-    name: "Brisa Cabaña",
+    name: "Cabaña Privada",
     content:
       "<p>La cabaña privada es el equilibrio perfecto entre comodidad y naturaleza. Diseñada para dos personas, ofrece una cama doble, baño privado al aire libre con jardín interior, terraza con sillas y hamaca, ideal para relajarse. Además, cuenta con ventilador, mosquitero, tomas USB y estante para la ropa. Un espacio funcional, rodeado de selva y mar, para desconectar sin renunciar al confort. ¡Solo trae las ganas de disfrutar! 🌊🌿</p>",
     gallery: [

@@ -14,20 +14,43 @@ const black = '#2E2E2E'
 ---
 
 <!doctype html>
-<html lang='en'>
+<html lang="es">
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-    <meta name='generator' content={Astro.generator} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
     <title>Pacific Waves Hostel & Surf</title>
+    <meta name="description" content="Descubre Pacific Waves Hostel, tu lugar ideal frente al mar para surfear, relajarte y conectar con viajeros en la costa." />
+    <meta name="author" content="Pacific Waves Hostel" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph para compartir en redes -->
+    <meta property="og:title" content="Pacific Waves Hostel & Surf" />
+    <meta property="og:description" content="Surf, relax y buena vibra frente al mar." />
+    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:url" content="https://www.pacificwaveshostel.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Pacific Waves Hostel & Surf" />
+    <meta name="twitter:description" content="Surf, relax y buena vibra frente al mar." />
+    <meta name="twitter:image" content="/twitter-image.jpg" />
+
+    <!-- Accesibilidad y SEO semántico -->
+    <link rel="canonical" href="https://www.pacificwaveshostel.com" />
   </head>
   <body>
     <Header client:load />
-    <slot />
+    <main id="main-content">
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>
+
 
 <style is:global define:vars={{ primary, secondary, white, black }}>
   /* universal reset */
@@ -48,9 +71,9 @@ const black = '#2E2E2E'
 
 /* HEAD */
 @font-face {
-  font-family: 'dm-serif';
-  src: url('../assets/fonts/dm-serif/DMSerifDisplay-Regular.ttf') format('truetype');
-  font-weight: 400;
+  font-family: 'bonny';
+  src: url('../assets/fonts/bonny/Bonny-Variable.ttf') format('truetype');
+  font-weight: 600;
   font-style: normal;
 }
 
@@ -105,7 +128,7 @@ const black = '#2E2E2E'
 }
 
 h1,h2 {
-  font-family: 'dm-serif';
+  font-family: 'bonny';
 }
 
 h3,h4,h5,h6 {
@@ -175,4 +198,16 @@ p {
   .btn-primary:hover {
     background-color: var(--secondary);
   }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
 </style>

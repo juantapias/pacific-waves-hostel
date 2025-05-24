@@ -97,10 +97,9 @@ export default function Testimonials() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: testimonialsRef.current,
-        start: "-50% center",
-        end: "120% center",
+        start: "-100% center",
+        end: "150% center",
         scrub: true,
-        markers: false,
       },
     });
 
@@ -120,20 +119,22 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <div ref={testimonialsRef} className={styles.testimonials}>
+    <section
+      ref={testimonialsRef}
+      className={styles.testimonials}
+      aria-labelledby="testimonials-title"
+    >
       <div className="container">
-        <h2 ref={titleRef} className={styles.title}>
+        <h2 id="testimonials-title" ref={titleRef} className={styles.title}>
           Historias que dejan huella en la arena
         </h2>
       </div>
+
       <Swiper
         spaceBetween={16}
         slidesPerView={5}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        loop={true}
+        autoplay={{ delay: 2500, disableOnInteraction: false }}
+        loop
         modules={[Autoplay]}
       >
         {testimonials.map((testimonial, index) => (
@@ -146,10 +147,10 @@ export default function Testimonials() {
       </Swiper>
 
       <div style={{ width: "100%" }}>
-        <figure ref={whaleRef} className={styles.whale}>
-          <img src={Whale.src} alt="Ballena testimonios" />
+        <figure ref={whaleRef} className={styles.whale} role="presentation">
+          <img src={Whale.src} alt="" />
         </figure>
       </div>
-    </div>
+    </section>
   );
 }

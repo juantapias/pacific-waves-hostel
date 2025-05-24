@@ -9,11 +9,9 @@ export default function MainBanner() {
   const containerBanner = useRef<HTMLDivElement>(null);
   const contentBanner = useRef<HTMLDivElement>(null);
   const socialItemsRef = useRef<HTMLUListElement>(null);
-
   const scrollDownRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef<HTMLSpanElement>(null);
-
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -24,7 +22,6 @@ export default function MainBanner() {
 
   useEffect(() => {
     const elements = gsap.utils.toArray(contentBanner.current?.children ?? []);
-
     const socialElements = gsap.utils.toArray(
       socialItemsRef.current?.children ?? [],
     );
@@ -46,7 +43,6 @@ export default function MainBanner() {
     });
 
     gsap.from(scrollDownRef.current, { delay: 6, opacity: 0 });
-
     gsap.to(arrowRef.current, {
       y: 20,
       repeat: -1,
@@ -65,13 +61,7 @@ export default function MainBanner() {
       },
     });
 
-    tl.to(elements, {
-      y: -50,
-      opacity: 0.7,
-      stagger: 0.1,
-      duration: 0.3,
-    });
-
+    tl.to(elements, { y: -50, opacity: 0.7, stagger: 0.1, duration: 0.3 });
     tl.to(scrollDownRef.current, { opacity: 0 });
     tl.to(socialItemsRef.current, {
       opacity: 0,
@@ -86,8 +76,20 @@ export default function MainBanner() {
     };
   }, []);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
-    <div ref={containerBanner} className={styles.mainBanner}>
+    <section
+      id="home"
+      ref={containerBanner}
+      className={styles.mainBanner}
+      aria-label="Sección principal del banner"
+    >
       <Loading isLoading={isLoading} />
 
       <video
@@ -96,7 +98,13 @@ export default function MainBanner() {
         loop
         muted
         playsInline
-      />
+        aria-hidden="true"
+        className={styles.backgroundVideo}
+        title="Video de olas del mar"
+      >
+        Tu navegador no admite videos HTML5.
+      </video>
+
       <div className="container">
         <div ref={contentBanner} className={styles.bannerContent}>
           <h1>
@@ -106,35 +114,60 @@ export default function MainBanner() {
             Despierta frente al mar, siente la libertad de las olas y vive el
             espectáculo natural del Pacífico.
           </p>
-          <button className="btn-primary">Reserva</button>
+          <button
+            type="button"
+            className="btn-primary"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("booking");
+            }}
+            aria-label="Ir a la sección de reservas"
+          >
+            Reserva
+          </button>
         </div>
       </div>
 
-      <div className={styles.social}>
+      <nav className={styles.social} aria-label="Redes sociales">
         <ul ref={socialItemsRef}>
           <li>
-            <a href="http://" target="_blank" rel="noopener noreferrer">
-              <i className="icon icon-instagram" />
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <i className="icon icon-instagram" aria-hidden="true" />
             </a>
           </li>
           <li>
-            <a href="http://" target="_blank" rel="noopener noreferrer">
-              <i className="icon icon-facebook" />
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <i className="icon icon-facebook" aria-hidden="true" />
             </a>
           </li>
           <li>
-            <a href="http://" target="_blank" rel="noopener noreferrer">
-              <i className="icon icon-youtube" />
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="YouTube"
+            >
+              <i className="icon icon-youtube" aria-hidden="true" />
             </a>
           </li>
         </ul>
-      </div>
+      </nav>
 
-      <div ref={scrollDownRef} className={styles.scrollDown}>
+      <div ref={scrollDownRef} className={styles.scrollDown} aria-hidden="true">
         <span ref={arrowRef} className={styles.arrow}>
           &darr;
         </span>
       </div>
-    </div>
+    </section>
   );
 }

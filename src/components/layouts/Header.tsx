@@ -24,6 +24,16 @@ export default function Header() {
     };
   }, []);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <header className={scrolled ? style.scrolled : ""}>
       <nav>
@@ -34,16 +44,48 @@ export default function Header() {
         />
         <ul className={style.navigation}>
           <li>
-            <a href="#">Inicio</a>
+            <a
+              href="#home"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("home");
+              }}
+            >
+              Inicio
+            </a>
           </li>
           <li>
-            <a href="#">Nosotros</a>
+            <a
+              href="#us"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("us");
+              }}
+            >
+              Nosotros
+            </a>
           </li>
           <li>
-            <a href="#">Hospedaje</a>
+            <a
+              href="#rooms"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("rooms");
+              }}
+            >
+              Hospedaje
+            </a>
           </li>
         </ul>
-        <button className="btn-primary">Reserva</button>
+        <button
+          className="btn-primary"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollToSection("booking");
+          }}
+        >
+          Reserva
+        </button>
       </nav>
     </header>
   );

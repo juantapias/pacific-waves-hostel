@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Swiper, SwiperSlide, type SwiperRef } from "swiper/react";
@@ -22,12 +22,11 @@ export default function Rooms() {
   const swiperRef = useRef<SwiperCore | null>(null);
   const swiperRoomRef = useRef<SwiperRef>(null);
 
-  // refs para cada contenido
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   gsap.registerPlugin(ScrollTrigger);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: roomRef.current,
@@ -39,7 +38,10 @@ export default function Rooms() {
       },
     });
 
-    tl.from(swiperRoomRef.current, { opacity: 0 });
+    const swiperEl = swiperRoomRef.current?.swiper?.el;
+    if (swiperEl) {
+      tl.from(swiperEl, { opacity: 0 });
+    }
 
     if (headingRef.current) {
       tl.from(headingRef.current.children, {
@@ -48,6 +50,7 @@ export default function Rooms() {
         y: 20,
       });
     }
+
     if (buttonsRoomsRef.current) {
       tl.from(buttonsRoomsRef.current.children, {
         opacity: 0,
@@ -57,7 +60,7 @@ export default function Rooms() {
     }
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (
       swiperRef.current &&
       prevRef.current &&
@@ -66,10 +69,7 @@ export default function Rooms() {
     ) {
       const swiper = swiperRef.current;
 
-      if (
-        swiper.params.navigation &&
-        typeof swiper.params.navigation === "object"
-      ) {
+      if (typeof swiper.params.navigation === "object") {
         swiper.params.navigation.prevEl = prevRef.current;
         swiper.params.navigation.nextEl = nextRef.current;
 
@@ -80,11 +80,12 @@ export default function Rooms() {
     }
   }, []);
 
-  const handleSelectedRoom = (index: number) => {
+  const toggleRoom = (index: number) => {
+    const current = contentRefs.current[index];
+
     if (roomActive === index) {
-      const content = contentRefs.current[index];
-      if (content) {
-        gsap.to(content, {
+      if (current) {
+        gsap.to(current, {
           height: 0,
           duration: 0.4,
           ease: "power2.inOut",
@@ -102,15 +103,14 @@ export default function Rooms() {
         });
       }
 
-      const content = contentRefs.current[index];
-      if (content) {
-        gsap.set(content, { height: "auto" });
-        const height = content.offsetHeight;
+      if (current) {
+        const scrollHeight = current.scrollHeight;
+
         gsap.fromTo(
-          content,
+          current,
           { height: 0 },
           {
-            height,
+            height: current.scrollHeight,
             duration: 0.4,
             ease: "power2.inOut",
           },
@@ -122,7 +122,7 @@ export default function Rooms() {
   };
 
   return (
-    <div ref={roomRef} className={style.rooms}>
+    <div id="rooms" ref={roomRef} className={style.rooms}>
       <div className="container">
         <div ref={swipperRef} className={style.roomWrap}>
           <Swiper
@@ -133,15 +133,17 @@ export default function Rooms() {
             className={style.roomGallery}
             ref={swiperRoomRef}
           >
-            {RoomData[roomActive ?? 0].gallery.map((item, index) => (
-              <SwiperSlide key={index} className={style.styleCarousel}>
-                <img
-                  src={item.src}
-                  alt={""}
-                  className={style.roomGalleryItem}
-                />
-              </SwiperSlide>
-            ))}
+            {RoomData.length > 0 &&
+              RoomData[roomActive ?? 0]?.gallery?.map((item, index) => (
+                <SwiperSlide key={index} className={style.styleCarousel}>
+                  <img
+                    src={item.src}
+                    alt={`Imagen de habitación ${index + 1}`}
+                    className={style.roomGalleryItem}
+                  />
+                </SwiperSlide>
+              ))}
+
             <div className={style.customNav}>
               <button ref={prevRef} className={style.navButton}>
                 &#x2039;
@@ -163,7 +165,9 @@ export default function Rooms() {
                 <div className={style.room} key={index}>
                   <button
                     className={style.roomName}
-                    onClick={() => handleSelectedRoom(index)}
+                    onClick={() => toggleRoom(index)}
+                    aria-expanded={roomActive === index}
+                    aria-controls={`room-content-${index}`}
                   >
                     <span>{item.name}</span>
                     <i>{roomActive === index ? "−" : "+"}</i>
@@ -172,6 +176,8 @@ export default function Rooms() {
                     ref={(el) => {
                       contentRefs.current[index] = el;
                     }}
+                    id={`room-content-${index}`}
+                    role="region"
                     className={style.roomContent}
                     style={{ height: 0, overflow: "hidden" }}
                     dangerouslySetInnerHTML={{ __html: item.content }}

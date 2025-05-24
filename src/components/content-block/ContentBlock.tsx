@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Sufer from "../../assets/images/surfer.webp";
-
 import style from "./ContentBlock.module.css";
 
 export default function ContentBlock() {
@@ -13,7 +12,6 @@ export default function ContentBlock() {
   const contentBlockTitleRef = useRef<HTMLHeadingElement>(null);
   const contentBlockContentRef = useRef<HTMLDivElement>(null);
   const contentBlockImageRef = useRef<HTMLImageElement>(null);
-
   const suferRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,17 +25,16 @@ export default function ContentBlock() {
       },
     });
 
-    const letters =
-      contentBlockTitleRef &&
-      contentBlockTitleRef.current &&
-      contentBlockTitleRef.current.querySelectorAll("span");
-    tl.from(letters, {
-      opacity: 0,
-      y: -50,
-      duration: 0.75,
-      stagger: 0.25,
-      ease: "power2.out",
-    });
+    const letters = contentBlockTitleRef.current?.querySelectorAll("span");
+    if (letters?.length) {
+      tl.from(letters, {
+        opacity: 0,
+        y: -50,
+        duration: 0.75,
+        stagger: 0.25,
+        ease: "power2.out",
+      });
+    }
 
     tl.from(contentBlockImageRef.current, { duration: 1, opacity: 0 }, "a");
 
@@ -85,10 +82,15 @@ export default function ContentBlock() {
   }, []);
 
   return (
-    <div ref={contentBlockRef} className={style.contentBlock}>
+    <section
+      id="us"
+      ref={contentBlockRef}
+      className={style.contentBlock}
+      aria-label="Sección sobre el hostal"
+    >
       <div className="content-primary">
         <div className="container">
-          <div className={style.coverPage}>
+          <article className={style.coverPage}>
             <div className={style.contentParagraph}>
               <h2 ref={contentBlockTitleRef} className={style.contentTitle}>
                 {"Tu refugio costero".split("").map((letter, index) => {
@@ -107,36 +109,56 @@ export default function ContentBlock() {
                 })}
               </h2>
 
-              <div ref={contentBlockContentRef} className={style.content}>
+              <div
+                ref={contentBlockContentRef}
+                className={style.content}
+                aria-label="Descripción del hostal"
+              >
                 <p>
-                  Pacific Waves Hostel & Surf es un refugio paradisíaco ubicado
-                  en la impresionante Playa El Almejal, en el corregimiento El
-                  Valle, municipio de Bahía Solano. Con una ubicación
-                  privilegiada frente al mar y rodeado por la selva del Chocó,
-                  nuestro hostal ofrece una experiencia única que combina
-                  naturaleza, confort y aventura. Contamos con opciones de
-                  alojamiento privado y compartido, diseñadas para brindar
-                  descanso y comodidad en un entorno natural incomparable.
+                  <strong>Pacific Waves Hostel & Surf</strong> es un refugio
+                  paradisíaco ubicado en la impresionante Playa El Almejal, en
+                  el corregimiento El Valle, municipio de Bahía Solano. Con una
+                  ubicación privilegiada frente al mar y rodeado por la selva
+                  del Chocó, nuestro hostal ofrece una experiencia única que
+                  combina naturaleza, confort y aventura.
                 </p>
 
                 <p>
-                  Además, nuestro bar de playa es el lugar para relajarse,
-                  compartir con otros viajeros y disfrutar de atardeceres
-                  inolvidables con una refrescante bebida en mano. En Pacific
-                  Waves Hostel & Surf, garantizamos altos estándares de calidad
-                  en alojamiento, creando un ambiente acogedor donde la conexión
-                  con la naturaleza y el espíritu del surf se fusionan para
-                  ofrecer una estancia inigualable.
+                  Contamos con opciones de alojamiento privado y compartido,
+                  diseñadas para brindar descanso y comodidad en un entorno
+                  natural incomparable. Nuestro bar de playa es el lugar para
+                  relajarse, compartir con otros viajeros y disfrutar de
+                  atardeceres inolvidables con una bebida refrescante.
                 </p>
-                <p>¡Ven y vive la magia del Pacífico con nosotros! 🌊</p>
+
+                <p>
+                  En Pacific Waves Hostel & Surf, garantizamos altos estándares
+                  de calidad en alojamiento, creando un ambiente acogedor donde
+                  la conexión con la naturaleza y el espíritu del surf se
+                  fusionan para ofrecer una estancia inigualable.
+                </p>
+
+                <p>
+                  <strong>
+                    ¡Ven y vive la magia del Pacífico con nosotros! 🌊
+                  </strong>
+                </p>
               </div>
             </div>
-          </div>
+          </article>
         </div>
       </div>
+
       <figure ref={suferRef} className={style.surfer}>
-        <img src={Sufer.src} alt="Sufer content" />
+        <img
+          ref={contentBlockImageRef}
+          src={Sufer.src}
+          alt="Ilustración de surfista en la playa"
+        />
+        <figcaption className="sr-only">
+          Surfer animado representando la experiencia en el mar
+        </figcaption>
       </figure>
-    </div>
+    </section>
   );
 }

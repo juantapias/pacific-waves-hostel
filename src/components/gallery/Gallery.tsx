@@ -8,10 +8,9 @@ import style from "./gallery.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const gridGallery = () => {
-  const pattern = [2, 1, 2, 1, 2]; // número de elementos por grupo
-  const imageGroups = [];
-
+const getGroupedGallery = () => {
+  const pattern = [2, 1, 2, 1, 2];
+  const groups: string[][] = [];
   let index = 0;
 
   for (let i = 0; i < pattern.length; i++) {
@@ -19,15 +18,15 @@ const gridGallery = () => {
     const group = GalleryData.slice(index, index + groupSize).map(
       (item) => item.url,
     );
-    imageGroups.push(group);
+    groups.push(group);
     index += groupSize;
   }
 
-  return imageGroups;
+  return groups;
 };
 
 export default function Gallery() {
-  const galleryRef = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -50,13 +49,17 @@ export default function Gallery() {
   }, []);
 
   return (
-    <div ref={galleryRef} className={style.gallery}>
+    <section
+      ref={galleryRef}
+      className={style.gallery}
+      aria-labelledby="gallery-heading"
+    >
       <div className="container">
-        <h2 ref={titleRef} className={style.title}>
+        <h2 id="gallery-heading" ref={titleRef} className={style.title}>
           Postales del paraíso
         </h2>
         <div className={style.galleryContainer}>
-          {gridGallery().map((group, groupIndex) => (
+          {getGroupedGallery().map((group, groupIndex) => (
             <div
               key={groupIndex}
               className={`${style.galleryRow} ${
@@ -64,19 +67,20 @@ export default function Gallery() {
               }`}
             >
               {group.map((src, imgIndex) => (
-                <div key={imgIndex} className={style.galleryItem}>
+                <figure key={imgIndex} className={style.galleryItem}>
                   <img
                     src={src}
-                    alt={`Imagen ${groupIndex}-${imgIndex}`}
+                    alt={`Vista paradisíaca número ${groupIndex * 10 + imgIndex + 1}`}
+                    loading="lazy"
                     height={400}
                     className="max-w-full object-cover aspect-ratio-16/9"
                   />
-                </div>
+                </figure>
               ))}
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
