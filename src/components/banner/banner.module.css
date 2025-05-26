@@ -51,58 +51,15 @@ h1 {
   line-height: 1;
 }
 
-@media (min-width: 640px) {
-  h1 {
-    font-size: 2rem;
-  }
-}
-
-@media (min-width: 768px) {
-  h1 {
-    font-size: 4rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  h1 {
-    font-size: 6rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  h1 {
-    font-size: 6rem;
-  }
-}
-
 p {
   color: #f1faff;
   font-size: 1rem;
   font-family: 'raleway';
 }
 
-@media (min-width: 640px) {
-  p {
-    font-size: 1.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  p {
-    font-size: 1.25rem;
-  }
-}
-
-
 .bannerContent button {
   font-size: 1.5rem;
   font-weight: 300;
-}
-
-@media (min-width: 768px) {
-  .bannerContent .btn-primary {
-    font-size: 1.5rem;
-  }
 }
 
 .scrollDown {
@@ -146,4 +103,40 @@ p {
 
 .social a:hover {
   color: #00B4D8;
+}
+
+@media (min-width: 640px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 4rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+  }
+
+  .bannerContent .btn-primary {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 6rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  h1 {
+    font-size: 6rem;
+  }
 }

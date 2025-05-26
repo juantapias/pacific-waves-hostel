@@ -2,7 +2,7 @@
   background-color: #0077b6;
   display: grid;
   gap: 2rem;
-  height: 100vh;
+  height: 100%;
   padding: 6.25rem 0;
   align-content: center;
   position: relative;
@@ -22,10 +22,9 @@
   z-index: 0;
 }
 
-
 .contentTitle {
   color: #f1faff;
-  font-size: 4rem;
+  font-size: 3.25rem;
   text-align: left;
   margin-bottom: 1rem;
 }
@@ -43,7 +42,7 @@
   font-size: 1.25rem;
   gap: 1rem;
   text-align: left;
-  width: 50%;
+  width: 100%;
 }
 
 .content {
@@ -69,4 +68,20 @@ p {
   font-family: 'roboto';
   font-weight: 300;
   color: #f1faff;
+}
+
+@media (min-width: 768px) {
+  .contentParagraph {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contentBlock {
+    height: 100vh;
+  }
+
+  .contentTitle {
+    font-size: 4rem;
+  }
 }

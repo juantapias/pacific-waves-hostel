@@ -132,10 +132,24 @@ export default function Testimonials() {
 
       <Swiper
         spaceBetween={16}
-        slidesPerView={5}
+        slidesPerView={2}
         autoplay={{ delay: 2500, disableOnInteraction: false }}
         loop
         modules={[Autoplay]}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 16,
+          },
+        }}
       >
         {testimonials.map((testimonial, index) => (
           <SwiperSlide key={index}>

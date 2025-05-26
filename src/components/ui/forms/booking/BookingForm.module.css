@@ -1,6 +1,7 @@
 .bookingForm {
-  align-items: flex-end;
+  align-items: center;
   display: flex;
+  flex-direction: column;
   gap: 1rem;
   justify-content: center;
 }
@@ -8,6 +9,8 @@
 .formGroup {
   display: flex;
   flex-direction: column;
+  width: 100%;
+
 }
 
 .label {
@@ -18,12 +21,29 @@
   border: 1px solid #0077B6;
   border-radius: 2rem;
   height: 50px;
-  width: 320px;
   outline: none;
   padding: 0 1rem;
   transition: border .3s ease-in-out;
+  width: 100%;
 }
 
 .submitButton button {
   padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .bookingForm {
+    align-items: flex-end;
+    flex-direction: row;
+  }
+
+  .formGroup {
+    width: 220px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .formGroup {
+    width: 320px;
+  }
 }

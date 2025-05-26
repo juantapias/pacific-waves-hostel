@@ -38,6 +38,8 @@ export default function Rooms() {
       },
     });
 
+    tl.to(swipperRef.current, { top: 100 });
+
     const swiperEl = swiperRoomRef.current?.swiper?.el;
     if (swiperEl) {
       tl.from(swiperEl, { opacity: 0 });
@@ -104,8 +106,6 @@ export default function Rooms() {
       }
 
       if (current) {
-        const scrollHeight = current.scrollHeight;
-
         gsap.fromTo(
           current,
           { height: 0 },
@@ -126,12 +126,14 @@ export default function Rooms() {
       <div className="container">
         <div ref={swipperRef} className={style.roomWrap}>
           <Swiper
+            ref={swiperRoomRef}
+            className={style.roomGallery}
             onSwiper={(swiper) => (swiperRef.current = swiper)}
             modules={[Navigation]}
             navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
             scrollbar={{ hide: true }}
-            className={style.roomGallery}
-            ref={swiperRoomRef}
+            loop={true}
+            autoHeight={true}
           >
             {RoomData.length > 0 &&
               RoomData[roomActive ?? 0]?.gallery?.map((item, index) => (

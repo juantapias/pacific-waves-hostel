@@ -24,7 +24,7 @@
   footer {
     background-color: transparent;
     font-family: 'roboto';
-    margin-top: -22px;
+    margin-top: -30px;
     position: relative;
     z-index: 1;
   }
@@ -39,9 +39,10 @@
   .footer-copy {
     align-items: center;
     display: flex;
+    width: 50%;
   }
   p {
-    font-size: 0.75rem;
+    font-size: 0.625rem;
   }
 
   .auth a {
@@ -53,6 +54,24 @@
 
   .auth a:hover {
     text-decoration: underline;
+  }
+
+  @media (min-width: 768px) {
+    footer {
+      margin-top: -22px;
+    }
+
+    .footer-copy {
+      width: 45%
+    }
+
+    p {
+    font-size: 0.75rem;
+  }
+    
+    .auth {
+      width: 50%;
+    }
   }
 
 
