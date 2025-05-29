@@ -33,7 +33,11 @@ export default function Rooms() {
         start: "-20% top",
         end: "+=2000",
         scrub: 1,
-        pin: swipperRef.current,
+        pin: gsap
+          .matchMedia()
+          .add("(min-width: 768px)", () => swipperRef.current)
+          ? swipperRef.current
+          : false,
         markers: false,
       },
     });

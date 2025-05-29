@@ -3,9 +3,11 @@ import LogoWhite from "../../assets/images/logo-white.webp";
 import Logo from "../../assets/images/logo.webp";
 
 import style from "./header.module.css";
+import { navigation } from "../../utils/data/NavigationData";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState<boolean>(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,6 +26,28 @@ export default function Header() {
     };
   }, []);
 
+  // Cerrar menú al hacer scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      if (mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    if (mobileMenuOpen) {
+      window.addEventListener("scroll", handleScroll);
+      // Prevenir scroll del body cuando el menú está abierto
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileMenuOpen]);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -31,51 +55,39 @@ export default function Header() {
         behavior: "smooth",
         block: "start",
       });
+      // Cerrar menú móvil después de navegar
+      setMobileMenuOpen(false);
     }
   };
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen((prev) => !prev);
+  };
+
   return (
-    <header className={scrolled ? style.scrolled : ""}>
-      <nav>
+    <header className={`${style.header} ${scrolled ? style.scrolled : ""}`}>
+      {/* Nav de escritorio */}
+      <nav className={style.desktopNav}>
         <img
           src={scrolled ? Logo.src : LogoWhite.src}
           alt="Pacific waves hostel & surf"
           width={90}
+          height={60}
         />
         <ul className={style.navigation}>
-          <li>
-            <a
-              href="#home"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("home");
-              }}
-            >
-              Inicio
-            </a>
-          </li>
-          <li>
-            <a
-              href="#us"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("us");
-              }}
-            >
-              Nosotros
-            </a>
-          </li>
-          <li>
-            <a
-              href="#rooms"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("rooms");
-              }}
-            >
-              Hospedaje
-            </a>
-          </li>
+          {navigation.map((item, index) => (
+            <li key={index}>
+              <a
+                href={item.url}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(item.url);
+                }}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
         </ul>
         <button
           className="btn-primary"
@@ -87,6 +99,78 @@ export default function Header() {
           Reserva
         </button>
       </nav>
+
+      {/* Nav mobile - Header bar */}
+      <div className={style.mobileHeader}>
+        <img
+          src={scrolled ? Logo.src : LogoWhite.src}
+          alt="Pacific waves hostel & surf"
+          width={90}
+          height={60}
+        />
+
+        <button
+          className={`${style.menuButton} ${mobileMenuOpen ? style.active : ""}`}
+          onClick={toggleMobileMenu}
+          aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={mobileMenuOpen}
+        >
+          <span className={style.hamburger}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
+
+      {/* Nav mobile - Menu overlay */}
+      <nav
+        className={`${style.mobileNav} ${mobileMenuOpen ? style.open : ""}`}
+        aria-hidden={!mobileMenuOpen}
+      >
+        <div className={style.mobileNavContent}>
+          <img
+            src={scrolled ? Logo.src : LogoWhite.src}
+            alt="Pacific waves hostel & surf"
+            width={70}
+            height={47}
+            className={style.mobileNavLogo}
+          />
+          <ul className={style.mobileNavigation}>
+            {navigation.map((item, index) => (
+              <li key={index}>
+                <a
+                  href={item.url}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.url);
+                  }}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <button
+            className="btn-primary"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollToSection("booking");
+            }}
+          >
+            Reserva
+          </button>
+        </div>
+      </nav>
+
+      {/* Overlay para cerrar menú */}
+      {mobileMenuOpen && (
+        <div
+          className={style.overlay}
+          onClick={() => setMobileMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
     </header>
   );
 }
