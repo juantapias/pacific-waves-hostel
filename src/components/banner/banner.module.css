@@ -6,6 +6,7 @@
   height: 100vh;
   justify-content: center;
   position: relative;
+  overflow: hidden;
 }
 
 .mainBanner::before {

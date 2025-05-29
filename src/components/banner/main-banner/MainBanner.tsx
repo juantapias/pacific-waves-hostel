@@ -132,7 +132,7 @@ export default function MainBanner() {
         <ul ref={socialItemsRef}>
           <li>
             <a
-              href="#"
+              href="https://www.instagram.com/pacific.waves.hostel?igsh=a3kxZmowbmZubDkx"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -142,22 +142,12 @@ export default function MainBanner() {
           </li>
           <li>
             <a
-              href="#"
+              href="https://www.facebook.com/share/1YLmBJiDpD/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
             >
               <i className="icon icon-facebook" aria-hidden="true" />
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="YouTube"
-            >
-              <i className="icon icon-youtube" aria-hidden="true" />
             </a>
           </li>
         </ul>

@@ -54,7 +54,7 @@ export default function Newsletter() {
           <ul aria-label="Redes sociales">
             <li>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/pacific.waves.hostel?igsh=a3kxZmowbmZubDkx"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLinks}
@@ -65,7 +65,7 @@ export default function Newsletter() {
             </li>
             <li>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/share/1YLmBJiDpD/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLinks}
@@ -76,18 +76,7 @@ export default function Newsletter() {
             </li>
             <li>
               <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.socialLinks}
-                aria-label="YouTube"
-              >
-                <i className="icon icon-youtube" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://tripadvisor.com"
+                href="https://www.tripadvisor.co/Hotel_Review-g1983809-d28590654-Reviews-Pacific_Waves_Hostel_Surf-Bahia_Solano_Choco_Department.html"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLinks}

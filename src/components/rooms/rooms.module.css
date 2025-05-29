@@ -55,7 +55,6 @@
 
 .roomGalleryItem {
   object-fit: contain;
-  height: 100%;
   max-width: 100%;
 }
 
@@ -113,6 +112,10 @@
 @media (min-width:768px) {
   .roomWrap {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .roomGalleryItem {
+    height: 100%;
   }
 
   .title {

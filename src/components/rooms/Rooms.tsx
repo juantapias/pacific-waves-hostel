@@ -72,7 +72,7 @@ export default function Rooms() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: roomRef.current,
-          start: "-100% 80%",
+          start: "-20% 80%",
           end: "bottom 20%",
           scrub: 1,
           pin: false,
