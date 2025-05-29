@@ -27,43 +27,102 @@ export default function Rooms() {
   gsap.registerPlugin(ScrollTrigger);
 
   useLayoutEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: roomRef.current,
-        start: "-20% top",
-        end: "+=2000",
-        scrub: 1,
-        pin: gsap
-          .matchMedia()
-          .add("(min-width: 768px)", () => swipperRef.current)
-          ? swipperRef.current
-          : false,
-        markers: false,
-      },
+    // Limpiar animaciones previas
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+
+    // Configuración para desktop
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: roomRef.current,
+          start: "-20% top",
+          end: "+=2000",
+          scrub: 1,
+          pin: swipperRef.current,
+          markers: false,
+        },
+      });
+
+      const swiperEl = swiperRoomRef.current?.swiper?.el;
+      if (swiperEl) {
+        tl.from(swiperEl, { opacity: 0 });
+      }
+
+      if (headingRef.current) {
+        tl.from(headingRef.current.children, {
+          opacity: 0,
+          stagger: 0.5,
+          y: 20,
+        });
+      }
+
+      if (buttonsRoomsRef.current) {
+        tl.from(buttonsRoomsRef.current.children, {
+          opacity: 0,
+          stagger: 0.5,
+          y: 20,
+        });
+      }
     });
 
-    tl.to(swipperRef.current, { top: 100 });
-
-    const swiperEl = swiperRoomRef.current?.swiper?.el;
-    if (swiperEl) {
-      tl.from(swiperEl, { opacity: 0 });
-    }
-
-    if (headingRef.current) {
-      tl.from(headingRef.current.children, {
-        opacity: 0,
-        stagger: 0.5,
-        y: 20,
+    // Configuración para mobile
+    mm.add("(max-width: 767px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: roomRef.current,
+          start: "-100% 80%",
+          end: "bottom 20%",
+          scrub: 1,
+          pin: false,
+          markers: false,
+        },
       });
-    }
 
-    if (buttonsRoomsRef.current) {
-      tl.from(buttonsRoomsRef.current.children, {
-        opacity: 0,
-        stagger: 0.5,
-        y: 20,
-      });
-    }
+      const swiperEl = swiperRoomRef.current?.swiper?.el;
+      if (swiperEl) {
+        tl.from(swiperEl, {
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+      }
+
+      if (headingRef.current) {
+        tl.from(
+          headingRef.current.children,
+          {
+            opacity: 0,
+            stagger: 0.3,
+            y: 20,
+            duration: 0.6,
+            ease: "power2.out",
+          },
+          "-=0.4",
+        );
+      }
+
+      if (buttonsRoomsRef.current) {
+        tl.from(
+          buttonsRoomsRef.current.children,
+          {
+            opacity: 0,
+            stagger: 0.2,
+            y: 20,
+            duration: 0.5,
+            ease: "power2.out",
+          },
+          "-=0.3",
+        );
+      }
+    });
+
+    // Cleanup function
+    return () => {
+      mm.revert();
+    };
   }, []);
 
   useLayoutEffect(() => {
