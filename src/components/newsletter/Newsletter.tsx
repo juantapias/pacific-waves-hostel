@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -87,7 +87,7 @@ export default function Newsletter() {
             </li>
             <li>
               <a
-                href="mailto:info@tusitio.com"
+                href="mailto:info@pacificwaveshostel.com"
                 className={styles.socialLinks}
                 aria-label="Correo electrónico"
               >
