@@ -61,7 +61,7 @@ export default function NewsletterForm({ placeholder }: NewsletterFormProps) {
         className={styles.buttonNewsletter}
         disabled={isLoading}
       >
-        Enviar
+        {isLoading ? "Enviando" : "Enviar"}
       </button>
     </form>
   );
