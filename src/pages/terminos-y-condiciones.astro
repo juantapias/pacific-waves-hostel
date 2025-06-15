@@ -1,0 +1,15 @@
+---
+import { Fragment } from "astro/jsx-runtime";
+
+import Newsletter from '../components/newsletter/Newsletter';
+import Layout from '../layouts/Layout.astro';
+import BannerPage from '../components/banner/banner-page/BannerPage';
+import TermsAndConditions from '../components/content-block/TermsAndConditions.astro';
+---
+
+<Layout>
+  <BannerPage client:load title='Términos y condiciones'/>
+  <TermsAndConditions />
+  <Newsletter client:load />
+</Layout>
+

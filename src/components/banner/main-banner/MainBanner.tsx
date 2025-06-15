@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import styles from "../banner.module.css";
+import styles from "../main-banner/main-banner.module.css";
 import Loading from "../../ui/loading";
 
 export default function MainBanner() {

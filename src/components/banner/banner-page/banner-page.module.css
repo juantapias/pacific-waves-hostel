@@ -1,0 +1,32 @@
+.bannerPage {
+  align-items: center;
+  background-image: url("/assets/images/banner/cancellation-policy.webp");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  height: 50vh;
+  position: relative;
+  width: 100%;
+}
+
+.bannerPage::before {
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.5) 100%);
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+h1 {
+  color: #f1faff;
+  font-family: 'playfair';
+  font-size: 2.5rem;
+  line-height: 1;
+  z-index: 2;
+}

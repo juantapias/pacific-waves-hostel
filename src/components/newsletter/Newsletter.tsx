@@ -100,7 +100,10 @@ export default function Newsletter() {
         <nav aria-label="Enlaces legales">
           <ul className={styles.navigation}>
             <li>
-              <a href="/politica-de-privacidad">Política de privacidad</a>
+              <a href="/politicas-de-cancelacion">Políticas de cancelación</a>
+            </li>
+            <li>
+              <a href="/politicas-de-privacidad">Política de privacidad</a>
             </li>
             <li>
               <a href="/terminos-y-condiciones">Términos y condiciones</a>

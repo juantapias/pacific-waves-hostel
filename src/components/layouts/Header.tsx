@@ -26,6 +26,23 @@ export default function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    if (window.location.pathname === "/") {
+      const section = sessionStorage.getItem("scrollToSection");
+      if (section) {
+        const timeout = setTimeout(() => {
+          const element = document.getElementById(section.replace("#", ""));
+          if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+          sessionStorage.removeItem("scrollToSection");
+        }, 5000); // Espera 5 segundos antes de hacer scroll
+
+        return () => clearTimeout(timeout);
+      }
+    }
+  }, []);
+
   // Cerrar menú al hacer scroll
   useEffect(() => {
     const handleScroll = () => {
@@ -49,15 +66,25 @@ export default function Header() {
   }, [mobileMenuOpen]);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-      // Cerrar menú móvil después de navegar
+    // Cerrar menú móvil antes de hacer scroll
+    setMobileMenuOpen(false);
+
+    if (window.location.pathname !== "/") {
+      sessionStorage.setItem("scrollToSection", sectionId);
+      window.location.href = "/";
       setMobileMenuOpen(false);
+      return;
     }
+
+    setTimeout(() => {
+      const element = document.getElementById(sectionId.replace("#", ""));
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 300); // Espera a que el menú cierre antes de hacer scroll
   };
 
   const toggleMobileMenu = () => {
