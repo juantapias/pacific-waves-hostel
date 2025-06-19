@@ -24,7 +24,7 @@
 
 .contentTitle {
   color: #f1faff;
-  font-size: 3.25rem;
+  font-size: 2.25rem;
   text-align: left;
   margin-bottom: 1rem;
 }
@@ -71,6 +71,10 @@ p {
 }
 
 @media (min-width: 768px) {
+  .contentTitle {
+    font-size: 2.5rem;
+  }
+
   .contentParagraph {
     width: 50%;
   }

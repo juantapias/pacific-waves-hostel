@@ -150,6 +150,17 @@ export default function MainBanner() {
               <i className="icon icon-facebook" aria-hidden="true" />
             </a>
           </li>
+          <li>
+            <a
+              href="https://www.tripadvisor.co/Hotel_Review-g1983809-d28590654-Reviews-Pacific_Waves_Hostel_Surf-Bahia_Solano_Choco_Department.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.socialLinks}
+              aria-label="TripAdvisor"
+            >
+              <i className="icon icon-tripadvisor" aria-hidden="true"></i>
+            </a>
+          </li>
         </ul>
       </nav>
 
