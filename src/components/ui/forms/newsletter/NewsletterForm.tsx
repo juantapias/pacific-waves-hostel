@@ -19,6 +19,7 @@ export default function NewsletterForm({ placeholder }: NewsletterFormProps) {
 
     if (!email) {
       setError("Por favor, completa todos los campos del formulario.");
+      setLoading(false); // Asegúrate de detener el loading aquí también
       return;
     }
 
@@ -63,6 +64,24 @@ export default function NewsletterForm({ placeholder }: NewsletterFormProps) {
       >
         {isLoading ? "Enviando" : "Enviar"}
       </button>
+      {/* Mensaje de éxito */}
+      {success && (
+        <p
+          className={styles.successMessage}
+          style={{ color: "green", marginTop: 8 }}
+        >
+          ¡Mensaje enviado exitosamente!
+        </p>
+      )}
+      {/* Mensaje de error */}
+      {error && (
+        <p
+          className={styles.errorMessage}
+          style={{ color: "red", marginTop: 8 }}
+        >
+          {error}
+        </p>
+      )}
     </form>
   );
 }
