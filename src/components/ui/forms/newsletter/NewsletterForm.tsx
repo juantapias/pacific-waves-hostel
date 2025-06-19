@@ -19,7 +19,7 @@ export default function NewsletterForm({ placeholder }: NewsletterFormProps) {
 
     if (!email) {
       setError("Por favor, completa todos los campos del formulario.");
-      setLoading(false); // Asegúrate de detener el loading aquí también
+      setLoading(false);
       return;
     }
 
@@ -48,40 +48,32 @@ export default function NewsletterForm({ placeholder }: NewsletterFormProps) {
   };
 
   return (
-    <form className={styles.newsletterGroup} onSubmit={onSubmit}>
-      <input
-        type="text"
-        placeholder={placeholder}
-        className={styles.inputNewsletter}
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        disabled={isLoading}
-      />
-      <button
-        type="submit"
-        className={styles.buttonNewsletter}
-        disabled={isLoading}
-      >
-        {isLoading ? "Enviando" : "Enviar"}
-      </button>
-      {/* Mensaje de éxito */}
+    <div className={styles.newsletterContainer}>
+      <form className={styles.newsletterGroup} onSubmit={onSubmit}>
+        <div>
+          <input
+            type="text"
+            placeholder={placeholder}
+            className={styles.inputNewsletter}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={isLoading}
+          />
+          <button
+            type="submit"
+            className={styles.buttonNewsletter}
+            disabled={isLoading}
+          >
+            {isLoading ? "Enviando" : "Enviar"}
+          </button>
+        </div>
+      </form>
+
       {success && (
-        <p
-          className={styles.successMessage}
-          style={{ color: "green", marginTop: 8 }}
-        >
-          ¡Mensaje enviado exitosamente!
-        </p>
+        <p className={styles.successMessage}>¡Mensaje enviado exitosamente!</p>
       )}
-      {/* Mensaje de error */}
-      {error && (
-        <p
-          className={styles.errorMessage}
-          style={{ color: "red", marginTop: 8 }}
-        >
-          {error}
-        </p>
-      )}
-    </form>
+
+      {error && <p className={styles.errorMessage}>{error}</p>}
+    </div>
   );
 }
