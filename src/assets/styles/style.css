@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src: url('../fonts/icomoon.eot?50atpt');
-  src: url('../fonts/icomoon.eot?50atpt#iefix') format('embedded-opentype'),
-    url('../fonts/icomoon.ttf?50atpt') format('truetype'),
-    url('../fonts/icomoon.woff?50atpt') format('woff'),
-    url('../fonts/icomoon.svg?50atpt#icomoon') format('svg');
+  src: url('../fonts/icomoon.eot?yn6byx');
+  src: url('../fonts/icomoon.eot?yn6byx#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?yn6byx') format('truetype'),
+    url('../fonts/icomoon.woff?yn6byx') format('woff'),
+    url('../fonts/icomoon.svg?yn6byx#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -24,6 +24,10 @@
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-whatsapp:before {
+  content: "\e909";
 }
 
 .icon-tripadvisor:before {

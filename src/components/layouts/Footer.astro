@@ -17,6 +17,12 @@
       </div>
     </div>
   </div>
+
+  <div class='whatsapp'>
+    <a href="https://wa.link/0cfl4h" target='_blank'>
+      <i class="icon icon-whatsapp" />
+    </a>
+  </div>
 </footer>
 
 <style>
@@ -60,6 +66,33 @@
 
   .auth a:hover {
     text-decoration: underline;
+  }
+
+  .whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 2%;
+    z-index: 1000;
+  }
+
+  .whatsapp a {
+    align-items: center;
+    background-color: #25D366;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    color: white;
+    display: flex;
+    font-size: 2rem;
+    height: 50px;
+    justify-content: center;
+    padding: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    width: 50px;
+  }
+
+  .whatsapp a:hover {
+    background-color: #128C7E;
   }
 
   @media (min-width: 768px) {
