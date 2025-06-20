@@ -37,33 +37,40 @@ export default function Rooms() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: roomRef.current,
-          start: "-20% top",
-          end: "+=2000",
+          start: "-50% top",
+          end: "75% bottom",
           scrub: 1,
-          pin: swipperRef.current,
           markers: false,
         },
       });
 
       const swiperEl = swiperRoomRef.current?.swiper?.el;
       if (swiperEl) {
-        tl.from(swiperEl, { opacity: 0 });
+        tl.from(swiperEl, { opacity: 0 }, "a");
       }
 
       if (headingRef.current) {
-        tl.from(headingRef.current.children, {
-          opacity: 0,
-          stagger: 0.5,
-          y: 20,
-        });
+        tl.from(
+          headingRef.current.children,
+          {
+            opacity: 0,
+            stagger: 1,
+            y: 20,
+          },
+          "a",
+        );
       }
 
       if (buttonsRoomsRef.current) {
-        tl.from(buttonsRoomsRef.current.children, {
-          opacity: 0,
-          stagger: 0.5,
-          y: 20,
-        });
+        tl.from(
+          buttonsRoomsRef.current.children,
+          {
+            opacity: 0,
+            stagger: 1,
+            y: 20,
+          },
+          "a",
+        );
       }
     });
 

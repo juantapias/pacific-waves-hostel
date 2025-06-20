@@ -78,11 +78,12 @@ export default function Header() {
 
     setTimeout(() => {
       const element = document.getElementById(sectionId.replace("#", ""));
+
       if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+        const yOffset = sectionId === "#rooms" ? -140 : 0;
+        const y =
+          element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
       }
     }, 300); // Espera a que el menú cierre antes de hacer scroll
   };

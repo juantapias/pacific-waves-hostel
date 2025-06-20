@@ -101,7 +101,12 @@
 }
 
 .roomContent {
+  height: 0;
   overflow: hidden;
+}
+
+.active {
+  height: fit-content;
 }
 
 .roomContent p {

@@ -16,10 +16,10 @@ export const RoomData = [
         src: "/assets/images/rooms/cabins-brisa/IMG_3878_opfh1n.webp",
         alt: "Terraza con sillas y hamaca en la cabaña privada",
       },
-      {
-        src: "/assets/images/rooms/cabins-brisa/IMG_3868_mkx45y.webp",
-        alt: "Cabaña privada rodeada de naturaleza selvática",
-      },
+      // {
+      //   src: "/assets/images/rooms/cabins-brisa/IMG_3868_mkx45y.webp",
+      //   alt: "Cabaña privada rodeada de naturaleza selvática",
+      // },
       {
         src: "/assets/images/rooms/cabins-brisa/IMG_3886_cqgtuu.webp",
         alt: "Decoración interior natural y rústica de la cabaña privada",
@@ -114,10 +114,10 @@ export const RoomData = [
         src: "/assets/images/rooms/cabins-8/IMG_4028_vir9qm.webp",
         alt: "Camas con acceso individual y ventilador en habitación de 8",
       },
-      {
-        src: "/assets/images/rooms/cabins-8/IMG_4031_jiue2e.webp",
-        alt: "Dormitorio compartido amplio y ventilado para 8 personas",
-      },
+      // {
+      //   src: "/assets/images/rooms/cabins-8/IMG_4031_jiue2e.webp",
+      //   alt: "Dormitorio compartido amplio y ventilado para 8 personas",
+      // },
       {
         src: "/assets/images/rooms/cabins-8/IMG_4033_wicj0n.webp",
         alt: "Área común interior del dormitorio de 8",
