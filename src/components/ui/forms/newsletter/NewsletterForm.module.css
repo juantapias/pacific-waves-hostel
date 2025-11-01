@@ -1,3 +1,11 @@
+.newsletterContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
 .newsletterGroup {
   position: relative;
 }
@@ -34,4 +42,16 @@
   border-color: #00B4D8;
   background-color: #F1FAFF;
   color: #00B4D8;
+}
+
+.successMessage {
+  color: #F1FAFF;
+  font-size: .875rem;
+  margin-top: .5rem;
+}
+
+.errorMessage {
+  color: #d50000;
+  font-size: .875rem;
+  margin-top: .5rem;
 }

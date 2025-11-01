@@ -1,0 +1,14 @@
+---
+import { Fragment } from "astro/jsx-runtime";
+import Newsletter from '../components/newsletter/Newsletter';
+import Layout from '../layouts/Layout.astro';
+import BannerPage from '../components/banner/banner-page/BannerPage';
+import PrivacyPolicies from '../components/content-block/PrivacyPolicies.astro';
+---
+
+<Layout>
+  <BannerPage client:load title='Políticas de Cancelación'/>
+  <PrivacyPolicies />
+  <Newsletter client:load />
+</Layout>
+

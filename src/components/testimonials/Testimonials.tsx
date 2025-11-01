@@ -8,7 +8,7 @@ import TestimonialCard from "../cards/TestimonialCard";
 
 import Whale from "../../assets/images/whale.webp";
 
-import styles from "./testimonials.module.css";
+import styles from "./Testimonials.module.css";
 
 const testimonials = [
   {
@@ -97,10 +97,9 @@ export default function Testimonials() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: testimonialsRef.current,
-        start: "-50% center",
-        end: "120% center",
+        start: "-100% center",
+        end: "150% center",
         scrub: true,
-        markers: false,
       },
     });
 
@@ -120,21 +119,37 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <div ref={testimonialsRef} className={styles.testimonials}>
+    <section
+      ref={testimonialsRef}
+      className={styles.testimonials}
+      aria-labelledby="testimonials-title"
+    >
       <div className="container">
-        <h2 ref={titleRef} className={styles.title}>
+        <h2 id="testimonials-title" ref={titleRef} className={styles.title}>
           Historias que dejan huella en la arena
         </h2>
       </div>
+
       <Swiper
         spaceBetween={16}
-        slidesPerView={5}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        loop={true}
+        slidesPerView={2}
+        autoplay={{ delay: 2500, disableOnInteraction: false }}
+        loop
         modules={[Autoplay]}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 5,
+            spaceBetween: 16,
+          },
+        }}
       >
         {testimonials.map((testimonial, index) => (
           <SwiperSlide key={index}>
@@ -146,10 +161,10 @@ export default function Testimonials() {
       </Swiper>
 
       <div style={{ width: "100%" }}>
-        <figure ref={whaleRef} className={styles.whale}>
-          <img src={Whale.src} alt="Ballena testimonios" />
+        <figure ref={whaleRef} className={styles.whale} role="presentation">
+          <img src={Whale.src} alt="" />
         </figure>
       </div>
-    </div>
+    </section>
   );
 }

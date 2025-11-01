@@ -1,4 +1,4 @@
-import styles from "./cards.module.css";
+import styles from "./Cards.module.css";
 
 type ITestimonialCard = {
   name: string;

@@ -24,7 +24,7 @@
   width: 100%;
 }
 
-.galleryRow.double {
+.double {
   justify-content: space-between;
 }
 
@@ -33,7 +33,7 @@
   min-width: calc(50% - 0.75rem);
 }
 
-.galleryRow.single {
+.single {
   justify-content: center;
 }
 
@@ -51,11 +51,12 @@
 }
 
 .galleryItem img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
   display: block;
+  height: 100%;
+  margin: auto;
+  object-fit: cover;
   transition: transform 0.3s ease;
+  width: 100%;
 }
 
 .galleryItem:hover img {

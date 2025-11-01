@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -22,12 +22,10 @@ export default function Booking() {
         start: "-60% center",
         end: "center center",
         scrub: true,
-        markers: false,
       },
     });
 
     tl.from(bookingContentRef.current, { opacity: 0, scale: 0 });
-
     tl.from(
       [titleRef.current, subtitleRef.current],
       {
@@ -40,12 +38,18 @@ export default function Booking() {
     );
     tl.from(formRef.current, { opacity: 0 });
   }, []);
+
   return (
-    <div ref={bookingRef} className={styles.booking}>
+    <section
+      id="booking"
+      ref={bookingRef}
+      className={styles.booking}
+      aria-labelledby="booking-heading"
+    >
       <div className="container">
         <div ref={bookingContentRef} className={styles.bookingContent}>
           <div className={styles.heading}>
-            <h2 ref={titleRef} className={styles.title}>
+            <h2 id="booking-heading" ref={titleRef} className={styles.title}>
               Prepara tu escapada al paraíso
             </h2>
             <h3 ref={subtitleRef} className={styles.subtitle}>
@@ -53,12 +57,11 @@ export default function Booking() {
               las ballenas.
             </h3>
           </div>
-
           <div ref={formRef}>
             <BookingForm />
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

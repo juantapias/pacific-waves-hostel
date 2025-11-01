@@ -1,15 +1,17 @@
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, type SwiperRef } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import SwiperCore from "swiper";
 
-import { privateRoom } from "../../utils/data/RoomsData";
+import { RoomData } from "../../utils/data/RoomsData";
 
 import style from "./rooms.module.css";
 
 export default function Rooms() {
+  const [roomActive, setRoomActive] = useState<number | null>(null);
+
   const roomRef = useRef<HTMLDivElement>(null);
   const swipperRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
@@ -18,38 +20,119 @@ export default function Rooms() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const swiperRef = useRef<SwiperCore | null>(null);
+  const swiperRoomRef = useRef<SwiperRef>(null);
+
+  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   gsap.registerPlugin(ScrollTrigger);
 
-  useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: roomRef.current,
-        start: "-20% top",
-        end: "+=2000",
-        scrub: 1,
-        pin: swipperRef.current,
-        markers: false,
-      },
+  useLayoutEffect(() => {
+    // Limpiar animaciones previas
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+
+    // Configuración para desktop
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: roomRef.current,
+          start: "-50% top",
+          end: "75% bottom",
+          scrub: 1,
+          markers: false,
+        },
+      });
+
+      const swiperEl = swiperRoomRef.current?.swiper?.el;
+      if (swiperEl) {
+        tl.from(swiperEl, { opacity: 0 }, "a");
+      }
+
+      if (headingRef.current) {
+        tl.from(
+          headingRef.current.children,
+          {
+            opacity: 0,
+            stagger: 1,
+            y: 20,
+          },
+          "a",
+        );
+      }
+
+      if (buttonsRoomsRef.current) {
+        tl.from(
+          buttonsRoomsRef.current.children,
+          {
+            opacity: 0,
+            stagger: 1,
+            y: 20,
+          },
+          "a",
+        );
+      }
     });
 
-    if (headingRef.current) {
-      tl.from(headingRef.current.children, {
-        opacity: 0,
-        stagger: 0.5,
-        y: 20,
+    // Configuración para mobile
+    mm.add("(max-width: 767px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: roomRef.current,
+          start: "-20% 80%",
+          end: "bottom 20%",
+          scrub: 1,
+          pin: false,
+          markers: false,
+        },
       });
-    }
-    if (buttonsRoomsRef.current) {
-      tl.from(buttonsRoomsRef.current.children, {
-        opacity: 0,
-        stagger: 0.5,
-        y: 20,
-      });
-    }
+
+      const swiperEl = swiperRoomRef.current?.swiper?.el;
+      if (swiperEl) {
+        tl.from(swiperEl, {
+          opacity: 0,
+          y: 30,
+          duration: 0.8,
+          ease: "power2.out",
+        });
+      }
+
+      if (headingRef.current) {
+        tl.from(
+          headingRef.current.children,
+          {
+            opacity: 0,
+            stagger: 0.3,
+            y: 20,
+            duration: 0.6,
+            ease: "power2.out",
+          },
+          "-=0.4",
+        );
+      }
+
+      if (buttonsRoomsRef.current) {
+        tl.from(
+          buttonsRoomsRef.current.children,
+          {
+            opacity: 0,
+            stagger: 0.2,
+            y: 20,
+            duration: 0.5,
+            ease: "power2.out",
+          },
+          "-=0.3",
+        );
+      }
+    });
+
+    // Cleanup function
+    return () => {
+      mm.revert();
+    };
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (
       swiperRef.current &&
       prevRef.current &&
@@ -58,10 +141,7 @@ export default function Rooms() {
     ) {
       const swiper = swiperRef.current;
 
-      if (
-        swiper.params.navigation &&
-        typeof swiper.params.navigation === "object"
-      ) {
+      if (typeof swiper.params.navigation === "object") {
         swiper.params.navigation.prevEl = prevRef.current;
         swiper.params.navigation.nextEl = nextRef.current;
 
@@ -72,27 +152,70 @@ export default function Rooms() {
     }
   }, []);
 
+  const toggleRoom = (index: number) => {
+    const current = contentRefs.current[index];
+
+    if (roomActive === index) {
+      if (current) {
+        gsap.to(current, {
+          height: 0,
+          duration: 0.4,
+          ease: "power2.inOut",
+          onComplete: () => setRoomActive(null),
+        });
+      } else {
+        setRoomActive(null);
+      }
+    } else {
+      if (roomActive !== null && contentRefs.current[roomActive]) {
+        gsap.to(contentRefs.current[roomActive], {
+          height: 0,
+          duration: 0.3,
+          ease: "power2.inOut",
+        });
+      }
+
+      if (current) {
+        gsap.fromTo(
+          current,
+          { height: 0 },
+          {
+            height: current.scrollHeight,
+            duration: 0.4,
+            ease: "power2.inOut",
+          },
+        );
+      }
+
+      setRoomActive(index);
+    }
+  };
+
   return (
-    <div ref={roomRef} className={style.rooms}>
+    <div id="rooms" ref={roomRef} className={style.rooms}>
       <div className="container">
         <div ref={swipperRef} className={style.roomWrap}>
           <Swiper
+            ref={swiperRoomRef}
+            className={style.roomGallery}
             onSwiper={(swiper) => (swiperRef.current = swiper)}
             modules={[Navigation]}
             navigation={{ prevEl: prevRef.current, nextEl: nextRef.current }}
             scrollbar={{ hide: true }}
-            className={style.roomGallery}
+            loop={true}
+            autoHeight={true}
           >
-            {privateRoom.map((item, index) => (
-              <SwiperSlide key={index} className={style.styleCarousel}>
-                <img
-                  src={item.src}
-                  alt={""}
-                  className={style.roomGalleryItem}
-                />
-              </SwiperSlide>
-            ))}
-            {/* Botones de navegación personalizados */}
+            {RoomData.length > 0 &&
+              RoomData[roomActive ?? 0]?.gallery?.map((item, index) => (
+                <SwiperSlide key={index} className={style.styleCarousel}>
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className={style.roomGalleryItem}
+                  />
+                </SwiperSlide>
+              ))}
+
             <div className={style.customNav}>
               <button ref={prevRef} className={style.navButton}>
                 &#x2039;
@@ -110,18 +233,29 @@ export default function Rooms() {
             </div>
 
             <div ref={buttonsRoomsRef} className={style.roomTypes}>
-              <button className={style.room}>
-                <span>Habitaciones privadas</span>
-                <i>+</i>
-              </button>
-              <button className={style.room}>
-                <span>Habitaciones compartidas de 4</span>
-                <i>+</i>
-              </button>
-              <button className={style.room}>
-                <span>Habitaciones compartidas de 8</span>
-                <i>+</i>
-              </button>
+              {RoomData.map((item, index) => (
+                <div className={style.room} key={index}>
+                  <button
+                    className={style.roomName}
+                    onClick={() => toggleRoom(index)}
+                    aria-expanded={roomActive === index}
+                    aria-controls={`room-content-${index}`}
+                  >
+                    <span>{item.name}</span>
+                    <i>{roomActive === index ? "−" : "+"}</i>
+                  </button>
+                  <div
+                    ref={(el) => {
+                      contentRefs.current[index] = el;
+                    }}
+                    id={`room-content-${index}`}
+                    role="region"
+                    className={style.roomContent}
+                    style={{ height: 0, overflow: "hidden" }}
+                    dangerouslySetInnerHTML={{ __html: item.content }}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>

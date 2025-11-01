@@ -5,49 +5,113 @@
 <footer>
   <div class='container'>
     <div class='footer-content'>
-      <p>© 2025 Pacific Wave Hostal & Surf. Todos los derechos reservados.</p>
-      <nav>
-        <ul class='navigation'>
-          <li><a href='#'>Política de privacidad</a></li>
-          <li><a href='#'>Términos y condiciones</a></li>
-        </ul>
-      </nav>
+      <div class='footer-copy'>
+        <p>© 2025 Pacific Wave Hostal & Surf. Todos los derechos reservados.</p>
+      </div>
+      <div class='auth'>
+        <p>Desarrollado por 
+          <a href="https://juantapias.dev" target="_blank" rel="noopener noreferrer">
+            Tapias
+          </a>
+        </p>
+      </div>
     </div>
+  </div>
+
+  <div class='whatsapp'>
+    <a href="https://wa.link/0cfl4h" target='_blank'>
+      <i class="icon icon-whatsapp" />
+    </a>
   </div>
 </footer>
 
 <style>
 
   footer {
-    background-color: #0077b6;
+    background-color: transparent;
     font-family: 'roboto';
+    margin-top: -30px;
+    position: relative;
+    z-index: 1;
   }
   .footer-content {
     align-items: flex-end;
+    color: #F1FAFF;
     display: flex;
     justify-content: space-between;
     gap: 0.5rem;
     padding: 0.25rem 0;
   }
 
-  p {
-    font-size: 0.75rem;
-  }
-
-  .navigation {
+  .footer-copy {
     align-items: center;
     display: flex;
-    gap: 1rem;
-    list-style: none;
+    width: 45%;
+  }
+  p {
+    font-size: 0.625rem;
   }
 
-  .navigation a {
+  .auth {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .auth a {
     color: #F1FAFF;
-    font-size: 0.75rem;
+    font-weight: bold;
     text-decoration: none;
+    text-transform: uppercase;
   }
 
-  .navigation a:hover {
+  .auth a:hover {
     text-decoration: underline;
   }
+
+  .whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 2%;
+    z-index: 1000;
+  }
+
+  .whatsapp a {
+    align-items: center;
+    background-color: #25D366;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    color: white;
+    display: flex;
+    font-size: 2rem;
+    height: 50px;
+    justify-content: center;
+    padding: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    width: 50px;
+  }
+
+  .whatsapp a:hover {
+    background-color: #128C7E;
+  }
+
+  @media (min-width: 768px) {
+    footer {
+      margin-top: -40px;
+    }
+
+    .footer-copy {
+      width: 45%
+    }
+
+    p {
+    font-size: 0.75rem;
+  }
+    
+    .auth {
+      width: 50%;
+    }
+  }
+
+
 </style>

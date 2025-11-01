@@ -8,26 +8,26 @@ import style from "./gallery.module.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const gridGallery = () => {
-  const pattern = [2, 1, 2, 1, 2]; // número de elementos por grupo
-  const imageGroups = [];
-
+const getGroupedGallery = () => {
+  const pattern = [2, 1, 2, 1, 2];
+  const groups: { url: string; alt: string }[][] = [];
   let index = 0;
 
   for (let i = 0; i < pattern.length; i++) {
     const groupSize = pattern[i];
-    const group = GalleryData.slice(index, index + groupSize).map(
-      (item) => item.url,
-    );
-    imageGroups.push(group);
+    const group = GalleryData.slice(index, index + groupSize).map((item) => ({
+      url: item.url,
+      alt: item.alt,
+    }));
+    groups.push(group);
     index += groupSize;
   }
 
-  return imageGroups;
+  return groups;
 };
 
 export default function Gallery() {
-  const galleryRef = useRef<HTMLDivElement>(null);
+  const galleryRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
@@ -50,33 +50,38 @@ export default function Gallery() {
   }, []);
 
   return (
-    <div ref={galleryRef} className={style.gallery}>
+    <section
+      ref={galleryRef}
+      className={style.gallery}
+      aria-labelledby="gallery-heading"
+    >
       <div className="container">
-        <h2 ref={titleRef} className={style.title}>
+        <h2 id="gallery-heading" ref={titleRef} className={style.title}>
           Postales del paraíso
         </h2>
         <div className={style.galleryContainer}>
-          {gridGallery().map((group, groupIndex) => (
+          {getGroupedGallery().map((group, groupIndex) => (
             <div
               key={groupIndex}
               className={`${style.galleryRow} ${
-                group.length === 1 ? "single" : "double"
+                group.length === 1 ? style.single : style.double
               }`}
             >
-              {group.map((src, imgIndex) => (
-                <div key={imgIndex} className={style.galleryItem}>
+              {group.map(({ url, alt }, imgIndex) => (
+                <figure key={imgIndex} className={style.galleryItem}>
                   <img
-                    src={src}
-                    alt={`Imagen ${groupIndex}-${imgIndex}`}
+                    src={url}
+                    alt={alt}
+                    loading="lazy"
                     height={400}
                     className="max-w-full object-cover aspect-ratio-16/9"
                   />
-                </div>
+                </figure>
               ))}
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -9,16 +9,20 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "^9.2.2",
     "@astrojs/react": "^4.2.5",
+    "@astrojs/vercel": "^8.1.4",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "astro": "^5.7.7",
     "gsap": "^3.12.7",
+    "nodemailer": "^7.0.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "swiper": "^11.2.6"
   },
   "devDependencies": {
+    "@types/nodemailer": "^6.4.17",
     "prettier": "3.5.3",
     "prettier-plugin-astro": "0.14.1"
   }
