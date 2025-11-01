@@ -96,12 +96,14 @@ export default function Header() {
     <header className={`${style.header} ${scrolled ? style.scrolled : ""}`}>
       {/* Nav de escritorio */}
       <nav className={style.desktopNav}>
-        <img
-          src={scrolled ? Logo.src : LogoWhite.src}
-          alt="Pacific waves hostel & surf"
-          width={90}
-          height={60}
-        />
+        <a href="/" onClick={() => scrollToSection("#home")}>
+          <img
+            src={scrolled ? Logo.src : LogoWhite.src}
+            alt="Pacific waves hostel & surf"
+            width={90}
+            height={60}
+          />
+        </a>
         <ul className={style.navigation}>
           {navigation.map((item, index) => (
             <li key={index}>

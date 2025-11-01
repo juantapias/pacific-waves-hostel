@@ -107,24 +107,40 @@ export default function MainBanner() {
 
       <div className="container">
         <div ref={contentBanner} className={styles.bannerContent}>
-          <h1>
-            Surfea las olas, <br /> contempla las ballenas
-          </h1>
-          <p>
-            Despierta frente al mar, siente la libertad de las olas y vive el
-            espectáculo natural del Pacífico.
-          </p>
-          <button
-            type="button"
-            className="btn-primary"
-            onClick={(e) => {
-              e.preventDefault();
-              scrollToSection("booking");
+          <h1>Esencia Pacífica</h1>
+          <p>¡Descubre la magia del pacífico y vive su esencia!</p>
+          <div
+            style={{
+              display: "flex",
+              gap: 16,
+              width: "100%",
+              justifyContent: "center",
             }}
-            aria-label="Ir a la sección de reservas"
           >
-            Reserva
-          </button>
+            <a
+              href="https://us2.cloudbeds.com/es/reservation/XRp5Lz/?currency=cop&checkin=2025-12-30&checkout=2026-01-02&promo=esenciapacifica"
+              type="button"
+              className="btn-primary"
+              target="_blank"
+              aria-label="Ir a la sección de reservas"
+              style={{ maxWidth: "220px", width: "100%" }}
+            >
+              <span className={styles.btnTitle}>Fecha 1</span>
+              <span className={styles.btnSubtitle}>
+                30 de diciembre al 2 de enero
+              </span>
+            </a>
+            <a
+              href="https://us2.cloudbeds.com/es/reservation/XRp5Lz/?currency=cop&checkin=2026-01-02&checkout=2026-01-05&promo=esenciapacifica"
+              className="btn-primary"
+              target="_blank"
+              aria-label="Ir a la sección de reservas"
+              style={{ maxWidth: "220px", width: "100%" }}
+            >
+              <span className={styles.btnTitle}>Fecha 2</span>
+              <span className={styles.btnSubtitle}>2 al 5 de enero</span>
+            </a>
+          </div>
         </div>
       </div>
 
