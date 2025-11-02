@@ -109,14 +109,7 @@ export default function MainBanner() {
         <div ref={contentBanner} className={styles.bannerContent}>
           <h1>Esencia Pacífica</h1>
           <p>¡Descubre la magia del pacífico y vive su esencia!</p>
-          <div
-            style={{
-              display: "flex",
-              gap: 16,
-              width: "100%",
-              justifyContent: "center",
-            }}
-          >
+          <div className={styles.btnSelector}>
             <a
               href="https://us2.cloudbeds.com/es/reservation/XRp5Lz/?currency=cop&checkin=2025-12-30&checkout=2026-01-02&promo=esenciapacifica"
               type="button"

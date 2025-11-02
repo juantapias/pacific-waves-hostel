@@ -43,6 +43,10 @@
   z-index: 1;
 }
 
+.bannerContent p {
+  font-size: 2rem;
+}
+
 .bannerContent button {
   font-size: 1.25rem;
 }
@@ -58,7 +62,7 @@ h1 {
 
 p {
   color: #f1faff;
-  /* font-size: 1rem; */
+  font-size: 1rem;
   font-family: 'raleway';
 
   font-size: 1.5rem;
@@ -112,6 +116,14 @@ p {
   color: #00B4D8;
 }
 
+.btnSelector {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: center;
+}
+
+
 .btnTitle {
   font-size: 1.5rem;
   font-weight: 600;
@@ -122,9 +134,26 @@ p {
   font-size: .875rem;
 }
 
+@media (max-width: 640px) {
+  .bannerContent p {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+
+  .btnSelector {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
 @media (min-width: 640px) {
   h1 {
     font-size: 2rem;
+  }
+
+  .bannerContent p {
+    font-size: 1.5rem;
   }
 
   p {
@@ -138,8 +167,7 @@ p {
   }
 
   p {
-    /* font-size: 1.25rem; */
-    font-size: 2rem;
+    font-size: 1.25rem;
   }
 
   .bannerContent .btn-primary {
