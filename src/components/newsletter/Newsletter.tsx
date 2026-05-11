@@ -41,7 +41,7 @@ export default function Newsletter() {
       className={styles.newsletter}
       aria-labelledby="newsletter-heading"
     >
-      <div className="container">
+      <div className="container mx-auto">
         <h2 id="newsletter-heading" ref={titleRef} className={styles.title}>
           Únete a nuestro boletín para recibir novedades y ofertas exclusivas.
         </h2>

@@ -2,15 +2,74 @@
 import Header from '../components/layouts/Header'
 import Footer from '../components/layouts/Footer.astro'
 
-import '../assets/styles/style.css'
+import '../styles/global.css'
+
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-const primary = '#0077B6'
+// ─── Design tokens ───────────────────────────────────────────────────────────
+const primary   = '#0077B6'
 const secondary = '#00B4D8'
-const white = '#F1FAFF'
-const black = '#2E2E2E'
+const white     = '#F1FAFF'
+const black     = '#2E2E2E'
+
+// ─── SEO Props ───────────────────────────────────────────────────────────────
+interface Props {
+  /** Título de la página. Se añade " | Pacific Waves Hostel" automáticamente
+   *  a menos que `titleTemplate` sea false. */
+  title?: string
+  /** Desactivar el sufijo del sitio en el título */
+  titleTemplate?: boolean
+  /** Meta description (160 chars max recomendado) */
+  description?: string
+  /** Canonical URL absoluta. Por defecto: URL de la petición actual */
+  canonical?: string
+  /** URL de la imagen OG (1200×630 recomendado) */
+  ogImage?: string
+  /** Tipo de contenido OG */
+  ogType?: 'website' | 'article' | 'profile'
+  /** Impedir indexación por robots */
+  noindex?: boolean
+  /** Palabras clave (menos relevante hoy, pero útil para algunos bots) */
+  keywords?: string
+  /** Datos estructurados JSON-LD (Schema.org). Pasar el objeto ya construido */
+  schema?: Record<string, unknown> | Record<string, unknown>[]
+}
+
+const {
+  title,
+  titleTemplate = true,
+  description = 'Descubre Pacific Waves Hostel, tu lugar ideal frente al mar para surfear, relajarte y conectar con viajeros en la costa.',
+  canonical,
+  ogImage = '/og-image.jpg',
+  ogType = 'website',
+  noindex = false,
+  keywords,
+  schema,
+} = Astro.props
+
+// Sitio base
+const SITE_NAME = 'Pacific Waves Hostel & Surf'
+const SITE_URL  = 'https://www.pacificwaveshostel.com'
+
+// Título final
+const pageTitle = title
+  ? titleTemplate
+    ? `${title} | ${SITE_NAME}`
+    : title
+  : SITE_NAME
+
+// Canonical final
+const canonicalURL = canonical ?? new URL(Astro.url.pathname, SITE_URL).href
+
+// OG image absoluta
+const ogImageURL = ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`
+
+// JSON-LD serializado
+const schemaJSON = schema
+  ? JSON.stringify(Array.isArray(schema) ? schema : [schema])
+  : null
 ---
 
 <!doctype html>
@@ -21,27 +80,37 @@ const black = '#2E2E2E'
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
-    <title>Pacific Waves Hostel & Surf</title>
-    <meta name="description" content="Descubre Pacific Waves Hostel, tu lugar ideal frente al mar para surfear, relajarte y conectar con viajeros en la costa." />
-    <meta name="author" content="Pacific Waves Hostel" />
-    <meta name="robots" content="index, follow" />
+    <!-- ── Título y descripción ─────────────────────────────────────────── -->
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="author" content={SITE_NAME} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
 
-    <!-- Open Graph para compartir en redes -->
-    <meta property="og:title" content="Pacific Waves Hostel & Surf" />
-    <meta property="og:description" content="Surf, relax y buena vibra frente al mar." />
-    <meta property="og:image" content="/og-image.jpg" />
-    <meta property="og:url" content="https://www.pacificwaveshostel.com" />
-    <meta property="og:type" content="website" />
+    <!-- ── Canonical ────────────────────────────────────────────────────── -->
+    <link rel="canonical" href={canonicalURL} />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Pacific Waves Hostel & Surf" />
-    <meta name="twitter:description" content="Surf, relax y buena vibra frente al mar." />
-    <meta name="twitter:image" content="/twitter-image.jpg" />
+    <!-- ── Open Graph ───────────────────────────────────────────────────── -->
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title"       content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image"       content={ogImageURL} />
+    <meta property="og:url"         content={canonicalURL} />
+    <meta property="og:type"        content={ogType} />
+    <meta property="og:locale"      content="es_CO" />
 
-    <!-- Accesibilidad y SEO semántico -->
-    <link rel="canonical" href="https://www.pacificwaveshostel.com" />
+    <!-- ── Twitter Card ─────────────────────────────────────────────────── -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content={ogImageURL} />
+
+    <!-- ── JSON-LD estructurado ─────────────────────────────────────────── -->
+    {schemaJSON && (
+      <script type="application/ld+json" set:html={schemaJSON} />
+    )}
   </head>
+
   <body>
     <Header client:load />
     <main id="main-content">
@@ -51,14 +120,8 @@ const black = '#2E2E2E'
   </body>
 </html>
 
-
 <style is:global define:vars={{ primary, secondary, white, black }}>
   /* universal reset */
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
 
   body {
     background-color: var(--white);
@@ -67,122 +130,75 @@ const black = '#2E2E2E'
   body::-webkit-scrollbar {
     display: none;
   }
-/* typography */
 
-/* HEAD */
-@font-face {
-  font-family: 'playfair';
-  src: url('../assets/fonts/playfair/PlayfairDisplay.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-}
+  /* ── Tipografía ─────────────────────────────────────────────────────────── */
 
-/* SUBTITLES */
-@font-face {
-  font-family: 'raleway';
-  src: url('../assets/fonts/raleway/Raleway-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'raleway';
-  src: url('../assets/fonts/raleway/Raleway-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'raleway';
-  src: url('../assets/fonts/raleway/Raleway-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-/* BODY */
-
-@font-face {
-  font-family: 'roboto';
-  src: url('../assets/fonts/roboto/Roboto-Light.ttf') format('woff2');
-  font-weight: 100;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'roboto';
-  src: url('../assets/fonts/roboto/Roboto-Light.ttf') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'roboto';
-  src: url('../assets/fonts/roboto/Roboto-Medium.ttf') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'roboto';
-  src: url('../assets/fonts/roboto/Roboto-Bold.ttf') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-}
-
-h1,h2 {
-  font-family: 'playfair';
-}
-
-h3,h4,h5,h6 {
-  font-family: 'raleway';
-}
-
-p, ul, ol {
-  font-family: 'roboto';
-  font-weight: 300;
-}
-  /* container */
-  .container {
-    width: 100%;
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: 1rem;
-    padding-left: 1rem;
+  /* HEAD */
+  @font-face {
+    font-family: 'playfair';
+    src: url('../assets/fonts/playfair/PlayfairDisplay.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
   }
 
-  @media (min-width: 640px) {
-    .container {
-      max-width: 640px;
-      padding-right: 1.5rem;
-      padding-left: 1.5rem;
-    }
+  /* SUBTITLES */
+  @font-face {
+    font-family: 'raleway';
+    src: url('../assets/fonts/raleway/Raleway-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
   }
 
-  @media (min-width: 768px) {
-    .container {
-      max-width: 768px;
-    }
+  @font-face {
+    font-family: 'raleway';
+    src: url('../assets/fonts/raleway/Raleway-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
   }
 
-  @media (min-width: 1024px) {
-    .container {
-      max-width: 1024px;
-      padding-right: 2rem;
-      padding-left: 2rem;
-    }
+  @font-face {
+    font-family: 'raleway';
+    src: url('../assets/fonts/raleway/Raleway-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
   }
 
-  @media (min-width: 1280px) {
-    .container {
-      max-width: 1280px;
-    }
+  /* BODY */
+  @font-face {
+    font-family: 'roboto';
+    src: url('../assets/fonts/roboto/Roboto-Light.ttf') format('woff2');
+    font-weight: 100;
+    font-style: normal;
   }
 
-  @media (min-width: 1536px) {
-    .container {
-      max-width: 1536px;
-    }
+  @font-face {
+    font-family: 'roboto';
+    src: url('../assets/fonts/roboto/Roboto-Light.ttf') format('woff2');
+    font-weight: 300;
+    font-style: normal;
   }
 
-  /* buttons */
+  @font-face {
+    font-family: 'roboto';
+    src: url('../assets/fonts/roboto/Roboto-Medium.ttf') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'roboto';
+    src: url('../assets/fonts/roboto/Roboto-Bold.ttf') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  h1, h2          { font-family: 'playfair'; }
+  h3, h4, h5, h6  { font-family: 'raleway'; }
+  p, ul, ol       { font-family: 'roboto'; }
+
+
+
+  /* ── Botones ────────────────────────────────────────────────────────────── */
   .btn-primary {
     background-color: var(--primary);
     border: none;
@@ -194,7 +210,6 @@ p, ul, ol {
     font-weight: 300;
     padding: 0.5rem 1rem;
     transition: background-color 0.3s ease-in-out;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -206,15 +221,39 @@ p, ul, ol {
     background-color: var(--secondary);
   }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
+  .btn-secondary {
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 2rem;
+    color: var(--white);
+    cursor: pointer;
+    font-family: 'roboto';
+    font-size: 1rem;
+    font-weight: 300;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--white);
+    color: var(--color-secondary);
+  }
+
+  /* ── Accesibilidad ──────────────────────────────────────────────────────── */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 </style>

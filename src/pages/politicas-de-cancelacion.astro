@@ -4,10 +4,12 @@ import CancellationPolicy from '../components/content-block/CancellationPolicy.a
 import Newsletter from '../components/newsletter/Newsletter';
 import Layout from '../layouts/Layout.astro';
 import BannerPage from '../components/banner/banner-page/BannerPage';
+
+import BannerImg from '../../public/assets/images/banner/cancellation-policy.webp'
 ---
 
-<Layout>
-  <BannerPage client:load title='Políticas de Cancelación'/>
+<Layout title='Políticas de Cancelación | Pacific Waves Hostel & Surf'>
+  <BannerPage client:load title='Políticas de Cancelación' bg={BannerImg}/>
   <CancellationPolicy />
   <Newsletter client:load />
 </Layout>

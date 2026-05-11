@@ -1,0 +1,275 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+import Plans from '../container/Plans';
+import Newsletter from '../components/newsletter/Newsletter';
+import BannerPage from '../components/banner/banner-page/BannerPage';
+
+import bannerImg from '../assets/images/banner/plan-surf.webp'
+
+const schema = [
+  // 1. TouristTrip — el plan de surf como producto turístico
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "name": "Plan Surf 2026 – Pacific Waves Hostel | El Valle, Bahía Solano",
+    "description": "Plan todo incluido de 3 a 5 noches para surfear en El Valle, Bahía Solano. Incluye alojamiento, alimentación completa, traslados, clases de surf garantizadas y seguro hotelero. Disponible todo el año.",
+    "url": "https://www.pacificwaveshostel.com/plan-surf",
+    "image": "https://www.pacificwaveshostel.com/images/plan-surf-og.jpg",
+    "touristType": "Surf, Aventura, Ecoturismo, Deportes Acuáticos",
+    "availabilityStarts": "2026-01-01",
+    "availabilityEnds": "2026-12-31",
+    "itinerary": [
+      {
+        "@type": "TouristAttraction",
+        "name": "Día 1 – Llegada al paraíso",
+        "description": "Traslado terrestre desde el Aeropuerto de Bahía Solano (BSC) hasta el hostal. Check-in, almuerzo frente al mar y tarde libre para disfrutar de la zona de hamacas o el bar de playa."
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Día 2 – Sesión de surf",
+        "description": "Primera clase de surf o Body Surf para conectar con la energía de las olas del Pacífico colombiano."
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Día 3 – Perfeccionando la técnica",
+        "description": "Continuación de clases de surf según el plan elegido. Día para disfrutar de los alrededores de El Valle."
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Día 4 – Exploración o surf (Planes de 4 y 5 noches)",
+        "description": "Tercera clase de surf. Posibilidad de visitar playas cercanas o aprovechar la zona de coworking frente al mar."
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Día 5 – Dominando el Pacífico (Plan de 5 noches)",
+        "description": "Cuarta clase de surf para maximizar la experiencia en el mar. Último desayuno frente al mar y traslado al aeropuerto."
+      }
+    ],
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Cabaña Privada Pareja – 3 noches",
+        "description": "Plan surf 3 noches para 2 personas en cabaña privada. Incluye 2 clases de surf.",
+        "price": "1990000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Cabaña Privada Pareja – 4 noches",
+        "description": "Plan surf 4 noches para 2 personas en cabaña privada. Incluye 3 clases de surf.",
+        "price": "2640000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Cabaña Privada Pareja – 5 noches",
+        "description": "Plan surf 5 noches para 2 personas en cabaña privada. Incluye 4 clases de surf.",
+        "price": "3300000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Cabaña Privada Una Persona – 3 noches",
+        "description": "Plan surf 3 noches para 1 persona en cabaña privada. Incluye 2 clases de surf.",
+        "price": "1170000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Cabaña Privada Una Persona – 4 noches",
+        "description": "Plan surf 4 noches para 1 persona en cabaña privada. Incluye 3 clases de surf.",
+        "price": "1550000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Cabaña Privada Una Persona – 5 noches",
+        "description": "Plan surf 5 noches para 1 persona en cabaña privada. Incluye 4 clases de surf.",
+        "price": "1930000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Cabaña Familiar – 3 noches",
+        "description": "Plan surf 3 noches por persona en cabaña familiar (mín. 2, máx. 4 personas). Incluye 2 clases de surf.",
+        "price": "860000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Dormitorio 8 camas – 3 noches",
+        "description": "Plan surf 3 noches en dormitorio compartido de 8 camas. Incluye 2 clases de surf.",
+        "price": "790000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      }
+    ],
+    "provider": {
+      "@type": "LodgingBusiness",
+      "name": "Pacific Waves Hostel & Surf",
+      "url": "https://www.pacificwaveshostel.com",
+      "telephone": "+57-XXX-XXXXXXX",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Playa El Almejal",
+        "addressLocality": "El Valle",
+        "addressRegion": "Bahía Solano, Chocó",
+        "addressCountry": "CO"
+      }
+    }
+  },
+
+  // 2. FAQPage — preguntas frecuentes del plan de surf
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuándo está disponible el plan de surf en Bahía Solano?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El plan de surf en Pacific Waves Hostel está disponible todo el año. El Valle, Bahía Solano, tiene olas aptas para surf durante los 12 meses, lo que lo convierte en uno de los destinos de surf más constantes del Pacífico colombiano."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuántas clases de surf incluye cada plan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El plan de 3 noches incluye 2 clases de surf o body surf. El plan de 4 noches incluye 3 clases. El plan de 5 noches incluye 4 clases. Todas las clases están guiadas por instructores locales con experiencia en las olas del Pacífico colombiano."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué incluye el plan de surf en Pacific Waves Hostel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El plan incluye traslados terrestres aeropuerto (BSC) – hostal – aeropuerto, alojamiento según la habitación elegida, alimentación completa (desayunos, almuerzos y cenas), clases de surf o body surf según el plan (2, 3 o 4 clases) y seguro hotelero."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué no incluye el plan de surf?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No incluye tiquetes aéreos, tasa Proturismo ($58.400 COP), ingreso al PNN Utría si se visita como actividad adicional (entre $14.500 y $63.500 COP según tipo de visitante) ni gastos personales no especificados."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hay cajeros automáticos en El Valle, Bahía Solano?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No hay cajeros automáticos en El Valle. Se recomienda traer efectivo suficiente en pesos colombianos desde el lugar de origen antes de viajar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿El plan de surf es apto para principiantes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Las clases de surf en Pacific Waves Hostel están disponibles tanto para principiantes como para quienes desean mejorar su técnica. También se ofrece body surf como alternativa. Los instructores adaptan las sesiones al nivel de cada huésped."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué otras actividades puedo hacer en El Valle además de surf?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En El Valle puedes participar en liberación de tortugas, canoa por el río Tundó, caminatas nocturnas, visitas a cascadas locales y excursiones al Parque Nacional Natural Utría (actividad adicional no incluida en el plan base)."
+        }
+      }
+    ]
+  },
+
+  // 3. BreadcrumbList — navegación estructurada
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://www.pacificwaveshostel.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Planes",
+        "item": "https://www.pacificwaveshostel.com/planes"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Plan Surf Bahía Solano",
+        "item": "https://www.pacificwaveshostel.com/plan-surf"
+      }
+    ]
+  },
+
+  // 4. SportsActivityLocation — señal semántica de destino de surf
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Playa El Almejal – Surf El Valle, Bahía Solano",
+    "description": "Playa de surf en El Valle, Bahía Solano, Chocó. Olas disponibles todo el año aptas para principiantes y surfistas intermedios en el Pacífico colombiano.",
+    "url": "https://www.pacificwaveshostel.com/plan-surf",
+    "sport": "Surf",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Playa El Almejal",
+      "addressLocality": "El Valle",
+      "addressRegion": "Bahía Solano, Chocó",
+      "addressCountry": "CO"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "6.9833",
+      "longitude": "-77.3667"
+    }
+  }
+]
+
+const plan = Astro.url.pathname.split('/').filter(Boolean).pop() || "";
+---
+
+<Layout 
+  title='Plan Surf Bahía Solano 2026 – Clases de Surf en El Valle, Chocó'
+  titleTemplate={false}
+  description="Plan surf todo incluido en El Valle, Bahía Solano. 3 a 5 noches desde $790.000 COP por persona. Traslados, alojamiento, alimentación completa y clases de surf garantizadas. Disponible todo el año."
+  canonical='https://www.pacificwaveshostel.com/plan-surf'
+  ogImage='/images/plan-surf-og.jpg'
+  ogType='website'
+  keywords='plan surf bahía solano, clases de surf el valle chocó, surf colombia pacífico, tour surf bahía solano 2026, pacific waves hostel surf, surf chocó todo incluido, aprender surf colombia'
+  schema={schema}
+  >
+  <BannerPage client:load title='Plan Surf 2026' bg={bannerImg} />
+  <Plans client:load plan={plan} />
+  <Newsletter client:load />
+</Layout>

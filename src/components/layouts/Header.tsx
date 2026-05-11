@@ -105,19 +105,24 @@ export default function Header() {
           />
         </a>
         <ul className={style.navigation}>
-          {navigation.map((item, index) => (
-            <li key={index}>
-              <a
-                href={item.url}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.url);
-                }}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
+          {navigation.map((item, index) => {
+            const isSectionLink = item.url.startsWith("#");
+            return (
+              <li key={index}>
+                <a
+                  href={item.url}
+                  onClick={(e) => {
+                    if (isSectionLink) {
+                      e.preventDefault();
+                      scrollToSection(item.url);
+                    }
+                  }}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
         </ul>
         <button
           className="btn-primary"

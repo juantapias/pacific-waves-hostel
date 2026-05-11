@@ -1,6 +1,6 @@
 .bannerPage {
   align-items: center;
-  background-image: url("/assets/images/banner/cancellation-policy.webp");
+  /* background-image: url("/assets/images/banner/cancellation-policy.webp"); */
   background-size: cover;
   background-position: center;
   display: flex;

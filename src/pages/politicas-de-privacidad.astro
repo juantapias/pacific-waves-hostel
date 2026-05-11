@@ -4,10 +4,12 @@ import Newsletter from '../components/newsletter/Newsletter';
 import Layout from '../layouts/Layout.astro';
 import BannerPage from '../components/banner/banner-page/BannerPage';
 import PrivacyPolicies from '../components/content-block/PrivacyPolicies.astro';
+
+import BannerImg from '../../public/assets/images/banner/cancellation-policy.webp'
 ---
 
-<Layout>
-  <BannerPage client:load title='Políticas de Privacidad'/>
+<Layout title='Políticas de Privacidad | Pacific Waves Hostel & Surf'>
+  <BannerPage client:load title='Políticas de Privacidad' bg={BannerImg} />
   <PrivacyPolicies />
   <Newsletter client:load />
 </Layout>

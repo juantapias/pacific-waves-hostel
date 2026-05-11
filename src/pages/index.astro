@@ -2,8 +2,76 @@
 import Layout from '../layouts/Layout.astro'
 
 import PageContent from '../container/Home'
+
+const schema = [
+   {
+      "@context": "https://schema.org",
+      "@type": "LodgingBusiness",
+      "name": "Pacific Waves Hostel & Surf",
+      "description": "Hostel frente al mar en Playa El Almejal, rodeado por la selva del Chocó. Alojamiento privado y compartido, bar de playa y surf.",
+      "url": "https://www.pacificwaveshostel.com",
+      "logo": "https://www.pacificwaveshostel.com/logo.svg",
+      "image": "https://www.pacificwaveshostel.com/og-image.jpg",
+      "telephone": "+57 321 640 9424",
+      "email": "info@pacificwaveshostel.com",
+      "currenciesAccepted": "COP, USD",
+      "paymentAccepted": "Cash, Credit Card",
+      "priceRange": "$$",
+      "address": {
+      "streetAddress": "Playa El Almejal",
+      "addressLocality": "El Valle",
+      "addressRegion": "Bahía Solano, Chocó",
+      "addressCountry": "CO"
+      },
+      "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "5.7110",                      // ← coordenadas reales
+      "longitude": "-77.2741"
+      },
+      "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+         "Monday","Tuesday","Wednesday",
+         "Thursday","Friday","Saturday","Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+      },
+      "amenityFeature": [
+         { "@type": "LocationFeatureSpecification", "name": "Bar de playa",        "value": true },
+         { "@type": "LocationFeatureSpecification", "name": "Alojamiento privado", "value": true },
+         { "@type": "LocationFeatureSpecification", "name": "Alojamiento compartido", "value": true },
+         { "@type": "LocationFeatureSpecification", "name": "Frente al mar",       "value": true }
+      ],
+      "sameAs": [
+      "https://www.instagram.com/pacificwaveshostel",
+      "https://www.facebook.com/pacificwaveshostel"
+      ]
+   },
+   {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Pacific Waves Hostel & Surf",
+      "url": "https://www.pacificwaveshostel.com",
+      "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+         "@type": "EntryPoint",
+         "urlTemplate": "https://www.pacificwaveshostel.com/buscar?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+      }
+   }
+]
 ---
 
-<Layout>
+<Layout 
+   title="Hostel & Surf frente al mar en la costa pacífica"
+   titleTemplate={false}
+   description="Hostel frente al mar en Playa El Almejal, rodeado por la selva del Chocó. Alojamiento privado y compartido, bar de playa y surf."
+   ogImage="/og-image.jpg"
+   ogType="website"
+   keywords="hostel bahía solano, playa el almejal, surf chocó, hostel chocó colombia, el valle bahía solano"
+   schema={schema}>
    <PageContent client:load />
 </Layout>

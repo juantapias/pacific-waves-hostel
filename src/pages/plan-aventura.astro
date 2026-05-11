@@ -1,0 +1,297 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+import Plans from '../container/Plans';
+import Newsletter from '../components/newsletter/Newsletter';
+import BannerPage from '../components/banner/banner-page/BannerPage';
+
+import bannerImg from '../assets/images/banner/plan-aventura.webp'
+
+const schema = [
+  // 1. TouristTrip — el plan aventura como producto turístico
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "name": "Plan Aventura 2026 – Pacific Waves Hostel | El Valle, Bahía Solano",
+    "description": "Plan todo incluido de 3 a 5 noches de aventura en El Valle, Bahía Solano. Incluye surf, caminata a cascadas de Playa Larga, tubing por el río Valle, excursión a las Cascadas de Chadó, alojamiento, alimentación completa y traslados. Disponible todo el año.",
+    "url": "https://www.pacificwaveshostel.com/plan-aventura",
+    "image": "https://www.pacificwaveshostel.com/images/plan-aventura-og.jpg",
+    "touristType": "Aventura, Ecoturismo, Naturaleza, Deportes Acuáticos",
+    "availabilityStarts": "2026-01-01",
+    "availabilityEnds": "2026-12-31",
+    "itinerary": [
+      {
+        "@type": "TouristAttraction",
+        "name": "Día 1 – Llegada al paraíso",
+        "description": "Traslado terrestre desde el Aeropuerto de Bahía Solano (BSC) hasta el hostal. Check-in, almuerzo frente al mar y tarde libre para disfrutar de la zona de hamacas o el bar de playa."
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Día 2 – Conexión con las olas",
+        "description": "Clase de surf o Body Surf para sentir la fuerza del mar Pacífico colombiano."
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Día 3 – Secretos de la selva",
+        "description": "Caminata guiada a las cascadas de Playa Larga, explorando la selva húmeda del Chocó biogeográfico."
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Día 4 – Río y calma (Planes de 4 y 5 noches)",
+        "description": "Experiencia de Tubing por el río Valle, navegando entre la vegetación nativa del Pacífico colombiano."
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Día 5 – Cascadas de Chadó (Plan de 5 noches)",
+        "description": "Aventura en lancha hacia las imponentes Cascadas de Chadó, donde la selva se une con el mar. Último desayuno frente al mar y traslado al aeropuerto."
+      }
+    ],
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Cabaña Privada Pareja – 3 noches",
+        "description": "Plan aventura 3 noches para 2 personas en cabaña privada. Incluye surf, caminata a cascadas de Playa Larga.",
+        "price": "2080000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Cabaña Privada Pareja – 4 noches",
+        "description": "Plan aventura 4 noches para 2 personas en cabaña privada. Incluye surf, caminata a cascadas y tubing por el río Valle.",
+        "price": "2850000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Cabaña Privada Pareja – 5 noches",
+        "description": "Plan aventura 5 noches para 2 personas en cabaña privada. Incluye surf, caminata, tubing y excursión a las Cascadas de Chadó.",
+        "price": "3720000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Cabaña Privada Una Persona – 3 noches",
+        "description": "Plan aventura 3 noches para 1 persona en cabaña privada. Incluye surf y caminata a cascadas de Playa Larga.",
+        "price": "1210000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Cabaña Privada Una Persona – 4 noches",
+        "description": "Plan aventura 4 noches para 1 persona en cabaña privada. Incluye surf, caminata y tubing por el río Valle.",
+        "price": "1650000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Cabaña Privada Una Persona – 5 noches",
+        "description": "Plan aventura 5 noches para 1 persona en cabaña privada. Incluye surf, caminata, tubing y Cascadas de Chadó.",
+        "price": "2140000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Cabaña Familiar – 3 noches",
+        "description": "Plan aventura 3 noches por persona en cabaña familiar (mín. 2, máx. 4 personas). Incluye surf y caminata.",
+        "price": "900000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Dormitorio 4 camas – 3 noches",
+        "description": "Plan aventura 3 noches en dormitorio de 4 camas. Incluye surf y caminata a cascadas de Playa Larga.",
+        "price": "900000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Dormitorio 8 camas – 3 noches",
+        "description": "Plan aventura 3 noches en dormitorio compartido de 8 camas. Incluye surf y caminata a cascadas de Playa Larga.",
+        "price": "840000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "validThrough": "2026-12-31"
+      }
+    ],
+    "provider": {
+      "@type": "LodgingBusiness",
+      "name": "Pacific Waves Hostel & Surf",
+      "url": "https://www.pacificwaveshostel.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Playa El Almejal",
+        "addressLocality": "El Valle",
+        "addressRegion": "Bahía Solano, Chocó",
+        "addressCountry": "CO"
+      }
+    }
+  },
+
+  // 2. FAQPage — preguntas frecuentes del plan aventura
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cuándo está disponible el plan de aventura en Bahía Solano?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El plan de aventura en Pacific Waves Hostel está disponible todo el año. Las actividades —surf, caminatas a cascadas, tubing y excursiones en lancha— se pueden disfrutar en cualquier época en El Valle, Bahía Solano."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué actividades incluye el plan aventura?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El plan aventura incluye: clase de surf o body surf, caminata guiada a las cascadas de Playa Larga (todos los planes), tubing por el río Valle (planes de 4 y 5 noches) y excursión en lancha a las Cascadas de Chadó (plan de 5 noches). Todos los planes incluyen también traslados, alojamiento, alimentación completa y seguro hotelero."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué son las Cascadas de Chadó en Bahía Solano?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Las Cascadas de Chadó son una atracción natural en el Chocó colombiano donde la selva húmeda tropical se encuentra directamente con el mar Pacífico. Se accede en lancha desde El Valle, Bahía Solano, y forman parte del plan aventura de 5 noches en Pacific Waves Hostel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿El plan aventura es apto para familias?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. El plan aventura tiene opciones de alojamiento en cabaña familiar para un mínimo de 2 y máximo de 4 personas. Las actividades incluidas —surf, caminatas y tubing— están diseñadas para distintos niveles físicos y son aptas para grupos familiares."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué no incluye el plan aventura?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No incluye tiquetes aéreos, tasa Proturismo ($58.400 COP), ingreso al PNN Utría si se visita como actividad adicional (entre $14.500 y $63.500 COP según tipo de visitante) ni gastos personales no especificados."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hay cajeros automáticos en El Valle, Bahía Solano?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No hay cajeros automáticos en El Valle. Es fundamental traer efectivo suficiente en pesos colombianos desde el lugar de origen antes de viajar a Bahía Solano."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué otras actividades puedo hacer en El Valle además de las del plan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En El Valle puedes personalizar tu experiencia con actividades adicionales como liberación de tortugas, canoa por el río Tundó, caminatas nocturnas y avistamiento de ballenas jorobadas (en temporada, de junio a octubre). Consulta directamente con Pacific Waves Hostel para combinar actividades."
+        }
+      }
+    ]
+  },
+
+  // 3. BreadcrumbList — navegación estructurada
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://www.pacificwaveshostel.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Planes",
+        "item": "https://www.pacificwaveshostel.com/planes"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Plan Aventura Bahía Solano",
+        "item": "https://www.pacificwaveshostel.com/plan-aventura"
+      }
+    ]
+  },
+
+  // 4. ItemList — actividades de aventura para señal semántica de contenido
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Actividades de aventura en El Valle, Bahía Solano",
+    "description": "Actividades de aventura y ecoturismo incluidas en el plan de Pacific Waves Hostel en El Valle, Bahía Solano, Chocó.",
+    "url": "https://www.pacificwaveshostel.com/plan-aventura",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Surf y Body Surf en El Valle",
+        "url": "https://www.pacificwaveshostel.com/plan-aventura"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Caminata a las cascadas de Playa Larga",
+        "url": "https://www.pacificwaveshostel.com/plan-aventura"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Tubing por el río Valle, Bahía Solano",
+        "url": "https://www.pacificwaveshostel.com/plan-aventura"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Excursión en lancha a las Cascadas de Chadó",
+        "url": "https://www.pacificwaveshostel.com/plan-aventura"
+      }
+    ]
+  }
+]
+
+const plan = Astro.url.pathname.split('/').filter(Boolean).pop() || "";
+---
+
+<Layout 
+  title='Plan Aventura Bahía Solano 2026 – Surf, Cascadas y Tubing en El Valle, Chocó'
+  titleTemplate={false}
+  description="Plan aventura todo incluido en El Valle, Bahía Solano. 3 a 5 noches desde $840.000 COP por persona. Surf, caminata a cascadas de Playa Larga, tubing por el río Valle y excursión a las Cascadas de Chadó. Disponible todo el año."
+  canonical='https://www.pacificwaveshostel.com/plan-aventura'
+  ogImage='/images/plan-aventura-og.jpg'
+  ogType='website'
+  keywords='plan aventura bahía solano, turismo aventura el valle chocó, tubing río valle colombia, cascadas playa larga bahía solano, cascadas de chadó chocó, pacific waves hostel aventura, ecoturismo chocó 2026, surf y naturaleza bahía solano'
+  schema={schema}
+  >
+  <BannerPage client:load title='Plan Aventura' bg={bannerImg} />
+  <Plans client:load plan={plan} />
+  <Newsletter client:load />
+</Layout>

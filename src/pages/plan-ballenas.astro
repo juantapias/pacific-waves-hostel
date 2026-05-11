@@ -1,0 +1,180 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+import Plans from '../container/Plans';
+import Newsletter from '../components/newsletter/Newsletter';
+import BannerPage from '../components/banner/banner-page/BannerPage';
+
+import bannerImg from '../assets/images/banner/plan-ballenas.webp'
+import { ASTRO_LOCALS_HEADER } from '@astrojs/vercel';
+
+const schema = [
+  // 1. TouristTrip — el plan como producto turístico
+  {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "name": "Plan Avistamiento de Ballenas – Pacific Waves Hostel",
+    "description": "Plan todo incluido de 3 a 5 noches para el avistamiento de ballenas jorobadas en El Valle, Bahía Solano. Incluye alojamiento, alimentación completa, traslados y salida en lancha garantizada.",
+    "url": "https://www.pacificwaveshostel.com/plan-ballenas",
+    "image": "https://www.pacificwaveshostel.com/images/plan-ballenas-og.jpg",
+    "touristType": "Ecoturismo, Naturaleza, Aventura",
+    "availabilityStarts": "2026-06-15",
+    "availabilityEnds": "2026-10-20",
+    "itinerary": [
+      {
+        "@type": "TouristAttraction",
+        "name": "Día 1 – Llegada al paraíso",
+        "description": "Traslado desde Aeropuerto de Bahía Solano (BSC), check-in, almuerzo frente al mar y tarde libre en zona de hamacas o bar de playa."
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Día 2 – Encuentro con las gigantes",
+        "description": "Salida en lancha para avistamiento de ballenas jorobadas. Garantizado: si no se avistan, se repite sin costo adicional."
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Día 3 – Exploración local",
+        "description": "Visita a playas cercanas de El Valle o uso de zona de coworking frente al mar."
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Día 4 – Parque Nacional Natural Utría",
+        "description": "Excursión en lancha al PNN Utría: ensenada, manglares y playas de aguas cristalinas. Disponible en planes de 4 y 5 noches."
+      },
+      {
+        "@type": "TouristAttraction",
+        "name": "Día 5 – Cascadas de Chadó",
+        "description": "Aventura en lancha hacia las Cascadas de Chadó, donde la selva se une con el mar. Disponible en plan de 5 noches."
+      }
+    ],
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Cabaña Privada Pareja – 3 noches",
+        "price": "2050000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "name": "Cabaña Privada Pareja – 4 noches",
+        "price": "2970000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "name": "Cabaña Privada Pareja – 5 noches",
+        "price": "3880000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        "name": "Dormitorio 8 camas – 3 noches",
+        "price": "830000",
+        "priceCurrency": "COP",
+        "availability": "https://schema.org/InStock"
+      }
+    ],
+    "provider": {
+      "@type": "LodgingBusiness",
+      "name": "Pacific Waves Hostel & Surf",
+      "url": "https://www.pacificwaveshostel.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Playa El Almejal",
+        "addressLocality": "El Valle",
+        "addressRegion": "Bahía Solano, Chocó",
+        "addressCountry": "CO"
+      }
+    }
+  },
+ 
+  // 2. FAQPage — preguntas frecuentes implícitas en el contenido
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa si no avistamos ballenas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Pacific Waves Hostel garantiza el avistamiento. Si no se avistan ballenas en la salida, se repite la excursión en lancha sin costo adicional."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuándo es la temporada de ballenas en Bahía Solano?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La temporada de avistamiento de ballenas jorobadas en El Valle, Bahía Solano, va del 15 de junio al 20 de octubre de 2026."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hay cajeros automáticos en El Valle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No hay cajeros en El Valle. Se recomienda traer efectivo suficiente en pesos colombianos desde el lugar de origen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué incluye el plan de ballenas?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El plan incluye traslados terrestres aeropuerto–hostal–aeropuerto, alojamiento, alimentación completa (desayuno, almuerzo y cena), avistamiento de ballenas garantizado, 1 hora de bodyboard y seguro hotelero. Los planes de 4 y 5 noches incluyen además excursión al PNN Utría y Cascadas de Chadó respectivamente."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué no incluye el plan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No incluye tiquetes aéreos, tasa Proturismo ($58.400 COP) ni el ingreso al PNN Utría (entre $14.500 y $63.500 COP según tipo de visitante)."
+        }
+      }
+    ]
+  },
+ 
+  // 3. BreadcrumbList — navegación estructurada
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Inicio",
+        "item": "https://www.pacificwaveshostel.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Plan Ballenas",
+        "item": "https://www.pacificwaveshostel.com/plan-ballenas"
+      }
+    ]
+  }
+]
+
+const plan =  Astro.url.pathname.split('/').filter(Boolean).pop() || "";
+
+---
+
+<Layout 
+  title='Plan Avistamiento de Ballenas – El Valle, Bahía Solano'
+  titleTemplate={false}
+  description="Plan todo incluido: ballenas jorobadas en El Valle, Bahía Solano. 3 a 5 noches desde $830.000 COP. ¡Avistamiento garantizado!"
+  canonical='https://www.pacificwaveshostel.com/plan-ballenas'
+  ogImage='/images/plan-ballenas-og.jpg'
+  ogType='website'
+  keywords='avistamiento ballenas bahía solano, plan ballenas chocó, ballenas el valle colombia, tour ballenas jorobadas, pacific waves hostel ballenas 2026'
+  schema={schema}
+  >
+  <BannerPage client:load title='Avistamiento de ballenas en Bahía Solano' bg={bannerImg} />
+  <Plans client:load plan={plan} />
+  <Newsletter client:load />
+</Layout>

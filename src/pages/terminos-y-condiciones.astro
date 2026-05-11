@@ -5,10 +5,12 @@ import Newsletter from '../components/newsletter/Newsletter';
 import Layout from '../layouts/Layout.astro';
 import BannerPage from '../components/banner/banner-page/BannerPage';
 import TermsAndConditions from '../components/content-block/TermsAndConditions.astro';
+
+import BannerImg from '../../public/assets/images/banner/cancellation-policy.webp'
 ---
 
-<Layout>
-  <BannerPage client:load title='Términos y condiciones'/>
+<Layout title='Términos y condiciones | Pacific Waves Hostel & Surf'>
+  <BannerPage client:load title='Términos y condiciones' bg={BannerImg} />
   <TermsAndConditions />
   <Newsletter client:load />
 </Layout>

@@ -1,8 +1,9 @@
 export const RoomData = [
   {
+    type: "privacy",
     name: "Cabaña Privada",
     content:
-      "<p>La cabaña privada es el equilibrio perfecto entre comodidad y naturaleza. Diseñada para dos personas, ofrece una cama doble, baño privado al aire libre con jardín interior, terraza con sillas y hamaca, ideal para relajarse. Además, cuenta con ventilador, mosquitero, tomas USB y estante para la ropa. Un espacio funcional, rodeado de selva y mar, para desconectar sin renunciar al confort. ¡Solo trae las ganas de disfrutar! 🌊🌿</p>",
+      "<p>La Habitación Privada es un espacio cómodo y funcional, ideal para parejas, amigos o familias pequeñas que buscan aventura sin sacrificar el descanso. Cuenta con una cama doble y un camarote, todos con mosquitero, ventilador para mantener el ambiente fresco y tomas USB para mayor comodidad. Sus ventanas estratégicamente ubicadas permiten una excelente circulación de aire y una conexión constante con la naturaleza.</p><p>Cada huésped dispone de armario privado con opción de cierre con candado, brindando seguridad y tranquilidad durante la estadía. Es el lugar perfecto para descansar, compartir y disfrutar del paraíso entre la selva y el mar. 🌊🌴</p><p>Los baños compartidos ofrecen comodidad y privacidad, con duchas espaciosas que incluyen vestier individual y lavamanos amplios. Son limpios, ventilados y pensados para una experiencia práctica y confortable en medio de la naturaleza. 🚿🌿</p>",
     gallery: [
       {
         src: "/assets/images/rooms/cabins-brisa/IMG_3852_rjjpi6.webp",
@@ -16,10 +17,6 @@ export const RoomData = [
         src: "/assets/images/rooms/cabins-brisa/IMG_3878_opfh1n.webp",
         alt: "Terraza con sillas y hamaca en la cabaña privada",
       },
-      // {
-      //   src: "/assets/images/rooms/cabins-brisa/IMG_3868_mkx45y.webp",
-      //   alt: "Cabaña privada rodeada de naturaleza selvática",
-      // },
       {
         src: "/assets/images/rooms/cabins-brisa/IMG_3886_cqgtuu.webp",
         alt: "Decoración interior natural y rústica de la cabaña privada",
@@ -55,6 +52,7 @@ export const RoomData = [
     ],
   },
   {
+    type: "group-4",
     name: "Dormitorio de 4",
     content:
       "<p>El Dormitorio de 4 es un espacio cómodo y funcional para viajeros que buscan aventura sin sacrificar el descanso. Cuenta con dos literas con mosquitero, ventilador para mantener el ambiente fresco y tomas USB en cada cama. Para mayor circulación de aire, tiene ventanas estratégicamente ubicadas entre las camas.Cada huésped dispone de un armario privado con opción de cierre con candado, asegurando tranquilidad y comodidad. Perfecto para relajarse, conectar con otros viajeros y disfrutar del paraíso entre la selva y el mar. 🌊🌴</p><p>Los baños compartidos ofrecen comodidad y privacidad, con duchas espaciosas que incluyen vestier individual y lavamanos amplios. Son limpios, ventilados y pensados para una experiencia práctica y confortable en medio de la naturaleza. 🚿🌿</p>",
@@ -94,6 +92,7 @@ export const RoomData = [
     ],
   },
   {
+    type: "group-8",
     name: "Dormitorio de 8",
     content:
       "<p>El Dormitorio de 8 es ideal para viajeros que disfrutan del ambiente social sin perder la comodidad. Equipado con cuatro literas con mosquitero, ventiladores y tomas USB en cada cama, garantiza un descanso fresco y práctico. Para mayor ventilación, cuenta con ventanas estratégicamente ubicadas entre las camas. Además, cada huésped dispone de un armario privado con opción de cierre con candado para mayor seguridad. Un espacio vibrante, funcional y con toda la energía del mar y la selva. 🌊🌴</p><p>Los baños compartidos ofrecen comodidad y privacidad, con duchas espaciosas que incluyen vestier individual y lavamanos amplios. Son limpios, ventilados y pensados para una experiencia práctica y confortable en medio de la naturaleza. 🚿🌿</p>",
@@ -145,6 +144,18 @@ export const RoomData = [
       {
         src: "/assets/images/rooms/cabins-8/IMG_3908_itstxd.webp",
         alt: "Ambiente social en dormitorio de 8 con decoración acogedora",
+      },
+    ],
+  },
+  {
+    type: "family",
+    name: "Habitación Familiar",
+    content:
+      "<p>La Habitación Familiar es un espacio cómodo y funcional, ideal para familias que buscan aventura sin sacrificar el descanso. Cuenta con una cama doble y dos camarotes, todos con mosquitero, ventilador para mantener el ambiente fresco y tomas USB para mayor comodidad. Sus ventanas estratégicamente ubicadas permiten una excelente circulación de aire y una conexión constante con la naturaleza.</p><p>Cada huésped dispone de armario privado con opción de cierre con candado, brindando seguridad y tranquilidad durante la estadía. Es el lugar perfecto para descansar, compartir y disfrutar del paraíso entre la selva y el mar. 🌊🌴</p><p>Los baños compartidos ofrecen comodidad y privacidad, con duchas espaciosas que incluyen vestier individual y lavamanos amplios. Son limpios, ventilados y pensados para una experiencia práctica y confortable en medio de la naturaleza. 🚿🌿</p>",
+    gallery: [
+      {
+        src: "https://res.cloudinary.com/dcuocptj7/image/upload/v1778075211/family-room-1_llnu33.webp",
+        alt: "Habitación familiar con cama doble y camarotes",
       },
     ],
   },

@@ -4,6 +4,10 @@ export const navigation = [
     url: "#home",
   },
   {
+    label: "Planes",
+    url: "#plans",
+  },
+  {
     label: "Nosotros",
     url: "#us",
   },

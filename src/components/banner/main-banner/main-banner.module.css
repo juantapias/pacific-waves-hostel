@@ -44,28 +44,16 @@
 }
 
 .bannerContent p {
-  font-size: 2rem;
-}
-
-.bannerContent button {
-  font-size: 1.25rem;
-}
-
-h1 {
-  color: #f1faff;
-  font-family: 'playfair';
-  /* font-size: 2.5rem; */
-  line-height: 1;
-
-  font-size: 3rem;
-}
-
-p {
-  color: #f1faff;
+  color: var(--color-white);
   font-size: 1rem;
   font-family: 'raleway';
+}
 
-  font-size: 1.5rem;
+.bannerContent h1 {
+  color: #f1faff;
+  font-family: 'playfair';
+  line-height: 1;
+  font-size: 3rem;
 }
 
 .bannerContent button {
@@ -148,25 +136,21 @@ p {
 }
 
 @media (min-width: 640px) {
-  h1 {
+  .bannerContent h1 {
     font-size: 2rem;
   }
 
   .bannerContent p {
     font-size: 1.5rem;
   }
-
-  p {
-    font-size: 1.5rem;
-  }
 }
 
 @media (min-width: 768px) {
-  h1 {
+  .bannerContent h1 {
     font-size: 4rem;
   }
 
-  p {
+  .bannerContent p {
     font-size: 1.25rem;
   }
 
@@ -176,13 +160,13 @@ p {
 }
 
 @media (min-width: 1024px) {
-  h1 {
+  .bannerContent h1 {
     font-size: 6rem;
   }
 }
 
 @media (min-width: 1280px) {
-  h1 {
+  .bannerContent h1 {
     font-size: 8rem;
   }
 }

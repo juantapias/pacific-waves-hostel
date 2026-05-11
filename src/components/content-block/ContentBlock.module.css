@@ -46,6 +46,8 @@
 }
 
 .content {
+  color: var(--color-white);
+  font-weight: 200;
   display: grid;
   gap: 2rem;
 }
@@ -62,12 +64,6 @@
   max-width: 100%;
   object-fit: contain;
   transform: rotate(15deg);
-}
-
-p {
-  font-family: 'roboto';
-  font-weight: 300;
-  color: #f1faff;
 }
 
 @media (min-width: 768px) {

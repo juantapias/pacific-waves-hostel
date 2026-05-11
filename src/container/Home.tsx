@@ -5,6 +5,7 @@ import Booking from "../components/booking/Booking";
 import Gallery from "../components/gallery/Gallery";
 import Newsletter from "../components/newsletter/Newsletter";
 import Testimonials from "../components/testimonials/Testimonials";
+import Plans from "../components/plans/Plans";
 
 export default function PageContent() {
   return (
@@ -12,7 +13,8 @@ export default function PageContent() {
       <MainBanner />
       <ContentBlock />
       <Rooms />
-      <Booking />
+      <Plans />
+      {/* <Booking /> */}
       <Testimonials />
       <Gallery />
       <Newsletter />

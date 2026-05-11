@@ -14,6 +14,7 @@
 }
 
 .label {
+  color: var(--color-primary);
   padding-left: 1rem;
 }
 
@@ -29,6 +30,7 @@
 
 .submitButton button {
   padding: 1rem;
+  font-size: 1rem;
 }
 
 @media (min-width: 768px) {

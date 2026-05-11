@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import styles from "../main-banner/main-banner.module.css";
 import Loading from "../../ui/loading";
+import BookingForm from "../../ui/forms/booking/BookingForm";
 
 export default function MainBanner() {
   const containerBanner = useRef<HTMLDivElement>(null);
@@ -105,7 +106,7 @@ export default function MainBanner() {
         Tu navegador no admite videos HTML5.
       </video>
 
-      <div className="container">
+      <div className="container mx-auto">
         <div ref={contentBanner} className={styles.bannerContent}>
           <h1>
             Surfea las olas, <br /> contempla las ballenas
@@ -114,7 +115,7 @@ export default function MainBanner() {
             Despierta frente al mar, siente la libertad de las olas y vive el
             espectáculo natural del Pacífico.
           </p>
-          <button
+          {/* <button
             type="button"
             className="btn-primary"
             onClick={(e) => {
@@ -124,7 +125,10 @@ export default function MainBanner() {
             aria-label="Ir a la sección de reservas"
           >
             Reserva
-          </button>
+          </button> */}
+          <div className="bg-white p-4 rounded-2xl">
+            <BookingForm />
+          </div>
         </div>
       </div>
 

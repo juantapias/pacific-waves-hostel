@@ -31,4 +31,32 @@ export const GalleryData = [
     url: "/assets/images/gallery/pacific-waves-hostel-7_i1qgq8.webp",
     alt: "Vista nocturna del Pacific Waves Hostel iluminado entre árboles",
   },
+  {
+    url: "/assets/images/gallery/pacific-waves-hostel-8.webp",
+    alt: "Lancha navegando entre islotes cubiertos de selva en Bahía Solano",
+  },
+  {
+    url: "/assets/images/gallery/pacific-waves-hostel-9.webp",
+    alt: "Surfista en tabla amarilla surfeando una ola en Bahía Solano",
+  },
+  {
+    url: "/assets/images/gallery/pacific-waves-hostel-10.webp",
+    alt: "Letrero metálico iluminado con diseño de ola en la entrada",
+  },
+  {
+    url: "/assets/images/gallery/pacific-waves-hostel-11.webp",
+    alt: "Surfista con tabla observando las olas del Pacífico colombiano",
+  },
+  {
+    url: "/assets/images/gallery/pacific-waves-hostel-12.webp",
+    alt: "Corredor de madera con jardín tropical frente a las cabañas",
+  },
+  {
+    url: "/assets/images/gallery/pacific-waves-hostel-13.webp",
+    alt: "Atardecer sobre playa El Almejal con cielo en tonos naranja, rosa y violeta",
+  },
+  {
+    url: "/assets/images/gallery/pacific-waves-hostel-14.webp",
+    alt: "Terraza cubierta con bancas, hamacas y vista a la selva",
+  },
 ];

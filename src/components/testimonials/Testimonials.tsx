@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
-import TestimonialCard from "../cards/TestimonialCard";
+import TestimonialCard from "../cards/cards-testimonial/TestimonialCard";
 
 import Whale from "../../assets/images/whale.webp";
 
@@ -124,7 +124,7 @@ export default function Testimonials() {
       className={styles.testimonials}
       aria-labelledby="testimonials-title"
     >
-      <div className="container">
+      <div className="container mx-auto">
         <h2 id="testimonials-title" ref={titleRef} className={styles.title}>
           Historias que dejan huella en la arena
         </h2>

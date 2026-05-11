@@ -46,7 +46,7 @@ export default function Booking() {
       className={styles.booking}
       aria-labelledby="booking-heading"
     >
-      <div className="container">
+      <div className="container mx-auto">
         <div ref={bookingContentRef} className={styles.bookingContent}>
           <div className={styles.heading}>
             <h2 id="booking-heading" ref={titleRef} className={styles.title}>
