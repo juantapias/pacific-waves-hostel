@@ -1,1 +1,0 @@
-import{j as r}from"./jsx-runtime.D_zvdyIk.js";import{s as a}from"./plan-aventura.17e1e7ea.UehmvUMV.js";function o({title:e,bg:s}){return r.jsx("div",{className:a.bannerPage,style:{backgroundImage:`url(${s.src})`},children:r.jsx("h1",{children:e})})}export{o as default};
