@@ -31,7 +31,7 @@ export type Photo = {
 
 export type PackageVibesProps = {
   title?: string;
-  photos: [Photo, Photo, Photo, Photo];
+  photos: Photo[];
 };
 
 export type ICurrentPlan = {
@@ -42,4 +42,5 @@ export type ICurrentPlan = {
   includes: IIncludeItem[];
   notIncludes: INotIncludeItem[];
   itinerary: IItineraryItem[];
+  gallery: Photo;
 };

@@ -33,6 +33,13 @@
   font-size: 1rem;
 }
 
+
+@media (max-width: 640px) {
+  .submitButton {
+    margin-right: auto;
+  }
+}
+
 @media (min-width: 768px) {
   .bookingForm {
     align-items: flex-end;
@@ -41,6 +48,10 @@
 
   .formGroup {
     width: 220px;
+  }
+
+  .submitButton {
+    margin: auto;
   }
 }
 

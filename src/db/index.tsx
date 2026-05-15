@@ -116,6 +116,24 @@ export const plans = [
               "Último desayuno frente al mar, traslado al aeropuerto y fin de los servicios.",
           },
         ],
+        gallery: [
+          {
+            src: "https://images.unsplash.com/photo-1568430462989-44163eb1752f?q=80&w=1473&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            alt: "Cola de ballena jorobada",
+          },
+          {
+            src: "https://images.unsplash.com/photo-1679158608511-b831e3900bd0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            alt: "Bowl de frutas",
+          },
+          {
+            src: "https://images.unsplash.com/photo-1698334846759-2cdc3352dd85?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            alt: "Tablas de surf",
+          },
+          {
+            src: "https://images.unsplash.com/photo-1719450589784-c2c36ccf8e5b?q=80&w=1075&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            alt: "Fogata en la playa",
+          },
+        ],
       },
       surf: {
         name: "Surf en Bahía Solano",
@@ -226,6 +244,24 @@ export const plans = [
             title: "Día de salida",
             description:
               "Último desayuno frente al mar, traslado al aeropuerto y fin de los servicios.",
+          },
+        ],
+        gallery: [
+          {
+            src: "https://res.cloudinary.com/dcuocptj7/image/upload/v1778866057/plan-surf-1.webp",
+            alt: "Hombre surfeando",
+          },
+          {
+            src: "https://res.cloudinary.com/dcuocptj7/image/upload/v1778866057/plan-surf-2.webp",
+            alt: "Hombre viendo las olas del mar",
+          },
+          {
+            src: "https://res.cloudinary.com/dcuocptj7/image/upload/v1778866057/plan-surf-3.webp",
+            alt: "Hombre sentado en la orilla de la playa viendo el atardecer",
+          },
+          {
+            src: "https://res.cloudinary.com/dcuocptj7/image/upload/v1778866057/plan-surf-4.webp",
+            alt: "Hombre surfeando",
           },
         ],
       },
@@ -348,6 +384,24 @@ export const plans = [
             title: "Día de salida",
             description:
               "Último desayuno frente al mar, traslado al aeropuerto y fin de los servicios.",
+          },
+        ],
+        gallery: [
+          {
+            src: "https://res.cloudinary.com/dcuocptj7/image/upload/v1778867410/plan-aventura-1.webp",
+            alt: "Rana de colores llamativos en la selva",
+          },
+          {
+            src: "https://res.cloudinary.com/dcuocptj7/image/upload/v1778867411/plan-aventura-2.webp",
+            alt: "Rio de dos caminos",
+          },
+          {
+            src: "https://res.cloudinary.com/dcuocptj7/image/upload/v1778867411/plan-aventura-3.webp",
+            alt: "Un grupo excursionando en lacha en bahia solano ",
+          },
+          {
+            src: "https://res.cloudinary.com/dcuocptj7/image/upload/v1778867411/plan-aventura-4.webp",
+            alt: "Vista de la montaña y la playa",
           },
         ],
       },

@@ -72,9 +72,10 @@ export default function Rooms() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: roomRef.current,
-          start: "-20% 80%",
-          end: "bottom 20%",
+          start: "-80% 80%",
+          end: "center 20%",
           scrub: 1,
+          markers: false,
         },
       });
 
@@ -137,7 +138,7 @@ export default function Rooms() {
 
   return (
     <div id="rooms" ref={roomRef} className={style.rooms}>
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         {/* Encabezado */}
         <div ref={headingRef} className="grid grid-cols-1 gap-8">
           <div className="text-center">
@@ -146,7 +147,7 @@ export default function Rooms() {
           </div>
 
           {/* Selector de tipo de habitación */}
-          <div className="flex items-center justify-center gap-4 rounded-full bg-primary w-fit mx-auto py-2 px-4">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 rounded-2xl md:rounded-full bg-primary w-fit mx-auto py-2 px-4">
             {ROOM_TYPES.map((room) => (
               <button
                 key={room.type}
@@ -166,7 +167,7 @@ export default function Rooms() {
           {/* Tarjeta de habitación */}
           <div className={style.roomWrap}>
             <div className="bg-[#fff] p-4 shadow-md rounded-3xl">
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-1 md:grid-cols-2">
                 {/* Galería */}
                 <Swiper
                   ref={swiperRoomRef}

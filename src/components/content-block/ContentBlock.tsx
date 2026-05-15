@@ -84,41 +84,50 @@ export default function ContentBlock() {
           "-=0.3",
         );
 
-      // ── Surfer float animation ──────────────────────────────────────────
-      const surferTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 60%",
-          end: "bottom top",
-          scrub: 2,
-        },
+      // ── Surfer: solo en desktop (≥768px) ───────────────────────────────
+      const mm = gsap.matchMedia();
+
+      mm.add("(min-width: 768px)", () => {
+        const surferTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 60%",
+            end: "bottom top",
+            scrub: 2,
+          },
+        });
+
+        surferTl
+          .fromTo(
+            surferRef.current,
+            { xPercent: 120, rotate: -12, autoAlpha: 0 },
+            {
+              xPercent: 0,
+              rotate: 6,
+              autoAlpha: 1,
+              duration: 6,
+              ease: "power2.out",
+            },
+          )
+          .to(surferRef.current, {
+            xPercent: -30,
+            rotate: 18,
+            duration: 5,
+            ease: "sine.inOut",
+          })
+          .to(surferRef.current, {
+            xPercent: -140,
+            rotate: 2,
+            autoAlpha: 0,
+            duration: 6,
+            ease: "power2.inOut",
+          });
       });
 
-      surferTl
-        .fromTo(
-          surferRef.current,
-          { xPercent: 120, rotate: -12, autoAlpha: 0 },
-          {
-            xPercent: 0,
-            rotate: 6,
-            autoAlpha: 1,
-            duration: 6,
-            ease: "power2.out",
-          },
-        )
-        .to(surferRef.current, {
-          xPercent: -30,
-          rotate: 18,
-          duration: 5,
-          ease: "sine.inOut",
-        })
-        .to(surferRef.current, {
-          xPercent: -140,
-          rotate: 2,
-          autoAlpha: 0,
-          duration: 6,
-          ease: "power2.inOut",
-        });
+      // En mobile el surfer no se muestra
+      mm.add("(max-width: 767px)", () => {
+        gsap.set(surferRef.current, { autoAlpha: 0 });
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -148,32 +157,22 @@ export default function ContentBlock() {
       />
 
       <div
-        className="container mx-auto"
+        className="container mx-auto px-5 md:px-8"
         style={{ position: "relative", zIndex: 1 }}
       >
-        <article
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr",
-            gap: "3rem",
-            padding: "5rem 0",
-          }}
-        >
+        <article className="py-16 md:py-20">
           {/* ── Text column ─────────────────────────────────────────────── */}
-          <div style={{ maxWidth: "680px" }}>
+          <div className="w-full md:max-w-xl lg:max-w-2xl">
             {/* Eyebrow */}
             <p
               ref={eyebrowRef}
+              className="text-white mb-5"
               style={{
                 fontSize: 11,
                 fontWeight: 600,
                 letterSpacing: "0.22em",
                 textTransform: "uppercase",
-
-                marginBottom: "1.25rem",
-                margin: "0 0 1.25rem",
               }}
-              className="text-white"
             >
               El Valle · Bahía Solano · Chocó
             </p>
@@ -181,24 +180,24 @@ export default function ContentBlock() {
             {/* Title */}
             <h2
               ref={titleRef}
+              className="text-white mb-8"
               style={{
-                fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+                fontSize: "clamp(2.75rem, 8vw, 4.5rem)",
                 fontWeight: 800,
                 lineHeight: 1.02,
                 letterSpacing: "-0.03em",
-                margin: "0 0 2rem",
               }}
-              className="text-white"
             >
               Tu refugio
               <br />
               <span
+                className="text-white"
                 style={{
                   fontWeight: 800,
                   WebkitTextStroke: "2px currentColor",
                   opacity: 0.35,
+                  color: "transparent",
                 }}
-                className="text-white"
               >
                 costero
               </span>
@@ -208,11 +207,11 @@ export default function ContentBlock() {
             <div
               ref={dividerRef}
               aria-hidden="true"
+              className="mb-8"
               style={{
                 width: 48,
                 height: 2,
                 background: "var(--color-primary, #1a5c3a)",
-                marginBottom: "2rem",
                 transformOrigin: "left center",
               }}
             />
@@ -220,20 +219,16 @@ export default function ContentBlock() {
             {/* Body copy */}
             <div
               ref={bodyRef}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "1.25rem",
-              }}
+              className="flex flex-col gap-5"
               aria-label="Descripción del hostal"
             >
               <p
+                className="text-white m-0"
                 style={{
-                  fontSize: "1.0625rem",
+                  fontSize: "clamp(0.9375rem, 2vw, 1.0625rem)",
                   lineHeight: 1.75,
-                  margin: 0,
+                  opacity: 0.9,
                 }}
-                className="text-white"
               >
                 <strong>Pacific Waves Hostel & Surf</strong> es un refugio
                 paradisíaco ubicado en la impresionante Playa El Almejal, en el
@@ -244,12 +239,12 @@ export default function ContentBlock() {
               </p>
 
               <p
+                className="text-white m-0"
                 style={{
-                  fontSize: "1.0625rem",
+                  fontSize: "clamp(0.9375rem, 2vw, 1.0625rem)",
                   lineHeight: 1.75,
-                  margin: 0,
+                  opacity: 0.7,
                 }}
-                className="text-white"
               >
                 Alojamiento privado y compartido, bar de playa para atardeceres
                 inolvidables, y planes todo incluido diseñados para conectar con
@@ -260,49 +255,39 @@ export default function ContentBlock() {
             {/* Stats row */}
             <div
               ref={statsRef}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
-                gap: "0",
-                marginTop: "3rem",
-
-                paddingTop: "2rem",
-              }}
-              className="border-t border-white"
+              className="grid grid-cols-3 mt-10 pt-8 border-t border-white/20"
             >
               {STATS.map((stat, i) => (
                 <div
                   key={stat.label}
-                  style={{
-                    paddingRight: "1.5rem",
-                    borderRight:
-                      i < STATS.length - 1 ? "1px solid #F1FAFF" : "none",
-                    paddingLeft: i > 0 ? "1.5rem" : 0,
-                  }}
+                  className={[
+                    i > 0 ? "pl-4 md:pl-6" : "",
+                    i < STATS.length - 1
+                      ? "pr-4 md:pr-6 border-r border-white/20"
+                      : "",
+                  ].join(" ")}
                 >
                   <p
+                    className="text-white m-0 mb-1"
                     style={{
-                      fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
+                      fontSize: "clamp(1.5rem, 5vw, 2.5rem)",
                       fontWeight: 800,
                       letterSpacing: "-0.04em",
                       lineHeight: 1,
-                      margin: "0 0 0.4rem",
                     }}
-                    className="text-white"
                   >
                     {stat.value}
                   </p>
                   <p
+                    className="text-white m-0"
                     style={{
-                      fontSize: 12,
+                      fontSize: "clamp(9px, 1.8vw, 12px)",
                       fontWeight: 500,
                       letterSpacing: "0.06em",
                       textTransform: "uppercase",
-                      margin: 0,
                       opacity: 0.5,
                       lineHeight: 1.4,
                     }}
-                    className="text-white"
                   >
                     {stat.label}
                   </p>
@@ -313,17 +298,28 @@ export default function ContentBlock() {
         </article>
       </div>
 
-      {/* ── Floating surfer ─────────────────────────────────────────────── */}
+      {/* ── Floating surfer — solo desktop ──────────────────────────────── */}
       <figure
         ref={surferRef}
-        className={style.surfer}
+        className={`${style.surfer} hidden md:block`}
         aria-hidden="true"
-        style={{ position: "absolute", bottom: "-5%", right: 0, margin: 0 }}
+        style={{
+          position: "absolute",
+          bottom: "-5%",
+          right: 0,
+          margin: 0,
+          maxWidth: "45%",
+        }}
       >
         <img
           src={Sufer.src}
           alt=""
-          style={{ display: "block", maxHeight: "72vh", width: "auto" }}
+          style={{
+            display: "block",
+            maxHeight: "72vh",
+            width: "auto",
+            maxWidth: "100%",
+          }}
         />
         <figcaption className="sr-only">
           Ilustración de surfista representando la experiencia en el mar

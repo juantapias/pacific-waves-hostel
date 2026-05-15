@@ -337,7 +337,9 @@ export default function Gallery() {
             <p
               style={{
                 fontSize: 14,
+                width: "100%",
                 maxWidth: 240,
+                marginLeft: "auto",
                 lineHeight: 1.6,
                 textAlign: "right",
               }}

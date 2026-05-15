@@ -106,7 +106,7 @@ export default function MainBanner() {
         Tu navegador no admite videos HTML5.
       </video>
 
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <div ref={contentBanner} className={styles.bannerContent}>
           <h1>
             Surfea las olas, <br /> contempla las ballenas
@@ -126,7 +126,7 @@ export default function MainBanner() {
           >
             Reserva
           </button> */}
-          <div className="bg-white p-4 rounded-2xl">
+          <div className="bg-white p-4 rounded-2xl w-4/5 md:w-fit">
             <BookingForm />
           </div>
         </div>

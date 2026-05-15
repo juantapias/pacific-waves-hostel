@@ -12,7 +12,9 @@ export default function BannerPage({ title, bg }: BannerPageProps) {
       className={style.bannerPage}
       style={{ backgroundImage: `url(${bg.src})` }}
     >
-      <h1>{title}</h1>
+      <div className="container mx-auto px-4 text-center z-1">
+        <h1>{title}</h1>
+      </div>
     </div>
   );
 }
