@@ -121,19 +121,6 @@ export default function Rooms() {
     return () => mm.revert();
   }, []);
 
-  // Re-inicializar navegación cuando los botones ya están montados
-  useLayoutEffect(() => {
-    const swiper = swiperRoomRef.current?.swiper;
-    if (!swiper || !prevRef.current || !nextRef.current) return;
-    if (typeof swiper.params.navigation !== "object") return;
-
-    swiper.params.navigation.prevEl = prevRef.current;
-    swiper.params.navigation.nextEl = nextRef.current;
-    swiper.navigation.destroy();
-    swiper.navigation.init();
-    swiper.navigation.update();
-  }, []);
-
   const activeRoom = RoomData.find((room) => room.type === roomActive);
 
   return (
@@ -170,6 +157,7 @@ export default function Rooms() {
               <div className="grid grid-cols-1 md:grid-cols-2">
                 {/* Galería */}
                 <Swiper
+                  key={roomActive}
                   ref={swiperRoomRef}
                   className={style.roomGallery}
                   modules={[Navigation]}
@@ -177,7 +165,23 @@ export default function Rooms() {
                     prevEl: prevRef.current,
                     nextEl: nextRef.current,
                   }}
-                  loop={true}
+                  onBeforeInit={(swiper) => {
+                    if (
+                      typeof swiper.params.navigation === "object" &&
+                      swiper.params.navigation
+                    ) {
+                      swiper.params.navigation.prevEl = prevRef.current;
+                      swiper.params.navigation.nextEl = nextRef.current;
+                    }
+                  }}
+                  onSwiper={(swiper) => {
+                    setTimeout(() => {
+                      swiper.navigation.init();
+                      swiper.navigation.update();
+                      swiper.slideTo(0);
+                    });
+                  }}
+                  loop={activeRoom?.gallery && activeRoom?.gallery.length > 1}
                   autoHeight={true}
                 >
                   {activeRoom?.gallery?.map((item, index) => (
@@ -190,14 +194,16 @@ export default function Rooms() {
                     </SwiperSlide>
                   ))}
 
-                  <div className={style.customNav}>
-                    <button ref={prevRef} className={style.navButton}>
-                      &#x2039;
-                    </button>
-                    <button ref={nextRef} className={style.navButton}>
-                      &#x203A;
-                    </button>
-                  </div>
+                  {activeRoom?.gallery && activeRoom?.gallery.length > 1 && (
+                    <div className={style.customNav}>
+                      <button ref={prevRef} className={style.navButton}>
+                        &#x2039;
+                      </button>
+                      <button ref={nextRef} className={style.navButton}>
+                        &#x203A;
+                      </button>
+                    </div>
+                  )}
                 </Swiper>
 
                 {/* Contenido de la habitación */}

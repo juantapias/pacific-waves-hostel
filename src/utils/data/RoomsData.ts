@@ -22,10 +22,6 @@ export const RoomData = [
         alt: "Decoración interior natural y rústica de la cabaña privada",
       },
       {
-        src: "/assets/images/rooms/cabins-brisa/IMG_3882_qvsjcq.webp",
-        alt: "Vista lateral de la cabaña privada entre árboles",
-      },
-      {
         src: "/assets/images/rooms/cabins-brisa/IMG_3887_wee6z6.webp",
         alt: "Hamaca en la terraza de la cabaña privada con vista al jardín",
       },

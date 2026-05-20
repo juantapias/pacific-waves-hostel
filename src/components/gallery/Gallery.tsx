@@ -154,6 +154,7 @@ function Lightbox({
       {/* Image */}
       <div
         onClick={(e) => e.stopPropagation()}
+        className="flex flex-col justify-center"
         style={{ maxWidth: "88vw", maxHeight: "88vh" }}
       >
         <img
