@@ -12,6 +12,7 @@ export default function MainBanner() {
   const socialItemsRef = useRef<HTMLUListElement>(null);
   const scrollDownRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef<HTMLSpanElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   gsap.registerPlugin(ScrollTrigger);
@@ -19,6 +20,24 @@ export default function MainBanner() {
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 5000);
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const tryPlay = () => {
+      video.play().catch(() => {});
+    };
+
+    tryPlay();
+
+    const handleVisibilityChange = () => {
+      if (!document.hidden) tryPlay();
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, []);
 
   useEffect(() => {
@@ -94,6 +113,7 @@ export default function MainBanner() {
       <Loading isLoading={isLoading} />
 
       <video
+        ref={videoRef}
         src="/assets/images/videos/11.5mb_nasibe.mp4"
         autoPlay
         loop
@@ -126,7 +146,7 @@ export default function MainBanner() {
           >
             Reserva
           </button> */}
-          <div className="bg-white p-4 rounded-2xl w-4/5 md:w-fit">
+          <div className="bg-white p-4 rounded-2xl w-full sm:w-auto">
             <BookingForm />
           </div>
         </div>

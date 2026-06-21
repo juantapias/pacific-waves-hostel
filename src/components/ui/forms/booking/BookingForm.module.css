@@ -1,63 +1,72 @@
 .bookingForm {
-  align-items: center;
+  align-items: stretch;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
 }
 
 .formGroup {
   display: flex;
   flex-direction: column;
   width: 100%;
-
 }
 
 .label {
   color: var(--color-primary);
-  padding-left: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding-left: 0.75rem;
+  margin-bottom: 0.25rem;
 }
 
 .inputCalendar {
   border: 1px solid #0077B6;
   border-radius: 2rem;
-  height: 50px;
+  height: 46px;
   outline: none;
   padding: 0 1rem;
   transition: border .3s ease-in-out;
   width: 100%;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.submitButton {
+  width: 100%;
 }
 
 .submitButton button {
-  padding: 1rem;
+  padding: 0.875rem 1.5rem;
   font-size: 1rem;
+  width: 100%;
 }
 
-
-@media (max-width: 640px) {
-  .submitButton {
-    margin-right: auto;
-  }
-}
-
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .bookingForm {
     align-items: flex-end;
     flex-direction: row;
+    gap: 1rem;
+    width: auto;
   }
 
   .formGroup {
-    width: 220px;
+    width: 200px;
   }
 
   .submitButton {
-    margin: auto;
+    width: auto;
+  }
+
+  .submitButton button {
+    width: auto;
+    white-space: nowrap;
   }
 }
 
 @media (min-width: 1024px) {
   .formGroup {
-    width: 320px;
+    width: 280px;
   }
 }
 
