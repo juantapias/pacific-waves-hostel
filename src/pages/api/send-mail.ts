@@ -3,56 +3,37 @@ import nodemailer from "nodemailer";
 
 export const prerender = false;
 
+const transporter = nodemailer.createTransport({
+  host: import.meta.env.SMTP_HOST,
+  port: parseInt(import.meta.env.SMTP_PORT || "587"),
+  secure: import.meta.env.SMTP_SECURE === "true",
+  auth: {
+    user: import.meta.env.SMTP_USER,
+    pass: import.meta.env.SMTP_PASS,
+  },
+});
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function jsonResponse(body: object, status: number) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { "Content-Type": "application/json" },
+  });
+}
+
 export const POST: APIRoute = async ({ request }) => {
   try {
-    // Obtener el email del cuerpo de la petición
     const email = await request.json();
 
-    // Validar que el email existe
     if (!email || typeof email !== "string") {
-      return new Response(
-        JSON.stringify({
-          success: false,
-          message: "Email es requerido",
-        }),
-        {
-          status: 400,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      );
+      return jsonResponse({ success: false, message: "Email es requerido" }, 400);
     }
 
-    // Validar formato de email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return new Response(
-        JSON.stringify({
-          success: false,
-          message: "Formato de email inválido",
-        }),
-        {
-          status: 400,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      );
+    if (!EMAIL_REGEX.test(email)) {
+      return jsonResponse({ success: false, message: "Formato de email inválido" }, 400);
     }
 
-    // Configurar el transportador de nodemailer
-    const transporter = nodemailer.createTransport({
-      host: import.meta.env.SMTP_HOST,
-      port: parseInt(import.meta.env.SMTP_PORT || "587"),
-      secure: import.meta.env.SMTP_SECURE === "true", // true para 465, false para otros puertos
-      auth: {
-        user: import.meta.env.SMTP_USER,
-        pass: import.meta.env.SMTP_PASS,
-      },
-    });
-
-    // Configurar las opciones del correo
     const mailOptions = {
       from: `Pacific Waves Hostel <${import.meta.env.FROM_EMAIL}>`,
       to: import.meta.env.TO_EMAIL, // Email donde recibirás las suscripciones
@@ -88,32 +69,9 @@ export const POST: APIRoute = async ({ request }) => {
       transporter.sendMail(confirmationMailOptions),
     ]);
 
-    return new Response(
-      JSON.stringify({
-        success: true,
-        message: "Suscripción exitosa",
-      }),
-      {
-        status: 200,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-    );
+    return jsonResponse({ success: true, message: "Suscripción exitosa" }, 200);
   } catch (error) {
     console.error("Error al enviar correo:", error);
-
-    return new Response(
-      JSON.stringify({
-        success: false,
-        message: "Error interno del servidor",
-      }),
-      {
-        status: 500,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      },
-    );
+    return jsonResponse({ success: false, message: "Error interno del servidor" }, 500);
   }
 };

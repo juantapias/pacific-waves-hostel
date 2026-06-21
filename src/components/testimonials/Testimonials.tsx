@@ -131,21 +131,25 @@ export default function Testimonials() {
       </div>
 
       <Swiper
-        spaceBetween={16}
-        slidesPerView={2}
+        spaceBetween={12}
+        slidesPerView={1}
         autoplay={{ delay: 2500, disableOnInteraction: false }}
         loop
         modules={[Autoplay]}
         breakpoints={{
-          640: {
+          540: {
             slidesPerView: 2,
-            spaceBetween: 20,
+            spaceBetween: 16,
           },
           768: {
             slidesPerView: 3,
-            spaceBetween: 40,
+            spaceBetween: 24,
           },
           1024: {
+            slidesPerView: 4,
+            spaceBetween: 16,
+          },
+          1280: {
             slidesPerView: 5,
             spaceBetween: 16,
           },

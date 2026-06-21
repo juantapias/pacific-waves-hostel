@@ -16,7 +16,8 @@
 }
 
 .styleCarousel {
-  height: 80vh;
+  height: 56vw;
+  max-height: 380px;
   text-align: center;
 }
 
@@ -54,8 +55,9 @@
 }
 
 .roomGalleryItem {
-  object-fit: contain;
-  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 .heading {

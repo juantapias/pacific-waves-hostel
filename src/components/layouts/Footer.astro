@@ -1,117 +1,319 @@
 ---
-
+import LogoWhite from '../../assets/images/logo-white.webp'
 ---
 
-<footer>
-  <div class='container mx-auto'>
-    <div class='footer-content'>
-      <div class='footer-copy'>
-        <p>© 2025 Pacific Wave Hostal & Surf. Todos los derechos reservados.</p>
-      </div>
-      <div class='auth'>
-        <p>Desarrollado por 
-          <a href="https://juantapias.dev" target="_blank" rel="noopener noreferrer">
-            Tapias
-          </a>
+<footer class="site-footer">
+  <div class="container mx-auto px-4 sm:px-6">
+
+    <div class="footer-grid">
+
+      <!-- Columna 1: Marca -->
+      <div class="footer-brand">
+        <a href="/" aria-label="Ir al inicio">
+          <img
+            src={LogoWhite.src}
+            alt="Pacific Waves Hostel & Surf"
+            width="100"
+            height="67"
+            loading="lazy"
+          />
+        </a>
+        <p class="footer-tagline">
+          Hostel frente al mar en Playa El Almejal,<br />
+          El Valle, Bahía Solano — Chocó, Colombia.
         </p>
       </div>
-    </div>
-  </div>
 
-  <div class='whatsapp'>
-    <a href="https://wa.link/0cfl4h" target='_blank'>
-      <i class="icon icon-whatsapp" />
-    </a>
+      <!-- Columna 2: Links legales -->
+      <nav aria-label="Políticas y términos">
+        <h3 class="footer-col-heading">Legal</h3>
+        <ul class="footer-links">
+          <li><a href="/politicas-de-cancelacion">Políticas de cancelación</a></li>
+          <li><a href="/politicas-de-privacidad">Política de privacidad</a></li>
+          <li><a href="/terminos-y-condiciones">Términos y condiciones</a></li>
+        </ul>
+      </nav>
+
+      <!-- Columna 3: Contacto y redes -->
+      <div class="footer-contact">
+        <h3 class="footer-col-heading">Encuéntranos</h3>
+        <address class="footer-address">
+          <p>Playa El Almejal, El Valle</p>
+          <p>Bahía Solano, Chocó, Colombia</p>
+          <a href="mailto:info@pacificwaveshostel.com">info@pacificwaveshostel.com</a>
+        </address>
+
+        <ul class="footer-socials" aria-label="Redes sociales">
+          <li>
+            <a
+              href="https://www.instagram.com/pacific.waves.hostel?igsh=a3kxZmowbmZubDkx"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-social-link"
+              aria-label="Instagram"
+            >
+              <i class="icon icon-instagram" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.facebook.com/share/1YLmBJiDpD/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-social-link"
+              aria-label="Facebook"
+            >
+              <i class="icon icon-facebook" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.tripadvisor.co/Hotel_Review-g1983809-d28590654-Reviews-Pacific_Waves_Hostel_Surf-Bahia_Solano_Choco_Department.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-social-link"
+              aria-label="TripAdvisor"
+            >
+              <i class="icon icon-tripadvisor" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              href="mailto:info@pacificwaveshostel.com"
+              class="footer-social-link"
+              aria-label="Correo electrónico"
+            >
+              <i class="icon icon-mail" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Barra inferior -->
+    <div class="footer-bottom">
+      <p>© {new Date().getFullYear()} Pacific Waves Hostel & Surf. Todos los derechos reservados.</p>
+      <p>
+        Desarrollado por
+        <a href="https://juantapias.dev" target="_blank" rel="noopener noreferrer">Tapias</a>
+      </p>
+    </div>
+
   </div>
 </footer>
 
+<!-- Botón flotante de WhatsApp — fuera del <footer> por ser posición fija -->
+<div class="whatsapp-fab" role="complementary" aria-label="Contactar por WhatsApp">
+  <a
+    href="https://wa.link/0cfl4h"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contactar por WhatsApp"
+  >
+    <i class="icon icon-whatsapp" aria-hidden="true"></i>
+  </a>
+</div>
+
 <style>
-
-  footer {
-    background-color: transparent;
-    font-family: 'roboto';
-    margin-top: -30px;
-    position: relative;
-    z-index: 1;
-  }
-  .footer-content {
-    align-items: flex-end;
+  /* ── Footer ───────────────────────────────────────────────────────────────── */
+  .site-footer {
+    background-color: #023e6e;
     color: #F1FAFF;
-    display: flex;
-    justify-content: space-between;
-    gap: 0.5rem;
-    padding: 0.25rem 0;
+    font-family: 'roboto', sans-serif;
+    padding: 3rem 0 1.5rem;
   }
 
-  .footer-copy {
-    align-items: center;
-    display: flex;
-    width: 45%;
-  }
-  p {
-    font-size: 0.625rem;
-  }
-
-  .auth {
-    display: flex;
-    justify-content: flex-end;
+  /* ── Grid de columnas ────────────────────────────────────────────────────── */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(241, 250, 255, 0.12);
   }
 
-  .auth a {
-    color: #F1FAFF;
-    font-weight: bold;
-    text-decoration: none;
+  @media (min-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: 1.6fr 1fr 1.2fr;
+    }
+  }
+
+  /* ── Columna marca ───────────────────────────────────────────────────────── */
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-brand img {
+    display: block;
+  }
+
+  .footer-tagline {
+    font-size: 0.875rem;
+    line-height: 1.65;
+    opacity: 0.65;
+    max-width: 280px;
+    margin: 0;
+  }
+
+  /* ── Encabezados de columna ──────────────────────────────────────────────── */
+  .footer-col-heading {
+    font-family: 'raleway', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+    opacity: 0.45;
+    margin: 0 0 1rem;
   }
 
-  .auth a:hover {
+  /* ── Links legales ───────────────────────────────────────────────────────── */
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .footer-links a {
+    color: #F1FAFF;
+    font-size: 0.875rem;
+    font-weight: 300;
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    opacity: 1;
     text-decoration: underline;
   }
 
-  .whatsapp {
+  /* ── Dirección ───────────────────────────────────────────────────────────── */
+  .footer-address {
+    font-style: normal;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    opacity: 0.65;
+    margin: 0 0 1.25rem;
+  }
+
+  .footer-address p {
+    margin: 0;
+  }
+
+  .footer-address a {
+    color: #F1FAFF;
+    text-decoration: none;
+    opacity: 0.75;
+    transition: opacity 0.2s ease;
+  }
+
+  .footer-address a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  /* ── Redes sociales ──────────────────────────────────────────────────────── */
+  .footer-socials {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+  }
+
+  .footer-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #F1FAFF;
+    font-size: 1.25rem;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(241, 250, 255, 0.2);
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .footer-social-link:hover {
+    background-color: rgba(241, 250, 255, 0.12);
+    border-color: rgba(241, 250, 255, 0.45);
+  }
+
+  /* ── Barra inferior ──────────────────────────────────────────────────────── */
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-top: 1.25rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin: 0;
+  }
+
+  .footer-bottom a {
+    color: #F1FAFF;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    opacity: 1;
+  }
+
+  .footer-bottom a:hover {
+    text-decoration: underline;
+  }
+
+  /* ── Botón flotante WhatsApp ─────────────────────────────────────────────── */
+  .whatsapp-fab {
     position: fixed;
-    bottom: 20px;
-    right: 2%;
+    bottom: 1.25rem;
+    right: 1.25rem;
     z-index: 1000;
   }
 
-  .whatsapp a {
+  .whatsapp-fab a {
+    display: flex;
     align-items: center;
+    justify-content: center;
     background-color: #25D366;
     border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    color: white;
-    display: flex;
-    font-size: 2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    color: #fff;
+    font-size: 1.75rem;
     height: 50px;
-    justify-content: center;
-    padding: 10px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
     width: 50px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
   }
 
-  .whatsapp a:hover {
+  .whatsapp-fab a:hover {
     background-color: #128C7E;
+    transform: scale(1.08);
   }
 
-  @media (min-width: 768px) {
-    footer {
-      margin-top: -40px;
-    }
-
-    .footer-copy {
-      width: 45%
-    }
-
-    p {
-    font-size: 0.75rem;
-  }
-    
-    .auth {
-      width: 50%;
+  @media (max-width: 639px) {
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
     }
   }
-
-
 </style>

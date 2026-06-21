@@ -12,9 +12,7 @@ type IPlanProps = {
 };
 
 export default function Plans({ plan }: IPlanProps) {
-  const allPlans = plans[0].plans;
-
-  const currentPlan = Object.values(allPlans).find((p) => p.slug === plan);
+  const currentPlan = Object.values(plans).find((p) => p.slug === plan);
 
   if (!currentPlan) {
     return <div>Plan no encontrado</div>;
@@ -28,7 +26,7 @@ export default function Plans({ plan }: IPlanProps) {
 
           <div className="grid grid-rows-1 gap-8">
             <div
-              className={`grid grid-cols-${currentPlan.overview.length} gap-8`}
+              className={`grid gap-4 sm:gap-8 ${currentPlan.overview.length === 2 ? "grid-cols-2" : "grid-cols-3"}`}
             >
               {currentPlan.overview.map((plan, index) => (
                 <CardInfo key={index} plan={plan as IPlan} />
@@ -39,7 +37,7 @@ export default function Plans({ plan }: IPlanProps) {
               includes={currentPlan.includes as IIncludeItem[]}
               notIncludes={currentPlan.notIncludes as INotIncludeItem[]}
             />
-            <TourItinerary />
+            <TourItinerary itinerary={currentPlan.itinerary} />
             <PackageVibes photos={currentPlan.gallery as Photo[]} />
           </div>
         </div>

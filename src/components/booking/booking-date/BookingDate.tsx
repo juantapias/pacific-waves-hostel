@@ -121,9 +121,8 @@ export default function BookingDate({
 
   return (
     <div className="bg-primary py-4 rounded-2xl">
-      <div className="container mx-auto px-8">
-        <div className="grid grid-rows-1">
-          <div className="grid grid-cols-1 gap-4">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 gap-4">
             {/* Encabezado */}
             <div>
               <h2 className="text-white text-center text-xl">
@@ -242,7 +241,6 @@ export default function BookingDate({
               </p>
             </div>
           </div>
-        </div>
       </div>
     </div>
   );

@@ -26,23 +26,20 @@ export default function NewsletterForm({ placeholder }: NewsletterFormProps) {
     try {
       const response = await fetch("/api/send-mail", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(email),
       });
 
       if (response.ok) {
         setSuccess(true);
         setEmail("");
-        setLoading(false);
       } else {
         setError("Hubo un problema al enviar el mensaje. Intenta nuevamente.");
-        setLoading(false);
       }
     } catch (err) {
       console.error(err);
       setError("Error de red. Intenta más tarde.");
+    } finally {
       setLoading(false);
     }
   };
@@ -52,7 +49,7 @@ export default function NewsletterForm({ placeholder }: NewsletterFormProps) {
       <form className={styles.newsletterGroup} onSubmit={onSubmit}>
         <div>
           <input
-            type="text"
+            type="email"
             placeholder={placeholder}
             className={styles.inputNewsletter}
             value={email}

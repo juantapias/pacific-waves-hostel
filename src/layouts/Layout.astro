@@ -107,7 +107,7 @@ const schemaJSON = schema
 
     <!-- ── JSON-LD estructurado ─────────────────────────────────────────── -->
     {schemaJSON && (
-      <script type="application/ld+json" set:html={schemaJSON} />
+      <script is:inline type="application/ld+json" set:html={schemaJSON} />
     )}
   </head>
 
@@ -166,28 +166,21 @@ const schemaJSON = schema
   /* BODY */
   @font-face {
     font-family: 'roboto';
-    src: url('../assets/fonts/roboto/Roboto-Light.ttf') format('woff2');
-    font-weight: 100;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'roboto';
-    src: url('../assets/fonts/roboto/Roboto-Light.ttf') format('woff2');
+    src: url('../assets/fonts/roboto/Roboto-Light.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
   }
 
   @font-face {
     font-family: 'roboto';
-    src: url('../assets/fonts/roboto/Roboto-Medium.ttf') format('woff2');
+    src: url('../assets/fonts/roboto/Roboto-Medium.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
   }
 
   @font-face {
     font-family: 'roboto';
-    src: url('../assets/fonts/roboto/Roboto-Bold.ttf') format('woff2');
+    src: url('../assets/fonts/roboto/Roboto-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
   }

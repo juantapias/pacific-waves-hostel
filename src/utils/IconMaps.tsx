@@ -11,6 +11,7 @@ import {
   IconClock,
   IconUsers,
   IconCashBanknote,
+  IconCalendar,
 } from "@tabler/icons-react";
 
 export const iconsMap = {
@@ -24,6 +25,7 @@ export const iconsMap = {
   IconClock,
   IconUsers,
   IconCashBanknote,
+  IconCalendar,
   IconWalk,
   IconTubing,
 } as const;

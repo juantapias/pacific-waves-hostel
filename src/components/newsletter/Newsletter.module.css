@@ -1,13 +1,25 @@
 .newsletter {
   background-color: #0077B6;
-  padding: 6.25rem 0 12.5rem;
+  padding: 4rem 0 8rem;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .newsletter {
+    padding: 6.25rem 0 12.5rem;
+  }
 }
 
 .title {
   color: #F1FAFF;
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
 }
 
 .form {
@@ -17,52 +29,6 @@
   margin: 1rem 0 2rem;
 }
 
-.socials ul {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-  gap: 2rem;
-}
-
-.socialLinks {
-  align-items: center;
-  border-radius: 2rem;
-  color: #F1FAFF;
-  display: flex;
-  font-size: 2rem;
-  height: 50px;
-  justify-content: center;
-  text-decoration: none;
-  transition: all .3s ease-in-out;
-  width: 50px;
-}
-
-.socialLinks:hover {
-  color: #0077B6;
-  background-color: #F1FAFF;
-}
-
-.navigation {
-  align-items: center;
-  display: flex;
-  gap: 1rem;
-  justify-content: space-around;
-  list-style: none;
-  margin-top: 1rem;
-  width: 100%;
-}
-
-.navigation a {
-  color: #F1FAFF;
-  font-family: 'roboto';
-  font-size: .875rem;
-  font-weight: 300;
-  text-decoration: none;
-}
-
-.navigation a:hover {
-  text-decoration: underline;
-}
 
 .whaletale {
   align-items: center;

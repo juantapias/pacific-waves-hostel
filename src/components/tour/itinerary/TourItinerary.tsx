@@ -1,9 +1,11 @@
-import { plans } from "../../../db";
 import type { IItineraryItem } from "../../../types";
 
-export default function TourItinerary() {
-  const items: IItineraryItem[] =
-    plans.find((plan) => plan.plans.ballenas)?.plans.ballenas.itinerary || [];
+type TourItineraryProps = {
+  itinerary: IItineraryItem[];
+};
+
+export default function TourItinerary({ itinerary }: TourItineraryProps) {
+  const items = itinerary;
 
   return (
     <div className="grid gap-8">

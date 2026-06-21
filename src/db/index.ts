@@ -1,7 +1,5 @@
-export const plans = [
-  {
-    plans: {
-      ballenas: {
+export const plans = {
+  ballenas: {
         name: "Avistamiento de ballenas en Bahía Solano",
         description:
           "En Pacific Waves Hostel, no solo vemos las ballenas; vivimos su entorno. Ubicados en El Valle, Bahía Solano, te ofrecemos una conexión auténtica con el Pacífico colombiano. Aquí, la aventura comienza desde que pones un pie en la arena.",
@@ -141,17 +139,17 @@ export const plans = [
         slug: "plan-surf",
         overview: [
           {
-            icon: "IconWave",
+            icon: "IconClock",
             title: "Duración",
             content: "3, 4 o 5 noches",
           },
           {
-            icon: "IconWave",
+            icon: "IconCalendar",
             title: "Disponibilidad",
             content: "Todo el año",
           },
           {
-            icon: "IconWave",
+            icon: "IconCashBanknote",
             title: "Desde",
             content: "790.000 COP",
           },
@@ -271,17 +269,17 @@ export const plans = [
         slug: "plan-aventura",
         overview: [
           {
-            icon: "IconWave",
+            icon: "IconClock",
             title: "Duración",
             content: "3, 4 o 5 noches",
           },
           {
-            icon: "IconWave",
+            icon: "IconCalendar",
             title: "Disponibilidad",
             content: "Todo el año",
           },
           {
-            icon: "IconWave",
+            icon: "IconCashBanknote",
             title: "Desde",
             content: "840.000 COP",
           },
@@ -404,10 +402,8 @@ export const plans = [
             alt: "Vista de la montaña y la playa",
           },
         ],
-      },
     },
-  },
-];
+};
 
 export const PlansResume = [
   {

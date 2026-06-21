@@ -42,5 +42,5 @@ export type ICurrentPlan = {
   includes: IIncludeItem[];
   notIncludes: INotIncludeItem[];
   itinerary: IItineraryItem[];
-  gallery: Photo;
+  gallery: Photo[];
 };
