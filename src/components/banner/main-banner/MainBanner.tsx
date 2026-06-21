@@ -146,7 +146,7 @@ export default function MainBanner() {
           >
             Reserva
           </button> */}
-          <div className="bg-white p-4 rounded-2xl w-full sm:w-auto">
+          <div className="bg-white p-4 rounded-2xl w-full sm:w-auto overflow-hidden min-w-0">
             <BookingForm />
           </div>
         </div>
