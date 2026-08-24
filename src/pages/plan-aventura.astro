@@ -46,98 +46,6 @@ const schema = [
         "description": "Aventura en lancha hacia las imponentes Cascadas de Chadó, donde la selva se une con el mar. Último desayuno frente al mar y traslado al aeropuerto."
       }
     ],
-    "offers": [
-      {
-        "@type": "Offer",
-        "name": "Cabaña Privada Pareja – 3 noches",
-        "description": "Plan aventura 3 noches para 2 personas en cabaña privada. Incluye surf, caminata a cascadas de Playa Larga.",
-        "price": "2080000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Cabaña Privada Pareja – 4 noches",
-        "description": "Plan aventura 4 noches para 2 personas en cabaña privada. Incluye surf, caminata a cascadas y tubing por el río Valle.",
-        "price": "2850000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Cabaña Privada Pareja – 5 noches",
-        "description": "Plan aventura 5 noches para 2 personas en cabaña privada. Incluye surf, caminata, tubing y excursión a las Cascadas de Chadó.",
-        "price": "3720000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Cabaña Privada Una Persona – 3 noches",
-        "description": "Plan aventura 3 noches para 1 persona en cabaña privada. Incluye surf y caminata a cascadas de Playa Larga.",
-        "price": "1210000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Cabaña Privada Una Persona – 4 noches",
-        "description": "Plan aventura 4 noches para 1 persona en cabaña privada. Incluye surf, caminata y tubing por el río Valle.",
-        "price": "1650000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Cabaña Privada Una Persona – 5 noches",
-        "description": "Plan aventura 5 noches para 1 persona en cabaña privada. Incluye surf, caminata, tubing y Cascadas de Chadó.",
-        "price": "2140000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Cabaña Familiar – 3 noches",
-        "description": "Plan aventura 3 noches por persona en cabaña familiar (mín. 2, máx. 4 personas). Incluye surf y caminata.",
-        "price": "900000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Dormitorio 4 camas – 3 noches",
-        "description": "Plan aventura 3 noches en dormitorio de 4 camas. Incluye surf y caminata a cascadas de Playa Larga.",
-        "price": "900000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Dormitorio 8 camas – 3 noches",
-        "description": "Plan aventura 3 noches en dormitorio compartido de 8 camas. Incluye surf y caminata a cascadas de Playa Larga.",
-        "price": "840000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      }
-    ],
     "provider": {
       "@type": "LodgingBusiness",
       "name": "Pacific Waves Hostel & Surf",
@@ -284,7 +192,7 @@ const plan = Astro.url.pathname.split('/').filter(Boolean).pop() || "";
 <Layout 
   title='Plan Aventura Bahía Solano 2026 – Surf, Cascadas y Tubing en El Valle, Chocó'
   titleTemplate={false}
-  description="Plan aventura todo incluido en El Valle, Bahía Solano. 3 a 5 noches desde $840.000 COP por persona. Surf, caminata a cascadas de Playa Larga, tubing por el río Valle y excursión a las Cascadas de Chadó. Disponible todo el año."
+  description="Plan aventura todo incluido en El Valle, Bahía Solano. 3 a 5 noches: surf, caminata a cascadas de Playa Larga, tubing por el río Valle y excursión a las Cascadas de Chadó. Disponible todo el año. Escríbenos para tarifas y disponibilidad."
   canonical='https://www.pacificwaveshostel.com/plan-aventura'
   ogImage='/images/plan-aventura-og.jpg'
   ogType='website'

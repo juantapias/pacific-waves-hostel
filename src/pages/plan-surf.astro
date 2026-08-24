@@ -46,88 +46,6 @@ const schema = [
         "description": "Cuarta clase de surf para maximizar la experiencia en el mar. Último desayuno frente al mar y traslado al aeropuerto."
       }
     ],
-    "offers": [
-      {
-        "@type": "Offer",
-        "name": "Cabaña Privada Pareja – 3 noches",
-        "description": "Plan surf 3 noches para 2 personas en cabaña privada. Incluye 2 clases de surf.",
-        "price": "1990000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Cabaña Privada Pareja – 4 noches",
-        "description": "Plan surf 4 noches para 2 personas en cabaña privada. Incluye 3 clases de surf.",
-        "price": "2640000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Cabaña Privada Pareja – 5 noches",
-        "description": "Plan surf 5 noches para 2 personas en cabaña privada. Incluye 4 clases de surf.",
-        "price": "3300000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Cabaña Privada Una Persona – 3 noches",
-        "description": "Plan surf 3 noches para 1 persona en cabaña privada. Incluye 2 clases de surf.",
-        "price": "1170000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Cabaña Privada Una Persona – 4 noches",
-        "description": "Plan surf 4 noches para 1 persona en cabaña privada. Incluye 3 clases de surf.",
-        "price": "1550000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Cabaña Privada Una Persona – 5 noches",
-        "description": "Plan surf 5 noches para 1 persona en cabaña privada. Incluye 4 clases de surf.",
-        "price": "1930000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Cabaña Familiar – 3 noches",
-        "description": "Plan surf 3 noches por persona en cabaña familiar (mín. 2, máx. 4 personas). Incluye 2 clases de surf.",
-        "price": "860000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      },
-      {
-        "@type": "Offer",
-        "name": "Dormitorio 8 camas – 3 noches",
-        "description": "Plan surf 3 noches en dormitorio compartido de 8 camas. Incluye 2 clases de surf.",
-        "price": "790000",
-        "priceCurrency": "COP",
-        "availability": "https://schema.org/InStock",
-        "validFrom": "2026-01-01",
-        "validThrough": "2026-12-31"
-      }
-    ],
     "provider": {
       "@type": "LodgingBusiness",
       "name": "Pacific Waves Hostel & Surf",
@@ -262,7 +180,7 @@ const plan = Astro.url.pathname.split('/').filter(Boolean).pop() || "";
 <Layout 
   title='Plan Surf Bahía Solano 2026 – Clases de Surf en El Valle, Chocó'
   titleTemplate={false}
-  description="Plan surf todo incluido en El Valle, Bahía Solano. 3 a 5 noches desde $790.000 COP por persona. Traslados, alojamiento, alimentación completa y clases de surf garantizadas. Disponible todo el año."
+  description="Plan surf todo incluido en El Valle, Bahía Solano. 3 a 5 noches, traslados, alojamiento, alimentación completa y clases de surf. Disponible todo el año. Escríbenos para tarifas y disponibilidad."
   canonical='https://www.pacificwaveshostel.com/plan-surf'
   ogImage='/images/plan-surf-og.jpg'
   ogType='website'

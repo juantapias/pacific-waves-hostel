@@ -184,8 +184,8 @@ export default function Plans() {
             opacity: 0.5,
           }}
         >
-          Precios por persona · Incluye alojamiento, alimentación y traslados
-          aeropuerto BSC
+          Todo incluido · Alojamiento, alimentación y traslados aeropuerto BSC
+          · Escríbenos por tarifas y disponibilidad
         </p>
       </div>
     </section>
