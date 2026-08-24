@@ -9,7 +9,6 @@ export interface PlanData {
   title: string;
   tagline: string;
   description: string;
-  from: number;
   nights: string;
   color: string;
   accent: string;
@@ -19,11 +18,6 @@ export interface PlanData {
 
 interface CardPlanProps {
   plan: PlanData;
-}
-
-// ── Helper ───────────────────────────────────────────────────────────────────
-function formatCOP(value: number): string {
-  return `$${value.toLocaleString("es-CO")}`;
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────
@@ -261,7 +255,7 @@ export default function CardPlan({ plan }: CardPlanProps) {
             gap: "1rem",
           }}
         >
-          {/* Price */}
+          {/* Tarifas por consulta */}
           <div>
             <p
               style={{
@@ -273,30 +267,19 @@ export default function CardPlan({ plan }: CardPlanProps) {
                 margin: "0 0 0.2rem",
               }}
             >
-              Desde
+              Tarifas
             </p>
             <p
               style={{
-                fontSize: "1.6rem",
+                fontSize: "1.15rem",
                 fontWeight: 900,
-                letterSpacing: "-0.03em",
+                letterSpacing: "-0.02em",
                 color: "#fff",
                 margin: 0,
-                lineHeight: 1,
+                lineHeight: 1.2,
               }}
             >
-              {formatCOP(plan.from)}
-              <span
-                style={{
-                  fontSize: 12,
-                  fontWeight: 500,
-                  color: "rgba(255,255,255,0.45)",
-                  marginLeft: 4,
-                  letterSpacing: 0,
-                }}
-              >
-                COP
-              </span>
+              Consúltanos
             </p>
             <p
               style={{

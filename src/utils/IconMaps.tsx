@@ -10,8 +10,8 @@ import {
   IconRoute,
   IconClock,
   IconUsers,
-  IconCashBanknote,
   IconCalendar,
+  IconMessageCircle,
 } from "@tabler/icons-react";
 
 export const iconsMap = {
@@ -24,10 +24,10 @@ export const iconsMap = {
   IconRoute,
   IconClock,
   IconUsers,
-  IconCashBanknote,
   IconCalendar,
   IconWalk,
   IconTubing,
+  IconMessageCircle,
 } as const;
 
 export type IconName = keyof typeof iconsMap;

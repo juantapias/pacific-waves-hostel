@@ -11,9 +11,9 @@ export const plans = {
             content: "Max. 8 personas",
           },
           {
-            icon: "IconCashBanknote",
-            title: "Desde",
-            content: "830.000 COP",
+            icon: "IconMessageCircle",
+            title: "Tarifas",
+            content: "Consúltanos",
           },
         ],
         includes: [
@@ -149,9 +149,9 @@ export const plans = {
             content: "Todo el año",
           },
           {
-            icon: "IconCashBanknote",
-            title: "Desde",
-            content: "790.000 COP",
+            icon: "IconMessageCircle",
+            title: "Tarifas",
+            content: "Consúltanos",
           },
         ],
         includes: [
@@ -279,9 +279,9 @@ export const plans = {
             content: "Todo el año",
           },
           {
-            icon: "IconCashBanknote",
-            title: "Desde",
-            content: "840.000 COP",
+            icon: "IconMessageCircle",
+            title: "Tarifas",
+            content: "Consúltanos",
           },
         ],
         includes: [
@@ -415,7 +415,6 @@ export const PlansResume = [
     tagline: "Avistamiento de ballenas jorobadas",
     description:
       "Sal en lancha al encuentro de las jorobadas del Pacífico. Si no las avistas, la excursión se repite sin costo.",
-    from: 830000,
     nights: "3 a 5 noches",
     color: "#0a3d62",
     accent: "#48b1e8",
@@ -434,7 +433,6 @@ export const PlansResume = [
     tagline: "Clases de surf en el Pacífico colombiano",
     description:
       "Desde tu primera ola hasta dominar el Pacífico. Clases progresivas con instructores locales en una de las playas más constantes de Colombia.",
-    from: 790000,
     nights: "3 a 5 noches",
     color: "#0a3d62",
     accent: "#48b1e8",
@@ -449,7 +447,6 @@ export const PlansResume = [
     tagline: "Selva, río y mar en un solo plan",
     description:
       "Surf, cascadas, tubing y lancheo por la selva chocoana. Cada día en El Valle es una experiencia distinta.",
-    from: 840000,
     nights: "3 a 5 noches",
     color: "#0a3d62",
     accent: "#48b1e8",
